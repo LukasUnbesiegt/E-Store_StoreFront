@@ -1,0 +1,4 @@
+/auth/*  https://example.com/auth/:splat 200
+/api/*   https://example.com/api/:splat  200
+/*  /index.html  200
+
