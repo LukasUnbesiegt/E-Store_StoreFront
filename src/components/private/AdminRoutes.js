@@ -46,7 +46,7 @@ class AdminRoutes extends Component {
               <div className={`col-xl-10 col-lg-9 col-md-8 ml-auto  fixed-top  top-navbar ${styles.navbarColor}`}>
                 <div className=" p-2 d-flex justify-content-end">
                   <div className="">
-                    <a href="#" className={`nav-link${styles.iconBullet}`}><i className="fa fa-cog"></i></a>
+                    <a href="#" className={`nav-link ${styles.iconBullet}`}><i className="fa fa-cog fa-lg"></i></a>
 
                   </div>
 

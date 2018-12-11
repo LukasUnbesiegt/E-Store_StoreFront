@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import HeaderBar from '../../styles/HeaderBar'
 
 
 
@@ -14,9 +14,11 @@ class Promotions extends Component {
 
 
         return (
+
             <div>
-                <h3>Promotions</h3>
+                <HeaderBar title="Manage Your Promotions" />
             </div>
+
         )
     }
 }

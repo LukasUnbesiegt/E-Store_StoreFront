@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import HeaderBar from '../../styles/HeaderBar'
 
 
 
@@ -12,7 +12,14 @@ class Orders extends Component {
 
         return (
             <div>
-                <h2>Orders</h2>
+                <HeaderBar
+                    title="Manage Your Orders"
+                    sectionTitle="Orders"
+                    quantity={0}
+                    iconStyle="fa fa-archive"
+                    cat="Manage Orders"
+
+                />
             </div>
         )
     }
