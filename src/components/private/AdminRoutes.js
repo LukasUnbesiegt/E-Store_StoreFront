@@ -1,19 +1,24 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
-import DashBoard from './dashboard/DashBoard'
+
+
+import styles from './AdminRoutes.module.css';
 import Authenticated from '../misc/auth/Authenticated'
+import SideBar from './sidebar/index'
 
 
+import DashBoard from './dashboard/DashBoard'
+import Products from './products/index'
+import Orders from './orders/index'
+import Categories from './categories/index'
+import Users from './users/index'
+import Promotions from './promotions/index'
+import Settings from './settings/index'
 
 
 
 class AdminRoutes extends Component {
-
-
-
-
-
 
 
 
@@ -29,15 +34,58 @@ class AdminRoutes extends Component {
 
 
 
-      <div>
+      <Fragment>
+
+        <nav className="navbar">
+          <div className="container-fluid">
+            <div className="row">
+              <div className={`col-xl-2 col-lg-3 ${styles.sidebar} fixed-top`}>
+                <SideBar />
+              </div>
+
+              <div className={`col-xl-10 col-lg-9 col-md-8 ml-auto  fixed-top  top-navbar ${styles.navbarColor}`}>
+                <div className=" p-2 d-flex justify-content-end">
+                  <div className="">
+                    <a href="#" className={`nav-link${styles.iconBullet}`}><i className="fa fa-cog"></i></a>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </nav>
+
+        <section className="py-4">
+
+          <div className="container-fluid">
+            <div className="row">
+
+              <div className="col-xl-10 col-lg-9 ml-auto">
+                <Switch>
+                  <Route exact path="/admin" component={DashBoard} />
+                  <Route path="/admin/products" component={Products} />
+                  <Route path="/admin/orders" component={Orders} />
+                  <Route path="/admin/users" component={Users} />
+                  <Route path="/admin/categories" component={Categories} />
+                  <Route path="/admin/promotions" component={Promotions} />
+                  <Route path="/admin/settings" component={Settings} />
+
+                </Switch>
+
+              </div>
 
 
 
-        <Switch>
-          <Route exact path="/admin" component={DashBoard} />
+            </div>
 
-        </Switch>
-      </div>
+          </div>
+
+
+        </section>
+
+      </Fragment>
     )
 
 

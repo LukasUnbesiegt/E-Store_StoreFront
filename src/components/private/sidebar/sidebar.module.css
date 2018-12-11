@@ -1,0 +1,15 @@
+.borderLine {
+    border-bottom: 1px solid white;
+    padding : 3px;
+    display: block;
+    /* border : 1px solid red; */
+}
+
+.sidebarlink {
+    transition: all .4s;
+}
+
+.sidebarlink:hover {
+    background-color: #444;
+    border-radius: 5px;
+  }
