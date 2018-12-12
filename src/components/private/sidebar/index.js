@@ -46,17 +46,18 @@ class SideBar extends Component {
 
             })
             return (
-
-                <ul className="navbar-nav flex-column mt-4">
-
-
-                    {navItems}
+                <Fragment>
+                    <ul className="navbar-nav flex-column mt-4">
 
 
+                        {navItems}
+
+                    </ul>
+                    <span style={{ fontSize: '12px', color: 'white' }}>made with  <span style={{ color: '#e25555' }}>&hearts;</span>  by  <a style={{ textDecoration: 'none' }} href="https://www.facebook.com/blackheliosmm/">blackhelios</a></span>
+
+                </Fragment>
 
 
-
-                </ul>
 
             )
 

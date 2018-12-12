@@ -1,7 +1,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-
+import { Link, NavLink } from 'react-router-dom'
 
 
 
@@ -51,8 +51,9 @@ function headerBar(props) {
                             <div className="card-body">
 
                                 <div className="btn-group" role="group" aria-label="">
-                                    <button type="button" className="btn btn-secondary">Add {props.sectionTitle}</button>
-                                    <button type="button" className="btn btn-secondary">Check {props.sectionTitle}</button>
+                                    <a className="btn btn-outline-success" href="/admin/products/add" >Add {props.title}</a>
+                                    <a className="btn btn-outline-success" href="/admin/products">Table</a>
+                                    <a className="btn btn-outline-success" href="/admin/products/info">Info</a>
 
                                 </div>
 
