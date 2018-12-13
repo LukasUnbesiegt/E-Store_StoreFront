@@ -33,7 +33,7 @@ class Products extends Component {
         return (
             <div className="">
                 <HeaderBar
-                    title=" add products"
+                    title="Products"
                     sectionTitle="Products"
                     quantity={0}
                     iconStyle="fa fa-archive"

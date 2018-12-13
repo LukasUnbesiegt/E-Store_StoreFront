@@ -19,7 +19,7 @@ class Users extends Component {
             <Fragment>
 
                 <HeaderBar
-                    title=" add users"
+                    title="Users"
                     sectionTitle="Users"
                     quantity={0}
                     iconStyle="fa fa-users"

@@ -3,7 +3,9 @@ import React, { Component, Fragment } from 'react'
 import HeaderBar from '../../styles/HeaderBar'
 import { Switch, Route } from 'react-router-dom'
 import CustomersTable from './customersTable/CustomersTable'
-import CustomersSettings from './customerSettings/index'
+import CustomersSettings from './CustomerSettings/CustomerSettings'
+
+
 class Customers extends Component {
 
 
@@ -13,14 +15,14 @@ class Customers extends Component {
         return (
             <Fragment>
                 <HeaderBar
-                    title="Manage Customers"
+                    title="Customers"
                     sectionTitle="Customers"
                     quantity={0}
                     iconStyle="fa fa-archive"
                     cat="Manage Customers"
                     linkAdd="/admin/customers/add"
                     linkTable="/admin/customers/"
-                    linkSetting="/admin/customers/settings"
+                    linkSetting="/admin/customers/contacts/"
 
 
                 />
@@ -33,7 +35,7 @@ class Customers extends Component {
                             <Switch>
                                 <Route exact path="/admin/customers/" component={CustomersTable} />
                                 <Route path="/admin/customers/" component={CustomersTable} />
-                                <Route path="/admin/customers/settings" component={CustomersSettings} />
+                                <Route exact path="/admin/customers/contacts/" component={CustomersSettings} />
                             </Switch>
 
 
