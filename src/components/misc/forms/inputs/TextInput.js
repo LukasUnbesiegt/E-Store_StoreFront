@@ -11,9 +11,9 @@ const TextInput = ({ input, type, placeholder, prepend, logo, meta: { touched, e
 
 
     return (
-        <div className="form-group mb-3">
+        <div className="form-group mb-3" >
 
-            <div className="input-group input-group-alternative">
+            <div className="input-group input-group-alternative" >
                 {
                     prepend &&
                     (
@@ -27,6 +27,7 @@ const TextInput = ({ input, type, placeholder, prepend, logo, meta: { touched, e
                 <input
                     type={type}
                     className="form-control"
+
                     {...input}
                     placeholder={placeholder}
 
