@@ -6,8 +6,9 @@ import RadioInput from '../../../../misc/forms/inputs/RadioInput';
 import DetailsFields from './DetailsFields'
 import FieldArray from './FieldArray'
 import AddPhotos from './ProductPhotos/ProductPhotos'
-import ProductPhotos from './ProductPhotos/ProductPhotos';
 
+import ProductPhotos from './ProductPhotos/ProductPhotos';
+import ProductEditor from './ProductEditor/ProductEditor'
 
 
 
@@ -19,7 +20,7 @@ class AddProductForm extends Component {
 
     render() {
 
-        const { handleSubmit, submitCallback, valid, errors, submitting, pristine } = this.props;
+        const { handleSubmit, submitCallback, editorState, onEditorStateChange, valid, errors, submitting, pristine } = this.props;
 
         return (
 
@@ -96,6 +97,17 @@ class AddProductForm extends Component {
 
 
                 </div>
+
+
+                <div className="py-3 my-2">
+                    <ProductEditor
+                        editorState={editorState}
+                        onEditorStateChange={onEditorStateChange}
+                    />
+
+
+                </div>
+
 
                 <ProductPhotos />
 

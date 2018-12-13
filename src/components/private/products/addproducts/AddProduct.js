@@ -2,10 +2,28 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import AddProductForm from './form/AddProductForm'
-
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
 
 
 class AddProduct extends Component {
+
+
+
+    state = {
+
+        editorState: EditorState.createEmpty(),
+
+    }
+
+
+
+
+    onEditorStateChange = (editorState) => {
+        this.setState({
+            editorState,
+        });
+    };
+
 
 
     addProducts = () => {
@@ -33,7 +51,8 @@ class AddProduct extends Component {
                             <h3 className="">Add Product Form</h3>
                             <AddProductForm
                                 submitCallback={this.addProducts}
-
+                                editorState={this.state.editorState}
+                                onEditorStateChange={this.onEditorStateChange}
                             />
 
                         </div>
