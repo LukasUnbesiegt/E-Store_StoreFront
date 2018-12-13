@@ -4,7 +4,11 @@ import { toastr } from 'react-redux-toastr'
 import DropZone from 'react-dropzone'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
-
+import { connect } from 'react-redux'
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button
+} from 'reactstrap';
 
 
 class ProductPhotos extends Component {
@@ -15,7 +19,8 @@ class ProductPhotos extends Component {
         files: [],
         cropResult: null,
         image: {},
-        fieldName: ''
+        fieldName: '',
+        filesCropped: []
 
     }
 
@@ -42,6 +47,7 @@ class ProductPhotos extends Component {
         this.refs.cropper.getCroppedCanvas().toBlob((blob) => {
 
             let imgUrl = URL.createObjectURL(blob)
+
             this.setState({
                 cropResult: imgUrl,
                 image: blob
@@ -54,12 +60,48 @@ class ProductPhotos extends Component {
 
     }
 
+    loadImages = () => {
 
+
+        let photosArr;
+        if (this.state.image) {
+            photosArr = [...this.state.filesCropped, this.state.cropResult]
+
+        }
+
+        this.setState({
+            filesCropped: photosArr,
+
+        })
+
+        toastr.success('photo has been uploaded')
+
+
+
+    }
+
+
+    cancelCrop = () => {
+        this.setState({
+            files: [],
+            image: {}
+        })
+        toastr.success('cancel success')
+
+    }
+
+
+    deleteAll = () => {
+        this.setState({
+            filesCropped: []
+        })
+        toastr.success('all photos deleted')
+    }
 
 
     render() {
 
-
+        console.log(this.state.filesCropped);
 
 
 
@@ -78,7 +120,7 @@ class ProductPhotos extends Component {
 
                         <div className="col-md-6 col-lg-6">
 
-                            <DropZone onDrop={this.onDrop} multiple>
+                            <DropZone onDrop={this.onDrop} multiple={false}>
                                 <div style={{ paddingTop: '30px', textAlign: 'center' }}>
                                     <span>please upload or drop photos here</span>
 
@@ -112,9 +154,17 @@ class ProductPhotos extends Component {
                                         </div>
                                         <div className="col-md-4">
                                             <div className="btn-group btn-group-sm" role="group" >
-                                                <button type="button" class="btn btn-secondary">Left</button>
-                                                <button type="button" class="btn btn-secondary">Middle</button>
-                                                <button type="button" class="btn btn-secondary">Right</button>
+                                                <button type="button"
+                                                    class="btn btn-secondary"
+                                                    onClick={() => { this.loadImages() }}
+                                                >Add</button>
+
+                                                <button
+                                                    onClick={() => { this.cancelCrop() }}
+                                                    type="button" class="btn btn-secondary">Cancel</button>
+                                                <button
+                                                    onClick={() => { this.deleteAll() }}
+                                                    type="button" class="btn btn-secondary">Delete All</button>
                                             </div>
                                         </div>
                                     </div>
@@ -130,9 +180,36 @@ class ProductPhotos extends Component {
                         </div>
 
 
+                    </div>
+
+
+                    <div className="d-flex mx-4 my-4 ">
+
+                        {
+
+                            this.state.filesCropped && this.state.filesCropped.map((file) => {
+
+                                return (
+
+                                    <div>
+                                        <Card>
+                                            <CardImg top width="100%" src={file} alt="Card image cap" />
+                                            <CardBody>
+                                                <CardTitle>Card title</CardTitle>
+                                                <CardSubtitle>Card subtitle</CardSubtitle>
+                                                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                                                <Button>Button</Button>
+                                            </CardBody>
+                                        </Card>
+                                    </div>
 
 
 
+                                )
+                            })
+
+
+                        }
 
                     </div>
                 </div>
@@ -146,4 +223,16 @@ class ProductPhotos extends Component {
 
 
 
-export default ProductPhotos;
+
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = {
+
+}
+
+
+
+
+export default connect()(ProductPhotos);

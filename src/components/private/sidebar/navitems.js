@@ -28,12 +28,6 @@ export const navitems = [
     },
 
     {
-        name: 'categories',
-        linkTo: '/admin/categories',
-        icon: 'fa-columns',
-        admin: false
-    },
-    {
         name: 'promotions',
         linkTo: '/admin/promotions',
         icon: 'fa-angellist',
