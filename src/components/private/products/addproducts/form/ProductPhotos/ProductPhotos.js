@@ -26,7 +26,9 @@ class ProductPhotos extends Component {
 
             <Fragment>
 
-
+                <div>
+                    PHOTO
+                    </div>
 
 
 

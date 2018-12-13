@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
-import { reduxForm, Field, FieldArray } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 import TextInput from '../../../../misc/forms/inputs/TextInput'
 import CheckBox from '../../../../misc/forms/inputs/RadioInput'
 import RadioInput from '../../../../misc/forms/inputs/RadioInput';
+import DetailsFields from './DetailsFields'
+import FieldArray from './FieldArray'
+import AddPhotos from './ProductPhotos/ProductPhotos'
+import ProductPhotos from './ProductPhotos/ProductPhotos';
 
 
 
@@ -70,49 +74,30 @@ class AddProductForm extends Component {
                     type="number"
 
                 />
-                <div className="d-flex">
 
 
-                    <div className="mr-3">
-                        <label className="mr-1" htmlFor="featured">Featured</label>
-                        <Field
-                            name="featured"
-                            id="featured"
-                            component="input"
-                            type="checkbox"
-                        />
+                <DetailsFields />
 
-                    </div>
-                    <div className="mr-3">
-                        <label className="mr-1" htmlFor="featured">New Arrival</label>
-                        <Field
-                            name="newarrival"
-                            id="featured"
-                            component="input"
-                            type="checkbox"
-                        />
+                <div className="left">
+                    <FieldArray
+                        name="colors"
+                        placeholder="add colors"
 
-                    </div>
-                    <div className="mr-3">
-                        <label className="mr-1" htmlFor="featured">Promotional</label>
-                        <Field
-                            name="promotional"
-                            id="featured"
-                            component="input"
-                            type="checkbox"
-                        />
+                    />
 
-                    </div>
+                </div>
 
+                <div>
+                    <FieldArray
+                        name="size"
+                        placeholder="add sizes"
 
+                    />
 
 
                 </div>
 
-
-
-
-
+                <ProductPhotos />
 
 
 
