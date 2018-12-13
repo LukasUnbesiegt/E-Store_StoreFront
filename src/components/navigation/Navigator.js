@@ -10,25 +10,121 @@ class Navigator extends Component {
 
 
 
+
+
+
+
+
+
+
     render() {
 
+        const renderUserDropdown = () => {
+
+                // return (
+
+                //     <li className="nav-item dropdown">
+                //     <a className="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                //         <i className="ni ni-circle-08" style={{fontSize : '20px'}}></i>
+                //         <span className="nav-link-inner--text d-lg-none">User</span>
+                //     </a>
+                //     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                //         <a className="dropdown-item" href="#">Account</a>
+                //         <a className="dropdown-item" href="#">Purchase Histories</a>
+                //         <div className="dropdown-divider"></div>
+                //         <a className="dropdown-item" href="/">Login | Signup</a>
+                //     </div>
+                // </li>
+
+                // )
+
+                return (
+
+                    <li className="nav-item">
+                    <a className="nav-link" href="/">Login | Register</a>
+                  </li>
+                )
+
+        }
+
+        const renderNavLinks = () => {
+
+                return (
+                    <ul className="navbar-nav ml-lg-auto">
+                      <li className="nav-item">
+                    <a className="nav-link" href="/">Products</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/">Your Orders</a>
+                  </li>
+                   
+
+                    {renderUserDropdown()}
+                    
+                </ul>
+                    
+                )
+            
+        }
 
 
+        
 
+        const renderNavigations = () => {
 
-        return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-default ">
-                <div className="container-fluid">
+            return (
 
+                <div className="container">
+                    <a className="navbar-brand" href="/">
+                    <i class="ni ni-shop m-2"></i>
+                            E-Store
+                        
+                    </a>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbar-default">
+                            <div className="navbar-collapse-header">
+                                <div className="row">
+                                    <div className="col-6 collapse-brand">
+                                        <a href="/">
+                                        <i class="ni ni-shop m-2"></i>
+                            E-Store
+                                        </a>
+                                    </div>
+                                    <div className="col-6 collapse-close">
+                                        <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
+                    
+                        </div>
+
+                        {renderNavLinks()}
                 </div>
-            </nav>
-        )
-    }
-}
 
 
 
+                    )
+        
+                }
+        
+        
+                return (
+            <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundImage : 'linear-gradient(to right,  #38f9d7 0%, #43e97b 100%)'}}>
+                        {renderNavigations()}
+                    </nav>
 
-
+                    )
+                }
+            }
+            
+          
+            
+            
+            
 export default Navigator;
