@@ -28,10 +28,14 @@ class DashBoard extends Component {
                         <h1>Loading</h1>
                     </div>
                 )
-            } else {
+            }
+
+
+
+            else {
                 return (
                     <div>
-                        <h1>ADMIN</h1>
+
                     </div>
                 )
             }

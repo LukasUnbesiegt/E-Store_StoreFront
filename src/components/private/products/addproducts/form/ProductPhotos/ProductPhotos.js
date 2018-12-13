@@ -183,7 +183,7 @@ class ProductPhotos extends Component {
                     </div>
 
 
-                    <div className="d-flex mx-4 my-4 ">
+                    <div className="d-flex  mx-4 my-4 ">
 
                         {
 
@@ -193,13 +193,8 @@ class ProductPhotos extends Component {
 
                                     <div>
                                         <Card>
-                                            <CardImg top width="100%" src={file} alt="Card image cap" />
-                                            <CardBody>
-                                                <CardTitle>Card title</CardTitle>
-                                                <CardSubtitle>Card subtitle</CardSubtitle>
-                                                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                                                <Button>Button</Button>
-                                            </CardBody>
+                                            <CardImg style={{ minHeight: '50px' , minWidth : '100px' }} src={file} alt="Card image cap" />
+
                                         </Card>
                                     </div>
 

@@ -15,7 +15,7 @@ import Categories from './categories/index'
 import Users from './users/index'
 import Promotions from './promotions/index'
 import Settings from './settings/index'
-
+import Customers from './customers/index'
 
 
 class AdminRoutes extends Component {
@@ -68,7 +68,7 @@ class AdminRoutes extends Component {
                   <Route path="/admin/products" component={Products} />
                   <Route path="/admin/orders" component={Orders} />
                   <Route path="/admin/users" component={Users} />
-                  <Route path="/admin/categories" component={Categories} />
+                  <Route path="/admin/customers" component={Customers} />
                   <Route path="/admin/promotions" component={Promotions} />
                   <Route path="/admin/settings" component={Settings} />
 

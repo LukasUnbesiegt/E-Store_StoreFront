@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-
+import AddCategory from './form/AddCategory'
 
 
 
@@ -16,7 +16,8 @@ class Categories extends Component {
 
         return (
             <div>
-                <h3>Categories</h3>
+                <h3 className="text-center">Categories</h3>
+                <AddCategory />
             </div>
         )
     }

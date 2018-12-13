@@ -7,7 +7,7 @@ import HeaderBar from '../../styles/HeaderBar'
 
 import Table from './productsTable/ProductTable'
 import AddProduct from './addproducts/AddProduct'
-
+import AddCategory from '../categories/index'
 
 class Products extends Component {
 
@@ -33,12 +33,14 @@ class Products extends Component {
         return (
             <div className="">
                 <HeaderBar
-                    title="Manage Your Products"
-                    sectionTitle="Products List"
+                    title=" add products"
+                    sectionTitle="Products"
                     quantity={0}
                     iconStyle="fa fa-archive"
                     cat="Manage Categories"
-                    linkTo="/admin/products/add"
+                    linkAdd="/admin/products/add"
+                    linkTable="/admin/products/"
+                    linkSetting="/admin/products/settings"
                 />
 
                 <div className="container-fluid pt-3 mt-3">
@@ -49,6 +51,7 @@ class Products extends Component {
                             <Switch>
                                 <Route exact path="/admin/products/" component={Table} />
                                 <Route path="/admin/products/add/" component={AddProduct} />
+                                <Route path="/admin/products/settings/" component={AddCategory} />
                             </Switch>
 
 

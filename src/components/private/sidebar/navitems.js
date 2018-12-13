@@ -19,6 +19,12 @@ export const navitems = [
         icon: 'fa-users',
         admin: false
     },
+    {
+        name: 'customers',
+        linkTo: '/admin/customers',
+        icon: 'fa-angellist',
+        admin: false
+    },
 
     {
         name: 'orders',

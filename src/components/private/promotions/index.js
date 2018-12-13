@@ -16,7 +16,7 @@ class Promotions extends Component {
         return (
 
             <div>
-                <HeaderBar title="Manage Your Promotions" />
+                <HeaderBar title=" add promotions" />
             </div>
 
         )

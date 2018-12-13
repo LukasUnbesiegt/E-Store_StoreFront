@@ -13,7 +13,7 @@ class Orders extends Component {
         return (
             <div>
                 <HeaderBar
-                    title="Manage Your Orders"
+                    title=" manage orders"
                     sectionTitle="Orders"
                     quantity={0}
                     iconStyle="fa fa-archive"
