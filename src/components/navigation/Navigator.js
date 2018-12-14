@@ -41,8 +41,8 @@ class Navigator extends Component {
                 return (
 
                     <li className="nav-item">
-                    <a className="nav-link" href="/">Login | Register</a>
-                  </li>
+                    <a className="nav-link" href="/customer-login">Login | Register</a>
+                   </li>
                 )
 
         }
@@ -52,15 +52,22 @@ class Navigator extends Component {
                 return (
                     <ul className="navbar-nav ml-lg-auto">
                       <li className="nav-item">
-                    <a className="nav-link" href="/">Products</a>
+                    <a className="nav-link" href="/products">Products</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/">Your Orders</a>
+                    <a className="nav-link" href="/orders">Your Orders</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/">Categories</a>
                   </li>
                    
 
                     {renderUserDropdown()}
-                    
+                    <li className="nav-item">
+                        <a className="nav-link" href="/carts">
+                        <i className="fa fa-lg fa-shopping-cart"></i>
+                        </a>
+                     </li>
                 </ul>
                     
                 )

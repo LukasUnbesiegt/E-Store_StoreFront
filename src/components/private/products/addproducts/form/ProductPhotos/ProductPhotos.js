@@ -141,7 +141,7 @@ class ProductPhotos extends Component {
                                                 style={{ height: 200, width: '100%' }}
                                                 ref='cropper'
                                                 src={this.state.files[0].preview}
-                                                aspectRatio={16 / 9}
+                                                aspectRatio={1}
                                                 viewMode={0}
                                                 dragMode="move"
                                                 guides={false}
