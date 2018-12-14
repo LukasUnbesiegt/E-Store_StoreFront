@@ -6,7 +6,10 @@ import Products from '../Products/Products'
 import Navigator from '../../navigation/Navigator'
 import Footer from '../footer/Footer'
 import SmallNav from '../SmallNav/SmallNav';
-
+import Categories from '../Categories/Categories'
+import Featured from '../Featured/Featured'
+import Promotions from '../Promotions/Promotions'
+import Why from '../Why/Why'
 
 class Header extends Component {
 
@@ -21,11 +24,17 @@ class Header extends Component {
             <Fragment>
                 <SmallNav />
                 <Navigator />
-                <Switch>
-                    <Slider />
-                    <Route exact path="/products" component={Products} />
-                </Switch>
+
+                <Slider />
+                <Why />
+                <Categories />
+                <Featured />
+                <Promotions />
+
+
+
                 <Footer />
+
             </Fragment>
         )
     }

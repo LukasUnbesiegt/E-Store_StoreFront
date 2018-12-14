@@ -4,7 +4,7 @@ import SmallNav from '../../SmallNav/SmallNav'
 
 import Navigator from '../../../navigation/Navigator'
 import Footer from '../../footer/Footer'
-
+import AccountForm from '../LoginRegister/form/AccountForm'
 
 
 class LoginRegister extends Component {
@@ -20,7 +20,8 @@ class LoginRegister extends Component {
 
                 <SmallNav />
                 <Navigator />
-                <h3>Login Register</h3>
+
+                <AccountForm />
 
                 <Footer />
             </Fragment>
