@@ -16,7 +16,7 @@ import Users from './users/index'
 import Promotions from './promotions/index'
 import Settings from './settings/index'
 import Customers from './customers/index'
-
+import InfoUser from './InfoUser/InfoUser'
 
 class AdminRoutes extends Component {
 
@@ -41,7 +41,7 @@ class AdminRoutes extends Component {
           <span className="nav-link-inner--text d-lg-none">User</span>
         </a>
         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-          <a className="dropdown-item" href="#">User Informations</a>
+          <a className="dropdown-item" href="/admin/infouser">User Informations</a>
           <a className="dropdown-item" href="#">Billings</a>
           <div className="dropdown-divider"></div>
           <button className="dropdown-item">LogOut</button>
@@ -99,6 +99,7 @@ class AdminRoutes extends Component {
                   <Route path="/admin/customers" component={Customers} />
                   <Route path="/admin/promotions" component={Promotions} />
                   <Route path="/admin/settings" component={Settings} />
+                  <Route path="/admin/infouser" component={InfoUser} />
 
                 </Switch>
 

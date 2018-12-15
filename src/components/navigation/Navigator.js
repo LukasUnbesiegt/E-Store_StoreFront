@@ -29,8 +29,8 @@ class Navigator extends Component {
                         <span className="nav-link-inner--text d-lg-none">User</span>
                     </a>
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                        <a className="dropdown-item" href="#">Account</a>
-                        <a className="dropdown-item" href="#">Your Orders</a>
+                        <a className="dropdown-item" href="/myaccount">Account</a>
+                        <a className="dropdown-item" href="/orders">Your Orders</a>
                         <div className="dropdown-divider"></div>
                         <button className="dropdown-item">LogOut</button>
                     </div>

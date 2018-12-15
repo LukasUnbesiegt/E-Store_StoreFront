@@ -19,12 +19,14 @@ class UsersTable extends Component {
                 name: 'CHRISTMAS',
                 percent: 10,
                 creatorName: 'thuta',
+                quantity: 10,
                 createdAt: '23/3/2018'
             },
             {
                 name: 'NEWYEAR',
                 percent: 50,
                 creatorName: 'kyawkyaw',
+                quantity: 5,
                 createdAt: '2/6/2018'
             },
 
@@ -49,6 +51,10 @@ class UsersTable extends Component {
                 dataField: 'creatorName',
                 text: 'creatorName',
                 filter: textFilter(),
+            },
+            {
+                dataField: 'quantity',
+                text: 'quantity'
             },
             {
                 dataField: 'createdAt',

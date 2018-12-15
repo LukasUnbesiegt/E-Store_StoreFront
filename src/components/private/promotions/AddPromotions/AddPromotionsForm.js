@@ -44,6 +44,13 @@ class AddPromotionsForm extends Component {
                     type="number"
 
                 />
+                <Field
+                    component={TextInput}
+                    name="quantity"
+                    placeholder="quantity"
+                    type="number"
+
+                />
 
 
 

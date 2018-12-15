@@ -21,9 +21,11 @@ class Orders extends Component {
                 <Navigator />
 
 
-                <div>
+                <div className="container py-4 my-2">
 
-                    <h3>Orders Page</h3>
+                    <h3 className="text-center display-4">Orders Page</h3>
+
+                    <p className="lead text-center ">There is no current orders here!</p>
 
 
                 </div>

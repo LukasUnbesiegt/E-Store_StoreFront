@@ -15,35 +15,37 @@ class FAQ extends Component {
 
 
 
-                    <div className="col-12">
-
-                        <form>
-
-                            <div className="form-group">
-
-                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Question" />
-
-                            </div>
-                            <div className="form-group">
-
-                                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter Answer" />
-                            </div>
-
-                            <button type="submit" className="btn btn-success">Add FAQ</button>
+                    <div>
 
 
+                        <div class="form-group">
 
-                        </form>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Question" />
 
+                        </div>
+                        <div class="form-group">
 
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Answer" />
 
+                        </div>
 
-
-
+                        <button className="btn btn-sm btn-block btn-success my-4">
+                            Add FAQ
+    </button>
                     </div>
 
 
 
+
+                </div>
+
+                <div className="container">
+
+                    <div className=" text-center">
+
+                        <h4 className="">Total FAQs : 8 </h4>
+
+                    </div>
 
                 </div>
 

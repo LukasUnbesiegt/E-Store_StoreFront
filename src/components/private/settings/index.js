@@ -6,6 +6,10 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import Faq from './FAQ/FAQ'
 import SiteInfo from './SiteInfo/SiteInfo'
 import Currency from './Currency/Currency'
+import Delivery from './Delivery/Delivery'
+
+
+
 
 class Settings extends Component {
 
@@ -31,6 +35,10 @@ class Settings extends Component {
             {
                 name: 'Site Info',
                 linkTo: '/admin/settings/siteinfo'
+            },
+            {
+                name: 'Delivery',
+                linkTo: '/admin/settings/delivery'
             }
 
 
@@ -76,6 +84,7 @@ class Settings extends Component {
                                 <Route exact path="/admin/settings/" component={Currency} />
                                 <Route path="/admin/settings/faq" component={Faq} />
                                 <Route path="/admin/settings/siteinfo" component={SiteInfo} />
+                                <Route path="/admin/settings/delivery" component={Delivery} />
                             </Switch>
 
                         </div>
