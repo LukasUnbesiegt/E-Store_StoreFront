@@ -1,6 +1,11 @@
 
 import React, { Component } from 'react'
 
+
+
+
+
+
 class Categories extends Component {
 
 
@@ -8,6 +13,11 @@ class Categories extends Component {
 
 
     render() {
+
+
+
+
+
 
 
         const categories = ['Washing Machines', 'CCTV Security Cameras', 'Table Linen Accessories', 'Pedals & Pedal Accessories', 'Cigarette Lighter & Parts']
@@ -20,7 +30,7 @@ class Categories extends Component {
 
 
 
-                <h2>Categories</h2>
+
 
 
 

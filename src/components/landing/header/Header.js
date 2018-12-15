@@ -10,6 +10,9 @@ import Categories from '../Categories/Categories'
 import Featured from '../Featured/Featured'
 import Promotions from '../Promotions/Promotions'
 import Why from '../Why/Why'
+import NewArrival from '../NewArrival/NewArrival'
+import PeopleLoved from '../PeopleLoved/PeopleLoved'
+
 
 class Header extends Component {
 
@@ -30,6 +33,8 @@ class Header extends Component {
                 <Categories />
                 <Featured />
                 <Promotions />
+                <NewArrival />
+                <PeopleLoved />
 
 
 
