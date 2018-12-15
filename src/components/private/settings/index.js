@@ -22,7 +22,7 @@ class Settings extends Component {
 
             {
                 name: 'Currency',
-                linkTo: '/admin/settings/currency'
+                linkTo: '/admin/settings/'
             },
             {
                 name: 'FAQs',
@@ -62,7 +62,7 @@ class Settings extends Component {
                 <div className="mt-3">
                     <div className="row">
 
-                        <div className="col-md-3 col-lg-4">
+                        <div className="col-md-2 col-lg-2">
                             <ListGroup>
                                 {renderListItems()}
                             </ListGroup>
@@ -70,10 +70,10 @@ class Settings extends Component {
 
                         </div>
 
-                        <div className="col-md-9 col-lg-8">
+                        <div className="col-md-10 col-lg-10">
 
                             <Switch>
-                                <Route exact path="/admin/settings/currency" component={Currency} />
+                                <Route exact path="/admin/settings/" component={Currency} />
                                 <Route path="/admin/settings/faq" component={Faq} />
                                 <Route path="/admin/settings/siteinfo" component={SiteInfo} />
                             </Switch>
