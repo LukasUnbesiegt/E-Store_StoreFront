@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
-
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import styles from './AdminRoutes.module.css';
 import Authenticated from '../misc/auth/Authenticated'
@@ -21,7 +21,35 @@ import Customers from './customers/index'
 class AdminRoutes extends Component {
 
 
+  state = {
+    dropdownOpen: false
+  }
 
+
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
+  }
+
+  renderSettingBar = () => {
+
+    return (
+      <li className="nav-item dropdown hoverable">
+        <a className="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i className="ni ni-circle-08" style={{ fontSize: '36px', color: '#43e97b' }}></i>
+          <span className="nav-link-inner--text d-lg-none">User</span>
+        </a>
+        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+          <a className="dropdown-item" href="#">User Informations</a>
+          <a className="dropdown-item" href="#">Billings</a>
+          <div className="dropdown-divider"></div>
+          <button className="dropdown-item">LogOut</button>
+        </div>
+      </li>
+
+    )
+  }
 
   render() {
 
@@ -45,10 +73,10 @@ class AdminRoutes extends Component {
 
               <div className={`col-xl-10 col-lg-9 col-md-8 ml-auto  fixed-top  top-navbar ${styles.navbarColor}`}>
                 <div className=" p-2 d-flex justify-content-end">
-                  <div className="">
-                    <a href="#" className={`nav-link ${styles.iconBullet}`}><i className="fa fa-cog fa-lg"></i></a>
 
-                  </div>
+                  {this.renderSettingBar()}
+
+
 
                 </div>
               </div>
