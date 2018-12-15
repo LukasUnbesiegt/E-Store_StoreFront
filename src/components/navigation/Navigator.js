@@ -58,7 +58,8 @@ class Navigator extends Component {
                     <a className="nav-link" href="/orders">Your Orders</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/contactus">Contact Us</a>
+                    <a className="nav-link" href="/storeinfo">Shopper Info
+                    </a>
                   </li>
                    
 

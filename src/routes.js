@@ -12,6 +12,7 @@ import Carts from './components/landing/Carts/Carts'
 import LoginCustomer from './components/landing/CustomerAccount/LoginRegister/LoginRegister'
 import NotFound from './components/landing/NotFound'
 
+import ContactUs from './components/landing/ContactUs/ContactUs'
 
 
 import ModalManager from './components/misc/modalManager/modalManager';
@@ -41,6 +42,7 @@ const Routes = () => {
         <Route exact component={Products} path="/products" />
         <Route exact component={Orders} path="/orders" />
         <Route exact component={Carts} path="/carts" />
+        <Route exact component={ContactUs} path="/storeinfo" />
         <Route exact component={LoginCustomer} path="/customer-login" />
         <AdminRoutes />
 
