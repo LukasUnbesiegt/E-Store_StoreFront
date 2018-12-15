@@ -1,6 +1,10 @@
 
 
 import React, { Component } from 'react'
+import ProductSlide from '../Products/ProductSlide/ProductSlide'
+
+
+
 
 class PeopleLoved extends Component {
 
@@ -9,12 +13,44 @@ class PeopleLoved extends Component {
 
     render() {
 
+        const products = [
 
+            {
+                name: 'Product 1 ',
+                price: 200
+            },
+            {
+                name: 'Product 1 ',
+                price: 200
+            },
+            {
+                name: 'Product 1 ',
+                price: 200
+            },
+            {
+                name: 'Product 1 ',
+                price: 200
+            },
+            {
+                name: 'Product 1 ',
+                price: 200
+            },
+            {
+                name: 'Product 1 ',
+                price: 200
+            }
+
+
+        ]
 
         return (
-            <section className="py-5 bg-default">
+            <section className="py-5" style={{ backgroundColor: '#f6f9fc' }}>
 
-                <h4>People Loved these Products</h4>
+                <ProductSlide
+                    sectionTitle="Check People Loved"
+                    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"
+                    products={products}
+                />
 
             </section>
         )

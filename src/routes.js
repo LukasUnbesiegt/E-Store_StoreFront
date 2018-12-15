@@ -10,6 +10,9 @@ import Products from './components/landing/Products/Products'
 import Orders from './components/landing/Orders/Orders'
 import Carts from './components/landing/Carts/Carts'
 import LoginCustomer from './components/landing/CustomerAccount/LoginRegister/LoginRegister'
+import NotFound from './components/landing/NotFound'
+
+
 
 import ModalManager from './components/misc/modalManager/modalManager';
 
@@ -40,6 +43,10 @@ const Routes = () => {
         <Route exact component={Carts} path="/carts" />
         <Route exact component={LoginCustomer} path="/customer-login" />
         <AdminRoutes />
+
+
+
+        <Route component={NotFound} />
       </Switch>
 
 

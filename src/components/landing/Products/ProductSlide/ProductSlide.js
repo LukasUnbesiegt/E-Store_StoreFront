@@ -20,13 +20,13 @@ class ProductSlide extends Component {
 
             speed: 1000,
             autoplaySpeend: 1000,
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToShow: this.props.products.length - 1,
+            slidesToScroll: this.props.products.length - 1,
             autoplay: true,
-            className: "center",
-            // centerMode: true,
             arrows: false,
-
+            draggable: true,
+            // // className: "center",
+            // // centerMode: true,
             responsive: [
 
                 {
@@ -53,15 +53,23 @@ class ProductSlide extends Component {
         const renderProducts = () => {
 
 
-            return this.props.products.map((product) => {
+            return this.props.products.map((product, index) => {
 
 
                 return (
 
-                    <Product
-                        product={product}
+                    <div
+                        className="p-2"
+                        key={index}
+                    >
+                        <Product
+                            product={product}
 
-                    />
+                        />
+                    </div>
+
+
+
 
                 )
 
@@ -76,17 +84,21 @@ class ProductSlide extends Component {
         return (
 
             <Fragment>
-                <h3 className="text-center display-4 py-5">{this.props.sectionTitle}</h3>
+                <h3 className="text-center display-4">{this.props.sectionTitle}</h3>
+                <p className="text-muted text-center pb-5">{this.props.subtitle}</p>
+
                 <Slider
                     {...settings}
                 >
-                    <div className="row">
 
-                        {renderProducts()}
 
-                    </div>
+                    {renderProducts()}
+
+
+
 
                 </Slider>
+
 
 
 

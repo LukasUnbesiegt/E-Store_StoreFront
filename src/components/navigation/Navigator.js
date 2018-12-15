@@ -57,9 +57,9 @@ class Navigator extends Component {
                   <li className="nav-item">
                     <a className="nav-link" href="/orders">Your Orders</a>
                   </li>
-                  {/* <li className="nav-item">
-                    <a className="nav-link" href="/">Categories</a>
-                  </li> */}
+                  <li className="nav-item">
+                    <a className="nav-link" href="/contactus">Contact Us</a>
+                  </li>
                    
 
                     {renderUserDropdown()}

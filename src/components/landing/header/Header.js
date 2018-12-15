@@ -13,6 +13,7 @@ import Why from '../Why/Why'
 import NewArrival from '../NewArrival/NewArrival'
 import PeopleLoved from '../PeopleLoved/PeopleLoved'
 
+import PromoCode from '../PromoCodes/PromoCode'
 
 import { connect } from 'react-redux'
 
@@ -39,6 +40,7 @@ class Header extends Component {
                 <Categories />
                 <Featured />
                 <Promotions />
+                <PromoCode />
                 <NewArrival />
                 <PeopleLoved />
 

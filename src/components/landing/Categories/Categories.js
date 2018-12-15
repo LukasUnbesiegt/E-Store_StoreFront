@@ -62,7 +62,7 @@ class Categories extends Component {
             slidesToShow: 4,
             slidesToScroll: 4,
             autoplay: true,
-            className: "center",
+            // className: "center",
             // centerMode: true,
             arrows: false,
 
@@ -91,8 +91,8 @@ class Categories extends Component {
 
 
 
-            <section className="  py-5" style={{ backgroundColor: '#f6f9fc' }}>
-                <h3 className="text-center display-4 py-5">Collections in E-Store</h3>
+            <section className="  py-2" style={{ backgroundColor: '#f6f9fc' }}>
+                <h3 className="text-center display-4 py-2">Collections in E-Store</h3>
                 <Slider
                     {...settings}
                 >
