@@ -21,29 +21,29 @@ class Navigator extends Component {
 
         const renderUserDropdown = () => {
 
-                // return (
-
-                //     <li className="nav-item dropdown">
-                //     <a className="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                //         <i className="ni ni-circle-08" style={{fontSize : '20px'}}></i>
-                //         <span className="nav-link-inner--text d-lg-none">User</span>
-                //     </a>
-                //     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                //         <a className="dropdown-item" href="#">Account</a>
-                //         <a className="dropdown-item" href="#">Purchase Histories</a>
-                //         <div className="dropdown-divider"></div>
-                //         <a className="dropdown-item" href="/">Login | Signup</a>
-                //     </div>
-                // </li>
-
-                // )
-
                 return (
 
-                    <li className="nav-item">
-                    <a className="nav-link" href="/customer-login">Login | Register</a>
-                   </li>
+                    <li className="nav-item dropdown hoverable">
+                    <a className="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i className="ni ni-circle-08" style={{fontSize : '20px'}}></i>
+                        <span className="nav-link-inner--text d-lg-none">User</span>
+                    </a>
+                    <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <a className="dropdown-item" href="#">Account</a>
+                        <a className="dropdown-item" href="#">Your Orders</a>
+                        <div className="dropdown-divider"></div>
+                        <button className="dropdown-item">LogOut</button>
+                    </div>
+                </li>
+
                 )
+
+                // return (
+
+                //     <li className="nav-item">
+                //     <a className="nav-link" href="/customer-login">Login | Register</a>
+                //    </li>
+                // )
 
         }
 
@@ -52,11 +52,14 @@ class Navigator extends Component {
                 return (
                     <ul className="navbar-nav ml-lg-auto">
                       <li className="nav-item">
+                    <a className="nav-link" href="/">Home</a>
+                  </li>
+                      <li className="nav-item">
                     <a className="nav-link" href="/products">Products</a>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a className="nav-link" href="/orders">Your Orders</a>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <a className="nav-link" href="/storeinfo">Shopper Info
                     </a>

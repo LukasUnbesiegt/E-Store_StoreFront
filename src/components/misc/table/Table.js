@@ -16,18 +16,22 @@ class Table extends Component {
 
 
 
-
+        // const defaultSorted = [{
+        //     dataField: 'name',
+        //     order: 'desc'
+        // }];
 
 
         return (
             <div>
                 <BootstrapTable
-                    keyField="id"
+                    keyField={this.props.keyField}
                     data={this.props.data}
                     columns={this.props.columns}
                     hover
                     condensed
                     noDataIndication={this.props.noDataText}
+                    defaultSortDirection="asc"
                 />
             </div>
         )

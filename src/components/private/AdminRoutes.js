@@ -65,12 +65,12 @@ class AdminRoutes extends Component {
               <div className="col-xl-10 col-lg-9 ml-auto">
                 <Switch>
                   <Route exact path="/admin" component={DashBoard} />
-                  <Route exact path="/admin/products" component={Products} />
-                  <Route exact path="/admin/orders" component={Orders} />
-                  <Route exact path="/admin/users" component={Users} />
-                  <Route exact path="/admin/customers" component={Customers} />
-                  <Route exact path="/admin/promotions" component={Promotions} />
-                  <Route exact path="/admin/settings" component={Settings} />
+                  <Route path="/admin/products" component={Products} />
+                  <Route path="/admin/orders" component={Orders} />
+                  <Route path="/admin/users" component={Users} />
+                  <Route path="/admin/customers" component={Customers} />
+                  <Route path="/admin/promotions" component={Promotions} />
+                  <Route path="/admin/settings" component={Settings} />
 
                 </Switch>
 
