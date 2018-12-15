@@ -1,18 +1,39 @@
 import React, { Component } from 'react'
 
-class Featured extends Component {
+import ProductSlide from '../Products/ProductSlide/ProductSlide'
 
+
+
+
+class Featured extends Component {
 
 
 
     render() {
 
+        const products = [
+
+            {
+                name: 'Product 1 ',
+                price: 200
+            },
+            {
+                name: 'Product 1 ',
+                price: 200
+            }
+
+
+        ]
 
 
         return (
-            <section className="py-5 bg-primary">
+            <section className="py-5">
 
-                <h4>Featured Products</h4>
+                <ProductSlide
+                    sectionTitle="Featured Products"
+                    products={products}
+
+                />
 
             </section>
         )

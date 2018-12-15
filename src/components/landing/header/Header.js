@@ -14,6 +14,12 @@ import NewArrival from '../NewArrival/NewArrival'
 import PeopleLoved from '../PeopleLoved/PeopleLoved'
 
 
+import { connect } from 'react-redux'
+
+
+
+
+
 class Header extends Component {
 
 
@@ -45,7 +51,14 @@ class Header extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = {
+
+}
 
 
 
-export default Header;
+export default connect()(Header);
