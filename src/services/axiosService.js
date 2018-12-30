@@ -33,11 +33,9 @@ class AxiosService {
                 const token = localStorage.getItem('auth_token')
 
                 if (token) {
-                    console.log(token)
+
                     config.headers.Authorization = `${token}`
-
                 }
-
                 return config
             }
         )
