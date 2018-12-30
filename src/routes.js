@@ -48,10 +48,6 @@ const Routes = () => {
         <Route exact component={LoginCustomer} path="/customer-login" />
         <AdminRoutes />
 
-
-
-
-
         <Route component={NotFound} />
       </Switch>
 

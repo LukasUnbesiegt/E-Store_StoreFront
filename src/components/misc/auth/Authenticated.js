@@ -17,7 +17,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
         componentDidMount() {
 
 
-            this.props.auth(this.props.history, reload, adminRoute);
+            this.props.auth(this.props.history, reload, this.props.user);
 
 
         }
@@ -25,7 +25,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
         render() {
 
 
-            if (this.props.user.userData) {
+            if (!this.props.async.loading) {
 
                 return (
                     <ComposedClass {...this.props} user={this.props.user.userData} />
@@ -47,7 +47,8 @@ export default function (ComposedClass, reload, adminRoute = null) {
 
 
     const mapStateToProps = (state) => ({
-        user: state.user
+        user: state.user,
+        asyn: state.async
     })
 
     const mapDispatchToProps = {

@@ -26,7 +26,7 @@ class AddProduct extends Component {
 
 
 
-    addProducts = () => {
+    handleSubmitHandler = () => {
 
 
 
@@ -50,7 +50,7 @@ class AddProduct extends Component {
                         <div className="col-12 text-center ">
                             <h3 className="">Add Product Form</h3>
                             <AddProductForm
-                                submitCallback={this.addProducts}
+                                submitCallback={this.handleSubmitHandler}
                                 editorState={this.state.editorState}
                                 onEditorStateChange={this.onEditorStateChange}
                             />
