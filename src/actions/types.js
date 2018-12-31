@@ -11,3 +11,16 @@ export const ASYNC_ACTION_ERROR = "ASYNC_ACTION_ERROR"
 // Errors
 export const GET_ERRORS = 'GET_ERRORS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+
+// PRODUCTS 
+
+export const UPLOAD_IMAGES = 'UPLOAD_IMAGES'
+
+
+
+// CATEGORIES
+
+
+export const GET_CATEGORIES = 'GET_CATEGORIES'
+export const DELETE_CATEGORY = 'DELETE_CATEGORY'

@@ -11,7 +11,7 @@ class AddCategoryForm extends Component {
 
 
     render() {
-        const { handleSubmit, submitCallback, valid, errors, submitting, pristine } = this.props;
+        const { handleSubmit, submitCB, valid, errors, submitting, pristine } = this.props;
 
 
 
@@ -20,22 +20,40 @@ class AddCategoryForm extends Component {
 
 
             <form
-                onSubmit={handleSubmit(submitCallback)}
+                onSubmit={handleSubmit(submitCB)}
 
             >
 
                 <Field
                     component={TextInput}
-                    name="category"
-                    placeholder="category"
+                    name="name"
+                    placeholder="category name"
                     type="text"
+                    styleFrom={
+                        {
+                            color: 'black'
+                        }
+                    }
+
+                />
+                <Field
+                    component={TextInput}
+                    name="id"
+                    placeholder="category id"
+                    type="text"
+                    styleFrom={
+                        {
+                            color: 'black'
+                        }
+                    }
 
                 />
 
 
                 <button
                     className="btn btn-success"
-                    disabled={!valid || pristine || submitting}
+
+                    type="submit"
 
                 >
 
@@ -50,7 +68,7 @@ class AddCategoryForm extends Component {
 
 export default reduxForm({
 
-    enableReinitialize: true,
+
     form: 'addcategory'
 
 })(AddCategoryForm);

@@ -1,7 +1,9 @@
 
-import React from 'react'
+import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
+import { getCategories } from './actions/productsActions'
 
 import Header from './components/landing/header/Header'
 
@@ -22,49 +24,63 @@ import ModalManager from './components/misc/modalManager/modalManager';
 
 
 
-const Routes = () => {
+class Routes extends Component {
+
+
+  componentDidMount = () => {
+    this.props.getCategories()
+  }
+
+
+  render() {
+
+
+    return (
 
 
 
 
+      <div>
 
-  return (
+        <ModalManager />
 
+        <Switch>
+          <Route exact component={Header} path="/" />
+          <Route exact component={Products} path="/products" />
+          <Route exact component={ProductDetails} path="/pdetails" />
+          <Route exact component={Orders} path="/orders" />
+          <Route exact component={Carts} path="/carts" />
+          <Route exact component={ContactUs} path="/storeinfo" />
+          <Route exact component={MyAccount} path="/myaccount" />
+          <Route exact component={LoginCustomer} path="/customer-login" />
+          <Route exact component={LoginAdmin} path="/login-admin" />
+          <AdminRoutes />
 
-
-
-    <div>
-
-      <ModalManager />
-
-      <Switch>
-        <Route exact component={Header} path="/" />
-        <Route exact component={Products} path="/products" />
-        <Route exact component={ProductDetails} path="/pdetails" />
-        <Route exact component={Orders} path="/orders" />
-        <Route exact component={Carts} path="/carts" />
-        <Route exact component={ContactUs} path="/storeinfo" />
-        <Route exact component={MyAccount} path="/myaccount" />
-        <Route exact component={LoginCustomer} path="/customer-login" />
-        <Route exact component={LoginAdmin} path="/login-admin" />
-        <AdminRoutes />
-
-        <Route component={NotFound} />
-      </Switch>
+          <Route component={NotFound} />
+        </Switch>
 
 
 
 
-    </div>
+      </div>
 
 
 
 
-  )
+    )
+  }
+
+}
+
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = {
+  getCategories
 }
 
 
 
-
-export default Routes;
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);
 

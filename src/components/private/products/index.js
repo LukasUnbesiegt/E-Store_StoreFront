@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
 import HeaderBar from '../../styles/HeaderBar'
+import { connect } from 'react-redux'
 
 
 
@@ -73,4 +74,8 @@ class Products extends Component {
 
 
 
-export default Products;
+
+
+
+
+export default connect()(Products);

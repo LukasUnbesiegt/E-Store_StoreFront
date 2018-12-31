@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.6.2",
     "axios": "^0.18.0",
+    "connected-react-router": "^6.1.0",
     "cropperjs": "^1.4.3",
     "date-fns": "^1.29.0",
     "draft-js": "^0.10.5",
