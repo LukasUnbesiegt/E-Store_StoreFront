@@ -18,6 +18,9 @@ import Settings from './settings/index'
 import Customers from './customers/index'
 import InfoUser from './InfoUser/InfoUser'
 
+
+
+
 class AdminRoutes extends Component {
 
 
@@ -92,7 +95,7 @@ class AdminRoutes extends Component {
 
               <div className="col-xl-10 col-lg-9 ml-auto">
                 <Switch>
-                  <Route exact path="/admin" component={DashBoard} />
+                  <Route exact path="/admin" component={Authenticated(DashBoard)} />
                   <Route path="/admin/products" component={Products} />
                   <Route path="/admin/orders" component={Orders} />
                   <Route path="/admin/users" component={Users} />

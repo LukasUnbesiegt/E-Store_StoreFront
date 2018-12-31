@@ -1,10 +1,10 @@
 
-import { LOGIN_USER, AUTH_USER, REGISTER_USER, USER_SERVER, LOGOUT_USER } from './types'
+import { LOGIN_USER, AUTH_USER, REGISTER_USER, USER_SERVER, LOGOUT_USER, GET_ERRORS } from './types'
 import authService from '../services/authService'
 import axiosService from '../services/axiosService'
 import { asyncActionStart, asyncActionFinish } from './asyncActions'
 import axios from 'axios'
-
+import { isEmpty } from '../utils/isEmpty'
 import { endpoint, prodEndpoint } from '../config'
 
 const URL = process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
@@ -38,11 +38,19 @@ export function loginUser(dataToSubmit, history) {
       dispatch(asyncActionStart())
       const response = await axios.post(`${URL}api/v1/users/login`, dataToSubmit);
 
-      if (response) {
+      if (response.data.success) {
         console.log(response.data.token);
         await authService.setToken(response.data.token)
 
-        history.push('/user')
+        history.push('/admin')
+        dispatch(asyncActionFinish())
+
+      } else {
+
+        dispatch({
+          type: GET_ERRORS,
+          payload: response.data.message
+        })
         dispatch(asyncActionFinish())
       }
 
@@ -61,35 +69,34 @@ export function loginUser(dataToSubmit, history) {
 
 }
 
-export function auth(history) {
+export function auth(history, reload, currentUserData, adminRoute) {
 
-  //   const request = axios.get(`${USER_SERVER}/auth`)
-  //   .then(response => response.data);
 
-  //   return {
-  //       type: AUTH_USER,
-  //       payload: request
-  //   }
 
   return async (dispatch) => {
 
 
     try {
 
+      if (isEmpty(currentUserData)) {
+        const userData = await axiosInstance.get('/users/auth');
+        dispatch({
+          type: AUTH_USER,
+          payload: userData.data
+        })
 
-      const userData = await axiosInstance.get('/users/auth');
 
-
-      dispatch({
-        type: AUTH_USER,
-        payload: userData.data
-      })
-
-      // kick user out 
-      if (!userData.data.isAuth) {
-        history.push('/')
+        if (!userData.data.isAuth && !reload) {
+          history.push('/')
+        }
       }
 
+
+
+
+
+      // editing
+      // kick user out 
 
     } catch (error) {
       console.log(error)
@@ -97,43 +104,13 @@ export function auth(history) {
 
 
 
-
-
-
   }
-
-
-
-
 }
-
 
 export const logoutUser = () => dispatch => {
 
-
-
-  const tokenJWT = localStorage.getItem('auth_token');
-  if (tokenJWT) {
-
-    // localstorage and normal authentication pattern
-    authService.deleteToken()
-    window.location.reload()
-
-
-  } else {
-
-    // specific for oauth2 authentication destory
-    // development
-
-
-    var delete_cookie = function (name) {
-      document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    };
-
-    delete_cookie('auth');
-    window.location.reload()
-
-  }
+  authService.deleteToken()
+  window.location.reload()
 
 };
 

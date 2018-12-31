@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { auth } from '../../../actions/userActions';
 import { withRouter } from 'react-router-dom'
-
+import Loading from '../Loading/LoadingComponent'
 
 
 
@@ -17,7 +17,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
         componentDidMount() {
 
 
-            this.props.auth(this.props.history, reload, this.props.user);
+            this.props.auth(this.props.history, reload, this.props.user, adminRoute);
 
 
         }
@@ -31,9 +31,9 @@ export default function (ComposedClass, reload, adminRoute = null) {
                     <ComposedClass {...this.props} user={this.props.user.userData} />
                 );
             } else {
-                return (<div>
-                    Loading
-                </div>)
+                return (
+                    <Loading />
+                )
             }
 
 
@@ -48,7 +48,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
 
     const mapStateToProps = (state) => ({
         user: state.user,
-        asyn: state.async
+        async: state.async
     })
 
     const mapDispatchToProps = {

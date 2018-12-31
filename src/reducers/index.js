@@ -6,7 +6,7 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 import userReducer from './userReducer'
 import asyncReducer from './asyncReducer';
 import productsReducer from './productsReducer';
-
+import errorsReducer from './errorsReducer'
 
 import modalReducer from '../components/misc/modalManager/modalReducer'
 
@@ -18,7 +18,8 @@ export const reducers = combineReducers({
         toastr: toastrReducer,
         async: asyncReducer,
         modal: modalReducer,
-        products: productsReducer
+        products: productsReducer,
+        erorrs: errorsReducer
 
 
 })

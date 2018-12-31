@@ -14,7 +14,7 @@ import NotFound from './components/landing/NotFound'
 import MyAccount from './components/landing/CustomerAccount/Account'
 import ContactUs from './components/landing/ContactUs/ContactUs'
 import ProductDetails from './components/landing/Products/ProductDetails/ProductDetails'
-
+import LoginAdmin from './components/login-register/index'
 import ModalManager from './components/misc/modalManager/modalManager';
 
 
@@ -46,6 +46,7 @@ const Routes = () => {
         <Route exact component={ContactUs} path="/storeinfo" />
         <Route exact component={MyAccount} path="/myaccount" />
         <Route exact component={LoginCustomer} path="/customer-login" />
+        <Route exact component={LoginAdmin} path="/login-admin" />
         <AdminRoutes />
 
         <Route component={NotFound} />
