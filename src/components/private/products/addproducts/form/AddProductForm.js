@@ -6,7 +6,7 @@ import RadioInput from '../../../../misc/forms/inputs/RadioInput';
 import SelectInput from '../../../../misc/forms/inputs/SelectInput'
 import DetailsFields from './DetailsFields'
 import FieldArray from './FieldArray'
-import AddPhotos from './ProductPhotos/ProductPhotos'
+import PhotoUpload from '../../../../misc/forms/files/FileUpload'
 
 import ProductPhotos from './ProductPhotos/ProductPhotos';
 import ProductEditor from './ProductEditor/ProductEditor'
@@ -22,15 +22,9 @@ class AddProductForm extends Component {
     render() {
 
 
-        const categories = [
-            { key: 'Electronics', text: 'Electronics', value: 'electronics' },
-            { key: 'Stationery', text: 'Stationery', value: 'stationery' },
-            { key: 'Children', text: 'Children', value: 'children' },
-            { key: 'Women', text: 'Women', value: 'women' }
 
-        ];
 
-        const { handleSubmit, submitCallback, editorState, onEditorStateChange, valid, errors, submitting, pristine } = this.props;
+        const { handleSubmit, categories, submitCallback, editorState, onEditorStateChange, valid, errors, submitting, pristine } = this.props;
 
         return (
 
@@ -116,6 +110,11 @@ class AddProductForm extends Component {
 
                 </div>
 
+                <div>
+
+                    <PhotoUpload />
+                </div>
+
 
                 <div className="py-3 my-2">
                     <ProductEditor
@@ -127,7 +126,7 @@ class AddProductForm extends Component {
                 </div>
 
 
-                <ProductPhotos />
+
 
 
 

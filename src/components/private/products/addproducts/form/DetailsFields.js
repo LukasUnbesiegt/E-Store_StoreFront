@@ -5,6 +5,8 @@ import { Field } from 'redux-form'
 
 
 function DetailsFields() {
+
+
     return (
         <div className="d-flex">
 

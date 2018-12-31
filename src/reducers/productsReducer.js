@@ -1,7 +1,8 @@
 import { GET_CATEGORIES, DELETE_CATEGORY, UPLOAD_IMAGES } from '../actions/types'
 
 const initialState = {
-    uploadedImages: []
+    uploadedImages: [],
+    productToEdit: null
 }
 
 

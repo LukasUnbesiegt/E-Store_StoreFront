@@ -25,6 +25,7 @@
     "react-dom": "^16.5.0",
     "react-draft-wysiwyg": "^1.12.13",
     "react-dropzone": "^6.0.2",
+    "react-image-crop": "^6.0.9",
     "react-places-autocomplete": "^7.2.0",
     "react-redux": "^5.0.7",
     "react-redux-toastr": "^7.4.0",

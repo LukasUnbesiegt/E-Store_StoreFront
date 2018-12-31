@@ -3,17 +3,29 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import AddProductForm from './form/AddProductForm'
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+
+
 
 
 class AddProduct extends Component {
 
+    constructor(props) {
+        super(props)
 
 
-    state = {
 
-        editorState: EditorState.createEmpty(),
+
+        this.state = {
+
+            editorState: EditorState.createEmpty(),
+
+        }
 
     }
+
+
 
 
 
@@ -45,7 +57,20 @@ class AddProduct extends Component {
 
     render() {
 
+        let categories;
 
+
+        if (this.props.categories) {
+
+            categories = this.props.categories.map((category) => {
+                return {
+                    key: category.name,
+                    value: category.id
+                }
+            })
+
+
+        }
 
 
 
@@ -59,7 +84,7 @@ class AddProduct extends Component {
                         <div className="col-12 text-center ">
                             <h3 className="">Add Product Form</h3>
                             <AddProductForm
-
+                                categories={categories || []}
                                 submitCallback={this.handleSubmitHandler}
                                 editorState={this.state.editorState}
                                 onEditorStateChange={this.onEditorStateChange}
@@ -80,7 +105,7 @@ class AddProduct extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    categories: state.products.categories
 })
 
 const mapDispatchToProps = {
@@ -89,4 +114,4 @@ const mapDispatchToProps = {
 
 
 
-export default connect()(AddProduct);
+export default connect(mapStateToProps)(AddProduct);

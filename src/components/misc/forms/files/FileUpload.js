@@ -194,7 +194,7 @@ render() {
 
         <div className="container my-5">
 
-            <h4 className="text-center">Upload Article Image</h4>
+            <h4 className="text-center">Upload Product Image</h4>
 
             <div className="row">
 

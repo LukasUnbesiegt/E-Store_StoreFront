@@ -36,10 +36,10 @@ class SideBar extends Component {
                 return (
 
                     <li className="nav-item" key={i}>
-                        <NavLink to={item.linkTo} className={`nav-link text-white p-3 mb-2  ${styles.sidebarlink}`}>
+                        <a href={item.linkTo} className={`nav-link text-white p-3 mb-2  ${styles.sidebarlink}`}>
                             <i className={`fa ${item.icon} fa-lg mr-3`}></i>
                             {item.name}
-                        </NavLink>
+                        </a>
                     </li>
 
                 )
