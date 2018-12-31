@@ -49,14 +49,14 @@ class Currency extends Component {
                     }
 
 
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <ul className="list-group">
+                        <li className="list-group-item d-flex justify-content-between align-items-center">
                             USD
-    <span class="badge badge-success badge-pill">1580</span>
+    <span className="badge badge-success badge-pill">1580</span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <li className="list-group-item d-flex justify-content-between align-items-center">
                             EURO
-    <span class="badge badge-success badge-pill">1700</span>
+    <span className="badge badge-success badge-pill">1700</span>
                         </li>
 
                     </ul>

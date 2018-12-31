@@ -1,51 +1,49 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
+
+import FormComp from './UserInfo/Form'
+
+
 
 class InfoUser extends Component {
 
 
 
 
+    handleSubmitHandler = () => {
+        console.log('submitted');
+    }
 
     render() {
+
+        const { userData } = this.props.user;
+        let userInfo;
+
+
+        if (userData) {
+            userInfo = {
+                email: userData.email,
+                username: userData.username
+            }
+
+        }
+
+
+
 
 
 
         return (
             <Fragment>
                 <h1 className="display-3 text-center" >USER SETTINGS</h1>
-                <div className="container">
+                <div className="container text-center">
 
+                    <FormComp
+                        initialValues={userInfo}
+                        onSubmitCB={this.handleSubmitHandler}
 
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="exampleInputEmail1"
-                            aria-describedby="emailHelp"
-                            placeholder="Email"
-                            value="thuta@gmail.com"
-                        />
+                    />
 
-                    </div>
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" value="Thuta Lukas" />
-
-                    </div>
-                    <div class="form-group">
-                        <label>Role</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Role" value="Admin" />
-
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Address" value="371 Nilar 1st Street" />
-
-                    </div>
-                    <button className="btn btn-block btn-success my-4" disabled>
-                        Edit Informations ?
-    </button>
                 </div>
             </Fragment>
         )
@@ -53,6 +51,13 @@ class InfoUser extends Component {
 }
 
 
+const mapStateToProps = (state) => ({
+    user: state.user
+})
+
+const mapDispatchToProps = {
+
+}
 
 
-export default InfoUser;
+export default connect(mapStateToProps, mapDispatchToProps)(InfoUser);

@@ -5,7 +5,7 @@ import React from 'react'
 
 
 
-const TextInput = ({ input, type, placeholder, prepend, logo, meta: { touched, error } }) => {
+const TextInput = ({ input, type, placeholder, prepend, logo, styleFrom, meta: { touched, error } }) => {
 
 
 
@@ -27,7 +27,7 @@ const TextInput = ({ input, type, placeholder, prepend, logo, meta: { touched, e
                 <input
                     type={type}
                     className="form-control"
-
+                    style={styleFrom}
                     {...input}
                     placeholder={placeholder}
 

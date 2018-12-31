@@ -31,11 +31,11 @@ class SideBar extends Component {
         const renderNavItems = () => {
 
 
-            const navItems = navitems.map((item) => {
+            const navItems = navitems.map((item, i) => {
 
                 return (
 
-                    <li className="nav-item">
+                    <li className="nav-item" key={i}>
                         <NavLink to={item.linkTo} className={`nav-link text-white p-3 mb-2  ${styles.sidebarlink}`}>
                             <i className={`fa ${item.icon} fa-lg mr-3`}></i>
                             {item.name}

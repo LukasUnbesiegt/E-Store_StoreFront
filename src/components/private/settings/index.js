@@ -47,13 +47,14 @@ class Settings extends Component {
 
 
 
-            return Lists.map((list) => {
+            return Lists.map((list, i) => {
                 return (
 
                     <ListGroupItem
                         tag="a"
                         href={list.linkTo}
                         action
+                        key={i}
                     >
                         {list.name}
                     </ListGroupItem>

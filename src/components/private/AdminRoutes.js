@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+import { logoutUser } from '../../actions/userActions'
+
 import styles from './AdminRoutes.module.css';
 import Authenticated from '../misc/auth/Authenticated'
 import SideBar from './sidebar/index'
@@ -35,6 +37,16 @@ class AdminRoutes extends Component {
     }));
   }
 
+
+
+  logoutUser = () => {
+
+    this.props.logoutUser()
+
+  }
+
+
+
   renderSettingBar = () => {
 
     return (
@@ -47,7 +59,12 @@ class AdminRoutes extends Component {
           <a className="dropdown-item" href="/admin/infouser">User Informations</a>
           <a className="dropdown-item" href="#">Billings</a>
           <div className="dropdown-divider"></div>
-          <button className="dropdown-item">LogOut</button>
+          <button
+            className="dropdown-item"
+            onClick={this.logoutUser}
+
+
+          >LogOut</button>
         </div>
       </li>
 
@@ -96,13 +113,13 @@ class AdminRoutes extends Component {
               <div className="col-xl-10 col-lg-9 ml-auto">
                 <Switch>
                   <Route exact path="/admin" component={Authenticated(DashBoard)} />
-                  <Route path="/admin/products" component={Products} />
-                  <Route path="/admin/orders" component={Orders} />
-                  <Route path="/admin/users" component={Users} />
-                  <Route path="/admin/customers" component={Customers} />
-                  <Route path="/admin/promotions" component={Promotions} />
-                  <Route path="/admin/settings" component={Settings} />
-                  <Route path="/admin/infouser" component={InfoUser} />
+                  <Route path="/admin/products" component={Authenticated(Products)} />
+                  <Route path="/admin/orders" component={Authenticated(Orders)} />
+                  <Route path="/admin/users" component={Authenticated(Users)} />
+                  <Route path="/admin/customers" component={Authenticated(Customers)} />
+                  <Route path="/admin/promotions" component={Authenticated(Promotions)} />
+                  <Route path="/admin/settings" component={Authenticated(Settings)} />
+                  <Route path="/admin/infouser" component={Authenticated(InfoUser)} />
 
                 </Switch>
 
@@ -131,14 +148,14 @@ class AdminRoutes extends Component {
 
 
 
-// const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
 
-// })
+})
 
-// const mapDispatchToProps = {
+const mapDispatchToProps = {
+  logoutUser
+}
 
-// }
 
 
-
-export default connect()(AdminRoutes);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminRoutes);
