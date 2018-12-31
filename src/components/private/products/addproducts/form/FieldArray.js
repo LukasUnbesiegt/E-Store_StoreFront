@@ -15,6 +15,7 @@ function FieldArrayComponent(props) {
                 <button
                     className="btn btn-sm btn-success"
                     onClick={() => { fields.push('') }}
+                    type="button"
 
                 >
                     {props.placeholder}
@@ -29,7 +30,7 @@ function FieldArrayComponent(props) {
                         <li key={index}>
 
 
-                            <i className="fa fa-trash" onClick={() => fields.remove(index)}></i>
+                            <i className="fa fa-trash" onClick={() => fields.remove(index)} type="button"></i>
 
 
 

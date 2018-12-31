@@ -24,7 +24,7 @@ class AddProductForm extends Component {
 
 
 
-        const { handleSubmit, categories, submitCallback, editorState, onEditorStateChange, valid, errors, submitting, pristine } = this.props;
+        const { handleSubmit, initialValues, categories, submitCallback, editorState, onEditorStateChange, valid, errors, submitting, pristine } = this.props;
 
         return (
 
@@ -112,7 +112,10 @@ class AddProductForm extends Component {
 
                 <div>
 
-                    <PhotoUpload />
+                    <PhotoUpload
+                        imagesToEdit={initialValues && initialValues.images}
+
+                    />
                 </div>
 
 
@@ -133,6 +136,7 @@ class AddProductForm extends Component {
                 <button
                     className="btn btn-success"
                     disabled={!valid || pristine || submitting}
+                    type="submit"
 
                 >
 

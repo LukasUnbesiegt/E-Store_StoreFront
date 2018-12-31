@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_CATEGORIES, UPLOAD_IMAGES } from './types';
+import { GET_ERRORS, GET_CATEGORIES, UPLOAD_IMAGES, DELETE_IMAGE, CLEAR_IMAGES } from './types';
 import axios from 'axios'
 import { asyncActionStart, asyncActionFinish } from './asyncActions'
 import axiosService from '../services/axiosService'
@@ -6,7 +6,7 @@ import authService from '../services/authService'
 import { isEmpty } from '../utils/isEmpty'
 import { endpoint, prodEndpoint } from '../config'
 import { toastr } from 'react-redux-toastr'
-
+import { reset } from 'redux-form'
 const URL = process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
 const axiosInstance = axiosService.getInstance();
 
@@ -48,11 +48,73 @@ export const getCategories = () => {
 
 }
 
-export const sendImage = () => {
+export const sendImage = (image) => {
+
+
+    return (dispatch) => {
+
+        const formData = new FormData()
+        formData.append('file', image)
+        const config = {
+            header: { 'content-type': 'multipart/form-data' }
+        }
+        toastr.success('image uploading', 'wait a sec')
+        axiosInstance.post(`/products/upload`, formData, config)
+            .then((response) => {
+
+                if (response.data.success) {
+
+                    console.log(response.data)
+                    dispatch({
+                        type: UPLOAD_IMAGES,
+                        payload: { public_id: response.data.public_id, url: response.data.url }
+                    })
+
+
+                } else {
+
+
+
+
+                }
+
+            })
+
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+
 
 }
+export const deleteImage = (imageId) => {
 
-export const deleteImage = () => {
+
+
+    return (dispatch) => {
+
+        axiosInstance.post(`/products/upload/${imageId}`)
+            .then((response) => {
+
+
+                dispatch({
+                    type: DELETE_IMAGE,
+                    payload: imageId
+                })
+
+                toastr.success('Image Delete', 'delete image successfully')
+
+            })
+
+            .catch((err) => {
+                console.log(err);
+            })
+
+
+
+    }
+
 
 }
 
@@ -100,7 +162,9 @@ export const addCategory = (dataToSubmit) => {
                 if (response.data.success) {
 
                     toastr.success('Category added', 'successfully added category')
+
                     dispatch(asyncActionFinish())
+
                     window.location.reload()
 
                 } else {
@@ -109,8 +173,9 @@ export const addCategory = (dataToSubmit) => {
                         type: GET_ERRORS,
                         payload: response.data.message
                     })
-                    toastr.error('Category Error', 'errors in added category')
+
                     dispatch(asyncActionFinish())
+                    toastr.error('Category Error', 'errors in added category')
                 }
 
 
@@ -130,6 +195,65 @@ export const addCategory = (dataToSubmit) => {
 
 
     }
+
+
+
+}
+
+
+export const addProduct = (dataToSubmit) => {
+
+
+
+
+    return (dispatch) => {
+        console.log(dataToSubmit)
+        dispatch(asyncActionStart())
+
+        axiosInstance.post(`/products/product`, dataToSubmit)
+            .then((response) => {
+
+
+                if (response.data.success) {
+
+                    dispatch(reset())
+                    toastr.success('product added', 'a product is added successsfully')
+                    dispatch(
+                        {
+                            type: CLEAR_IMAGES
+                        }
+                    )
+                    dispatch(asyncActionFinish())
+
+
+
+                } else {
+
+                    dispatch({
+                        type: GET_ERRORS,
+                        payload: response.data.message
+                    })
+                    dispatch(asyncActionFinish())
+
+
+
+                }
+
+
+            })
+
+    }
+
+
+
+
+}
+
+
+export const editProduct = (productId, dataToEdit) => {
+
+
+
 
 
 

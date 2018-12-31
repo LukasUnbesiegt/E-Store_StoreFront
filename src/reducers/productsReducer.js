@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, DELETE_CATEGORY, UPLOAD_IMAGES } from '../actions/types'
+import { GET_CATEGORIES, DELETE_CATEGORY, UPLOAD_IMAGES, DELETE_IMAGE, CLEAR_IMAGES } from '../actions/types'
 
 const initialState = {
     uploadedImages: [],
@@ -18,6 +18,14 @@ export default (state = initialState, action) => {
             return { ...state }
         case UPLOAD_IMAGES:
             return { ...state, uploadedImages: [...state.uploadedImages, action.payload] }
+        case DELETE_IMAGE:
+
+            let updatedImages = state.uploadedImages.filter((image) => {
+                return image.public_id !== action.payload;
+            })
+            return { ...state, uploadedImages: updatedImages }
+        case CLEAR_IMAGES:
+            return { ...state, uploadedImages: [] }
 
         default:
             return state
