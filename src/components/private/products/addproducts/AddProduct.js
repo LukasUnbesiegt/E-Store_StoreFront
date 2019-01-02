@@ -146,7 +146,7 @@ class AddProduct extends Component {
             categories = this.props.categories.map((category) => {
                 return {
                     key: category.name,
-                    value: category.id
+                    value: category._id
                 }
             })
 

@@ -35,9 +35,9 @@ const SelectInput = ({ input, type, placeholder, multiple, options, meta: { touc
 
             <select
                 className="custom-select"
-                value={input.value || null}
-                onChange={(e, data) => {
-
+                value={input.value}
+                onChange={(e) => {
+                    input.onChange(e.target.value)
                 }}
                 multiple={multiple}
                 placeholder={placeholder}

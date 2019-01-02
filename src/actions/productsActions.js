@@ -337,12 +337,20 @@ export const getProductToEdit = (product) => {
 
 
 export const editProduct = (productId, dataToEdit) => {
-
+    console.log(dataToEdit)
 
     return (dispatch) => {
-
-
-
+        dispatch(asyncActionStart())
+        axiosInstance.post(`products/edit/${productId}`, dataToEdit)
+            .then((response) => {
+                console.log(response.data);
+                dispatch({
+                    type: CLEAR_IMAGES
+                })
+                toastr.success('Updated', 'product is updated successfully')
+                dispatch(asyncActionFinish())
+                window.location.reload()
+            })
 
 
     }
