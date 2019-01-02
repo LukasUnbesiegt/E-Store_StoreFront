@@ -12,6 +12,32 @@ const axiosInstance = axiosService.getInstance();
 
 
 
+
+
+export const deleteProduct = (productId) => {
+
+
+    return (dispatch) => {
+
+        dispatch(asyncActionStart())
+
+        axiosInstance.post(`/products/delete/${productId}`)
+            .then((response) => {
+
+                toastr.success('DELETE PRODUCT', 'successfully deleted!!')
+                dispatch(getProductsToTable())
+                dispatch(asyncActionFinish())
+
+            })
+
+            .catch((err) => {
+                console.log(err)
+            })
+
+    }
+
+}
+
 export const getProductsToTable = () => {
 
 
@@ -29,6 +55,9 @@ export const getProductsToTable = () => {
                 dispatch(asyncActionFinish())
 
 
+            })
+            .catch((err) => {
+                console.log(err)
             })
 
 
