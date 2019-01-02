@@ -21,7 +21,8 @@ class SideBar extends Component {
         const renderUsername = () => {
             return (
                 <div className="pb-3 text-center">
-                    <span className={`text-white ${styles.borderLine}`}>Welcome! Admin</span>
+                    <span className={`text-white ${styles.borderLine}`}>Welcome {' '}
+                    </span>
                 </div>
             )
         }
@@ -86,13 +87,6 @@ class SideBar extends Component {
 
 
 
-const mapStateToProps = (state) => ({
-
-})
-
-const mapDispatchToProps = {
-
-}
 
 
-export default connect()(SideBar);
+export default SideBar;

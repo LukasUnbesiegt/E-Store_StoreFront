@@ -88,7 +88,10 @@ class AdminRoutes extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className={`col-xl-2 col-lg-3 ${styles.sidebar} fixed-top`}>
-                <SideBar />
+                <SideBar
+
+
+                />
               </div>
 
               <div className={`col-xl-10 col-lg-9 col-md-8 ml-auto  fixed-top  top-navbar ${styles.navbarColor}`}>
