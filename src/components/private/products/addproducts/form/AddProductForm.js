@@ -24,7 +24,9 @@ class AddProductForm extends Component {
 
 
 
-        const { handleSubmit, initialValues, categories, submitCallback, editorState, onEditorStateChange, valid, errors, submitting, pristine } = this.props;
+        const { handleSubmit, initialValues, categories,
+            submitCallback, editorState, onEditorStateChange,
+            valid, errors, submitting, pristine } = this.props;
 
         return (
 

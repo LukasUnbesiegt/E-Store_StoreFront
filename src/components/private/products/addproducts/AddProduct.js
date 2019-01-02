@@ -55,12 +55,40 @@ class AddProduct extends Component {
         if (this.props.initialValues) {
 
             // editing current product
+
+            let imagesUpdate = [...this.props.initialValues.images, ...this.props.images]
+
+            console.log(imagesUpdate)
+
             let dataToSubmit = {
 
+                name: data.name,
+                price: {
+                    promo: data.promoprice,
+                    normal: data.price
+
+                },
+                sku: data.sku,
+                category: data.category,
+                description: description,
+                stocks: data.stocks,
+                likes: data.likes,
+                images: imagesUpdate,
+                details: {
+
+                    colors: data.colors,
+                    size: data.size,
+                    featured: data.featured,
+                    newArrival: data.newArrival,
+                    promotional: data.promotional
 
 
+                }
 
             }
+
+
+
 
             this.props.editProduct(this.props.initialValues._id, dataToSubmit)
         } else {

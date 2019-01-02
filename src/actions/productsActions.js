@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_CATEGORIES, UPLOAD_IMAGES, DELETE_IMAGE, CLEAR_IMAGES, GET_PRODUCTS } from './types';
+import { GET_ERRORS, GET_CATEGORIES, UPLOAD_IMAGES, DELETE_IMAGE, CLEAR_IMAGES, GET_PRODUCTS, GET_PRODUCT_EDIT } from './types';
 import axios from 'axios'
 import { asyncActionStart, asyncActionFinish } from './asyncActions'
 import axiosService from '../services/axiosService'
@@ -7,6 +7,7 @@ import { isEmpty } from '../utils/isEmpty'
 import { endpoint, prodEndpoint } from '../config'
 import { toastr } from 'react-redux-toastr'
 import { reset } from 'redux-form'
+import { push } from 'connected-react-router'
 const URL = process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
 const axiosInstance = axiosService.getInstance();
 
@@ -314,10 +315,40 @@ export const addProduct = (dataToSubmit) => {
 }
 
 
+
+export const getProductToEdit = (product) => {
+
+    return (dispatch) => {
+
+        dispatch({
+            type: GET_PRODUCT_EDIT,
+            payload: product
+        })
+
+
+        dispatch(push('/admin/products/add'))
+
+
+
+    }
+
+
+
+}
+
+
+
+
 export const editProduct = (productId, dataToEdit) => {
 
 
+    return (dispatch) => {
 
+
+
+
+
+    }
 
 
 

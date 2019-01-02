@@ -20,7 +20,7 @@ class TableComp extends Component {
 
 
     renderTableRows = () => {
-        const { rows, editHandlear, deleteHandler, selectedRowItems, tableheads } = this.props;
+        const { rows, editHandler, deleteHandler, selectedRowItems, tableheads } = this.props;
         if (rows) {
 
 
@@ -45,7 +45,7 @@ class TableComp extends Component {
                                 className="fa fa-cog fa-lg"
                                 onClick={
                                     () => {
-                                        editHandlear(row)
+                                        editHandler(row)
                                     }
 
                                 }

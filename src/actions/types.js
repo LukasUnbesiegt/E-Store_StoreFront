@@ -17,6 +17,7 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const UPLOAD_IMAGES = 'UPLOAD_IMAGES'
 export const GET_PRODUCTS = 'GET_PRODUCTS'
+export const GET_PRODUCT_EDIT = 'GET_PRODUCT_EDIT'
 export const DELETE_IMAGE = 'DELETE_IMAGE'
 export const CLEAR_IMAGES = 'CLEAR_IMAGES'
 

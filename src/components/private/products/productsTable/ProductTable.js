@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Table from '../../../misc/table/Table'
 import moment from 'moment'
 import { connect } from 'react-redux'
-import { deleteProduct } from '../../../../actions/productsActions'
+import { deleteProduct, getProductToEdit } from '../../../../actions/productsActions'
 
 
 
@@ -10,20 +10,21 @@ import { deleteProduct } from '../../../../actions/productsActions'
 class ProductTable extends Component {
 
 
-    editHandler = () => {
+    editHandler = (productToEdit) => {
 
+        this.props.getProductToEdit(productToEdit)
     }
 
     deleteHandler = (productId) => {
-        // this.props.deleteProduct(productId)
-        console.log(productId)
+        this.props.deleteProduct(productId)
+
     }
 
 
     render() {
 
         const { products } = this.props;
-        console.log(products)
+
         const tableheads = ['name', 'sku', 'price', 'promoprice', 'stocks', 'likes', 'createdAt']
         let rows;
         if (products) {
@@ -45,7 +46,7 @@ class ProductTable extends Component {
                 }
             })
 
-            console.log(rows)
+
         }
 
 
@@ -77,7 +78,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    deleteProduct
+    deleteProduct,
+    getProductToEdit
 }
 
 
