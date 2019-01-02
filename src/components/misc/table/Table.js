@@ -20,49 +20,26 @@ class TableComp extends Component {
 
 
     renderTableRows = () => {
-        const { rows, editHandlear, deleteHandler, detailsHandler, selectedRowItems } = this.props;
+        const { rows, editHandlear, deleteHandler, detailsHandler, selectedRowItems, tableheads } = this.props;
         if (rows) {
 
 
 
             return rows.map((row, i) => {
 
-                const renderRowItems = selectedRowItems.map((rowItem, i) => {
 
-                    if (typeof rowItem === 'array') {
-
-                        return (
-                            <td
-                                key={i}
-                            >
-                                {row[rowItem].length}
-
-                            </td>
-                        )
-
-
-                    } else {
-                        return (
-                            <td
-                                key={i}
-                            >
-                                {row[rowItem]}
-
-                            </td>
-                        )
-
-                    }
-
-                })
                 return (
                     <tr>
-                        <th scope="row">{i + 1}</th>
-                        {/* 
-                        <td>{row.author}</td>
-                        <td>{row.articles.length}</td> */}
+
+
                         {
-                            renderRowItems
+                            tableheads.map((head) => {
+                                return (<th>
+                                    {row[head]}
+                                </th>)
+                            })
                         }
+
                         <td>
                             <button
                                 className="btn btn-success btn-sm"
@@ -94,7 +71,7 @@ class TableComp extends Component {
                         </td>
                         <td>
                             <button
-                                className="btn btn-warning btn-sm"
+                                className="btn btn-default btn-sm"
                                 onClick={
                                     () => {
                                         detailsHandler(row._id)
