@@ -1,43 +1,150 @@
-// import React, { Component } from 'react'
-// import BootstrapTable from 'react-bootstrap-table-next';
-// import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import React, { Component } from 'react'
+import { Table } from 'reactstrap'
+
+
+
+class Table extends Component {
+
+
+    renderTableHeads = () => {
+
+        const { tableheads } = this.props;
+        return tableheads.map((head) => {
+
+            return (
+                <th>{head}</th>
+            )
+
+        })
+    }
+
+
+    renderTableRows = () => {
+        const { rows, editHandlear, deleteHandler, detailsHandler, selectedRowItems } = this.props;
+        if (rows) {
+
+            const renderRowItems = selectedRowItems.map((rowItemName, i) => {
+
+                return (
+                    <td
+                        key={i}
+                    >
+                        {row[rowItemName]}
+
+                    </td>
+                )
+
+            })
+
+            return rows.map((row, i) => {
+
+                return (
+                    <tr>
+                        <th scope="row">{i + 1}</th>
+                        {/* 
+                        <td>{row.author}</td>
+                        <td>{row.articles.length}</td> */}
+                        {
+                            renderRowItems
+                        }
+                        <td>
+                            <button
+                                className="btn btn-success btn-sm"
+                                onClick={
+                                    () => {
+                                        editHandlear(row)
+                                    }
+
+                                }
+
+                            >
+                                edit
+                        </button>
+                        </td>
+                        <td>
+                            <button
+                                className="btn btn-warning btn-sm"
+                                onClick={
+                                    () => {
+                                        deleteBookHandler(row._id)
+                                    }
+
+                                }
+
+                            >
+                                delete
+                        </button>
+
+                        </td>
+                        <td>
+                            <button
+                                className="btn btn-warning btn-sm"
+                                onClick={
+                                    () => {
+                                        deleteBookHandler(row._id)
+                                    }
+
+                                }
+
+                            >
+                                delete
+                        </button>
+
+                        </td>
+                    </tr>
+                )
+            })
+
+
+        }
+
+
+
+        renderTable = () => {
+
+            return (
+
+                <Table>
+
+                    <thead>
+                        {this.renderTableHeads()}
+                    </thead>
+
+                    <tbody>
+                        {this.renderTableRows()}
+
+                    </tbody>
+
+
+                </Table>
+
+
+            )
+
+
+        }
+
+        render() {
 
 
 
 
 
 
-// class Table extends Component {
 
 
-
-//     render() {
+            return (
 
 
 
 
-//         // const defaultSorted = [{
-//         //     dataField: 'name',
-//         //     order: 'desc'
-//         // }];
-
-
-//         return (
-//             <div>
-//                 <BootstrapTable
-//                     keyField={this.props.keyField}
-//                     data={this.props.data}
-//                     columns={this.props.columns}
-//                     hover
-//                     condensed
-//                     noDataIndication={this.props.noDataText}
-//                     defaultSortDirection="asc"
-//                 />
-//             </div>
-//         )
-//     }
-// }
+                <div>
+                    {this.renderTable}
+                </div>
+            )
+        }
+    }
 
 
 
-// export default Table
+    export default Table;
