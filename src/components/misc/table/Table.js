@@ -18,9 +18,21 @@ class TableComp extends Component {
         })
     }
 
+    productEditHandler = (productId) => {
+        const { editHandler, itemsToMap } = this.props;
+        const product = itemsToMap.find((item) => {
+            return item._id === productId
+        })
+
+        editHandler(product)
+
+    }
+
+
+
 
     renderTableRows = () => {
-        const { rows, editHandler, deleteHandler, selectedRowItems, tableheads } = this.props;
+        const { rows, deleteHandler, selectedRowItems, tableheads } = this.props;
         if (rows) {
 
 
@@ -45,7 +57,7 @@ class TableComp extends Component {
                                 className="fa fa-cog fa-lg"
                                 onClick={
                                     () => {
-                                        editHandler(row)
+                                        this.productEditHandler(row._id)
                                     }
 
                                 }

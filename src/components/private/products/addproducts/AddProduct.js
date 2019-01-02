@@ -169,6 +169,7 @@ class AddProduct extends Component {
                                 submitCallback={this.handleSubmitHandler}
                                 editorState={this.state.editorState}
                                 onEditorStateChange={this.onEditorStateChange}
+                                initialValues={this.props.initialValues}
                             />
 
                         </div>

@@ -26,7 +26,8 @@ class ProductTable extends Component {
         const { products } = this.props;
 
         const tableheads = ['name', 'sku', 'price', 'promoprice', 'stocks', 'likes', 'createdAt']
-        let rows;
+        let rows, productsForEdit;
+
         if (products) {
 
             rows = products.map((product) => {
@@ -42,8 +43,31 @@ class ProductTable extends Component {
                     stocks: product.stocks,
                     likes: product.likes,
                     createdAt: formattedDate,
-                    _id: product._id
+                    _id: product._id,
+
                 }
+            })
+
+
+            productsForEdit = products.map((product) => {
+
+                return {
+                    _id: product._id,
+                    name: product.name,
+                    price: product.price.normal,
+                    promoprice: product.price.promo,
+                    sku: product.sku,
+                    stocks: product.stocks,
+                    description: product.description,
+                    likes: product.likes,
+                    images: product.images,
+                    colors: product.colors,
+                    size: product.size,
+                    promotional: product.details.promotional,
+                    featured: product.details.featured,
+                    newarrival: product.details.newarrival
+                }
+
             })
 
 
@@ -58,7 +82,7 @@ class ProductTable extends Component {
                     rows={rows}
                     editHandler={this.editHandler}
                     deleteHandler={this.deleteHandler}
-
+                    itemsToMap={productsForEdit}
 
                 />
 

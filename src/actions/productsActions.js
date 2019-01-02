@@ -324,10 +324,7 @@ export const getProductToEdit = (product) => {
             type: GET_PRODUCT_EDIT,
             payload: product
         })
-
-
         dispatch(push('/admin/products/add'))
-
 
 
     }

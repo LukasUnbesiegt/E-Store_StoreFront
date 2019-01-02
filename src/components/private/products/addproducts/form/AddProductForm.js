@@ -42,6 +42,9 @@ class AddProductForm extends Component {
                     name="name"
                     placeholder="name"
                     type="text"
+                    styleFrom={{
+                        color: 'black'
+                    }}
 
                 />
 
@@ -50,7 +53,9 @@ class AddProductForm extends Component {
                     name="price"
                     placeholder="price"
                     type="number"
-
+                    styleFrom={{
+                        color: 'black'
+                    }}
                 />
 
                 <Field
@@ -58,21 +63,27 @@ class AddProductForm extends Component {
                     name="promoprice"
                     placeholder="promo price"
                     type="number"
-
+                    styleFrom={{
+                        color: 'black'
+                    }}
                 />
                 <Field
                     component={TextInput}
                     name="sku"
                     placeholder="SKU"
                     type="text"
-
+                    styleFrom={{
+                        color: 'black'
+                    }}
                 />
                 <Field
                     component={TextInput}
                     name="stocks"
                     placeholder="Stocks"
                     type="number"
-
+                    styleFrom={{
+                        color: 'black'
+                    }}
                 />
                 <Field
                     component={SelectInput}
@@ -80,14 +91,18 @@ class AddProductForm extends Component {
                     placeholder="category"
                     type="text"
                     options={categories}
-
+                    styleForm={{
+                        color: 'black'
+                    }}
                 />
                 <Field
                     component={TextInput}
                     name="likes"
                     placeholder="Likes"
                     type="number"
-
+                    styleFrom={{
+                        color: 'black'
+                    }}
                 />
 
 
@@ -157,6 +172,6 @@ class AddProductForm extends Component {
 
 
 export default reduxForm({
-    form: 'addproduct',
-    enableReinitialize: true
+    form: 'addproduct'
+
 })(AddProductForm);
