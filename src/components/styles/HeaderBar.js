@@ -51,9 +51,9 @@ function headerBar(props) {
                             <div className="card-body">
 
                                 <div className="btn-group" role="group" aria-label="">
-                                    <a className="btn btn-outline-success" href={props.linkAdd} >{props.title}</a>
-                                    <a className="btn btn-outline-success" href={props.linkTable}>Table</a>
-                                    <a className="btn btn-outline-success" href={props.linkSetting}>Settings</a>
+                                    <NavLink className="btn btn-outline-success" to={props.linkAdd} >{props.title}</NavLink>
+                                    <NavLink className="btn btn-outline-success" to={props.linkTable}>Table</NavLink>
+                                    <NavLink className="btn btn-outline-success" to={props.linkSetting}>Settings</NavLink>
 
                                 </div>
 

@@ -3,6 +3,7 @@ import { LOGIN_USER, AUTH_USER, REGISTER_USER, USER_SERVER, LOGOUT_USER, GET_ERR
 import authService from '../services/authService'
 import axiosService from '../services/axiosService'
 import { asyncActionStart, asyncActionFinish } from './asyncActions'
+import { push, replace } from 'connected-react-router'
 import axios from 'axios'
 import { isEmpty } from '../utils/isEmpty'
 import { endpoint, prodEndpoint } from '../config'
@@ -41,9 +42,10 @@ export function loginUser(dataToSubmit, history) {
       if (response.data.success) {
         console.log(response.data.token);
         await authService.setToken(response.data.token)
-
-        history.push('/admin')
+        // history.push('/admin')
         dispatch(asyncActionFinish())
+        window.location.replace('/admin')
+        // dispatch(push('/admin'))
 
       } else {
 
@@ -87,7 +89,7 @@ export function auth(history, reload, currentUserData, adminRoute) {
 
 
         if (!userData.data.isAuth && !reload) {
-          history.push('/')
+          window.location.replace('/')
         }
       }
 

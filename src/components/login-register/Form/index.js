@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styles from './index.module.css'
 import { connect } from 'react-redux'
 import { loginUser } from '../../../actions/userActions'
-import { withRouter } from 'react-router-dom'
+import { } from 'react-router-dom'
 import FormComp from './FormComp/Form'
 
 
@@ -14,7 +14,7 @@ class LoginRegisterForm extends Component {
     onSubmitHandler = (data) => {
 
 
-        this.props.loginUser(data, this.props.history)
+        this.props.loginUser(data)
 
         console.log('submitted')
 
@@ -61,4 +61,4 @@ const mapDispatchToProps = {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginRegisterForm));
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRegisterForm);
