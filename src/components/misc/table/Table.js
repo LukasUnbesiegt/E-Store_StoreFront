@@ -20,7 +20,7 @@ class TableComp extends Component {
 
 
     renderTableRows = () => {
-        const { rows, editHandlear, deleteHandler, detailsHandler, selectedRowItems, tableheads } = this.props;
+        const { rows, editHandlear, deleteHandler, selectedRowItems, tableheads } = this.props;
         if (rows) {
 
 
@@ -34,15 +34,15 @@ class TableComp extends Component {
 
                         {
                             tableheads.map((head) => {
-                                return (<th>
+                                return (<td>
                                     {row[head]}
-                                </th>)
+                                </td>)
                             })
                         }
 
                         <td>
-                            <button
-                                className="btn btn-success btn-sm"
+                            <i
+                                className="fa fa-cog fa-lg"
                                 onClick={
                                     () => {
                                         editHandlear(row)
@@ -51,12 +51,12 @@ class TableComp extends Component {
                                 }
 
                             >
-                                edit
-                        </button>
+
+                            </i>
                         </td>
                         <td>
-                            <button
-                                className="btn btn-warning btn-sm"
+                            <i
+                                className="fa fa-trash fa-lg"
                                 onClick={
                                     () => {
                                         deleteHandler(row._id)
@@ -65,25 +65,11 @@ class TableComp extends Component {
                                 }
 
                             >
-                                delete
-                        </button>
+
+                            </i>
 
                         </td>
-                        <td>
-                            <button
-                                className="btn btn-default btn-sm"
-                                onClick={
-                                    () => {
-                                        detailsHandler(row._id)
-                                    }
 
-                                }
-
-                            >
-                                details
-                        </button>
-
-                        </td>
                     </tr>
                 )
             })
@@ -125,7 +111,7 @@ class TableComp extends Component {
 
 
 
-            <div>
+            <div classNam="container">
                 {this.renderTable()}
             </div>
         )

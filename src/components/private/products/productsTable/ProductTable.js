@@ -20,7 +20,7 @@ class ProductTable extends Component {
 
     render() {
 
-        const tableheads = ['name', 'sku', 'price', 'promoprice', 'createdAt']
+        const tableheads = ['name', 'sku', 'price', 'promoprice', 'stocks', 'likes', 'createdAt']
 
         const rows = [
             {
@@ -28,10 +28,9 @@ class ProductTable extends Component {
                 sku: 'HRDFJ234',
                 price: 17000,
                 promoprice: 36000,
+                stocks: 100,
+                createdAt: '27/3/2018',
 
-
-
-                createdAt: '27/3/2018'
 
             },
             {
@@ -39,7 +38,7 @@ class ProductTable extends Component {
                 sku: 'HRDFJ234',
                 price: 17000,
                 promoprice: 36000,
-
+                stocks: 100,
                 createdAt: '27/3/2018'
 
             }
@@ -49,7 +48,7 @@ class ProductTable extends Component {
                 sku: 'HRDFJ234',
                 price: 17000,
                 promoprice: 36000,
-
+                stocks: 100,
                 createdAt: '27/3/2018'
 
             },
@@ -58,12 +57,52 @@ class ProductTable extends Component {
                 sku: 'HRDFJ234',
                 price: 17000,
                 promoprice: 36000,
+                stocks: 100,
                 createdAt: '27/3/2018'
 
             },
+            {
+                name: 'product 1',
+                sku: 'HRDFJ234',
+                price: 17000,
+                promoprice: 36000,
+                stocks: 100,
+                createdAt: '27/3/2018'
+
+            },
+            {
+                name: 'product 1',
+                sku: 'HRDFJ234',
+                price: 17000,
+                promoprice: 36000,
+                stocks: 100,
+                createdAt: '27/3/2018'
+
+            },
+
+            {
+                name: 'product 1',
+                sku: 'HRDFJ234',
+                price: 17000,
+                promoprice: 36000,
+                stocks: 100,
+                createdAt: '27/3/2018'
+
+            },
+
+            {
+                name: 'product 1',
+                sku: 'HRDFJ234',
+                price: 17000,
+                promoprice: 36000,
+                stocks: 100,
+                createdAt: '27/3/2018'
+
+            },
+
         ]
 
-        const selectedRowItems = ['name', 'sku', 'price', 'promoprice', 'stock', 'createdAt']
+
 
         return (
             <div>
@@ -73,8 +112,8 @@ class ProductTable extends Component {
                     rows={rows}
                     editHandler={this.editHandler}
                     deleteHandler={this.deleteHandler}
-                    detailsHandler={this.detailsHandler}
-                    selectedRowItems={selectedRowItems}
+
+
                 />
 
 
