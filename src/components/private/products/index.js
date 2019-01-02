@@ -4,11 +4,11 @@ import { Switch, Route, Link } from 'react-router-dom'
 import HeaderBar from '../../styles/HeaderBar'
 import { connect } from 'react-redux'
 
-import { } from '../../../actions/productsActions'
 
 import Table from './productsTable/ProductTable'
 import AddProduct from './addproducts/AddProduct'
 import AddCategory from '../categories/index'
+
 
 class Products extends Component {
 
@@ -16,9 +16,7 @@ class Products extends Component {
 
 
 
-    componentDidMount = () => {
 
-    }
 
 
 
@@ -78,7 +76,14 @@ class Products extends Component {
 
 
 
+// const mapStateToProps = (state) => ({
+
+// })
+
+// const mapDispatchToProps = {
+
+// }
 
 
 
-export default connect()(Products);
+export default Products;

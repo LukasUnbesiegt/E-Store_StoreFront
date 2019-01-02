@@ -16,6 +16,7 @@ export default (state = initialState, action) => {
             return { ...state, categories: action.payload }
         case GET_PRODUCTS:
             return { ...state, productsTable: action.payload }
+
         case DELETE_CATEGORY:
             return { ...state }
         case UPLOAD_IMAGES:

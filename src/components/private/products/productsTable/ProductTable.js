@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Table from '../../../misc/table/Table'
+import moment from 'moment'
+import { connect } from 'react-redux'
+
 
 
 
@@ -20,88 +23,31 @@ class ProductTable extends Component {
 
     render() {
 
+        const { products } = this.props;
+        console.log(products)
         const tableheads = ['name', 'sku', 'price', 'promoprice', 'stocks', 'likes', 'createdAt']
+        let rows;
+        if (products) {
 
-        const rows = [
-            {
-                name: 'product 1',
-                sku: 'HRDFJ234',
-                price: 17000,
-                promoprice: 36000,
-                stocks: 100,
-                createdAt: '27/3/2018',
+            rows = products.map((product) => {
+
+                let formattedDate = moment(product.createdAt).format('YYYY-MM-DD')
+
+                return {
+
+                    name: product.name,
+                    sku: product.sku,
+                    price: product.price.normal,
+                    promoprice: product.price.promo,
+                    stocks: product.stocks,
+                    likes: product.likes,
+                    createdAt: formattedDate
 
 
-            },
-            {
-                name: 'product 1',
-                sku: 'HRDFJ234',
-                price: 17000,
-                promoprice: 36000,
-                stocks: 100,
-                createdAt: '27/3/2018'
+                }
+            })
 
-            }
-            ,
-            {
-                name: 'product 1',
-                sku: 'HRDFJ234',
-                price: 17000,
-                promoprice: 36000,
-                stocks: 100,
-                createdAt: '27/3/2018'
-
-            },
-            {
-                name: 'product 1',
-                sku: 'HRDFJ234',
-                price: 17000,
-                promoprice: 36000,
-                stocks: 100,
-                createdAt: '27/3/2018'
-
-            },
-            {
-                name: 'product 1',
-                sku: 'HRDFJ234',
-                price: 17000,
-                promoprice: 36000,
-                stocks: 100,
-                createdAt: '27/3/2018'
-
-            },
-            {
-                name: 'product 1',
-                sku: 'HRDFJ234',
-                price: 17000,
-                promoprice: 36000,
-                stocks: 100,
-                createdAt: '27/3/2018'
-
-            },
-
-            {
-                name: 'product 1',
-                sku: 'HRDFJ234',
-                price: 17000,
-                promoprice: 36000,
-                stocks: 100,
-                createdAt: '27/3/2018'
-
-            },
-
-            {
-                name: 'product 1',
-                sku: 'HRDFJ234',
-                price: 17000,
-                promoprice: 36000,
-                stocks: 100,
-                createdAt: '27/3/2018'
-
-            },
-
-        ]
-
+        }
 
 
         return (
@@ -127,7 +73,14 @@ class ProductTable extends Component {
 }
 
 
+const mapStateToProps = (state) => ({
+    products: state.products.productsTable
+})
+
+// const mapDispatchToProps = {
+
+// }
 
 
 
-export default ProductTable
+export default connect(mapStateToProps)(ProductTable)

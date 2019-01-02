@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import { logoutUser } from '../../actions/userActions'
-
+import { getProductsToTable } from '../../actions/productsActions'
 import styles from './AdminRoutes.module.css';
 import Authenticated from '../misc/auth/Authenticated'
 import SideBar from './sidebar/index'
@@ -30,6 +30,9 @@ class AdminRoutes extends Component {
     dropdownOpen: false
   }
 
+  componentDidMount = () => {
+    this.props.getProductsToTable()
+  }
 
   toggle() {
     this.setState(prevState => ({
@@ -156,7 +159,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  logoutUser
+  logoutUser,
+  getProductsToTable
 }
 
 

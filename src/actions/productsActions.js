@@ -52,7 +52,7 @@ export const getCategories = () => {
         dispatch(asyncActionStart())
         axiosInstance.get('/products/categories')
             .then((response) => {
-                console.log(response.data.categories);
+
 
                 dispatch({
 
