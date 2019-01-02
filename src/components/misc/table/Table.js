@@ -3,12 +3,12 @@ import { Table } from 'reactstrap'
 
 
 
-class Table extends Component {
+class TableComp extends Component {
 
 
     renderTableHeads = () => {
-
         const { tableheads } = this.props;
+
         return tableheads.map((head) => {
 
             return (
@@ -23,21 +23,37 @@ class Table extends Component {
         const { rows, editHandlear, deleteHandler, detailsHandler, selectedRowItems } = this.props;
         if (rows) {
 
-            const renderRowItems = selectedRowItems.map((rowItemName, i) => {
 
-                return (
-                    <td
-                        key={i}
-                    >
-                        {row[rowItemName]}
-
-                    </td>
-                )
-
-            })
 
             return rows.map((row, i) => {
 
+                const renderRowItems = selectedRowItems.map((rowItem, i) => {
+
+                    if (typeof rowItem === 'array') {
+
+                        return (
+                            <td
+                                key={i}
+                            >
+                                {row[rowItem].length}
+
+                            </td>
+                        )
+
+
+                    } else {
+                        return (
+                            <td
+                                key={i}
+                            >
+                                {row[rowItem]}
+
+                            </td>
+                        )
+
+                    }
+
+                })
                 return (
                     <tr>
                         <th scope="row">{i + 1}</th>
@@ -66,7 +82,7 @@ class Table extends Component {
                                 className="btn btn-warning btn-sm"
                                 onClick={
                                     () => {
-                                        deleteBookHandler(row._id)
+                                        deleteHandler(row._id)
                                     }
 
                                 }
@@ -81,13 +97,13 @@ class Table extends Component {
                                 className="btn btn-warning btn-sm"
                                 onClick={
                                     () => {
-                                        deleteBookHandler(row._id)
+                                        detailsHandler(row._id)
                                     }
 
                                 }
 
                             >
-                                delete
+                                details
                         </button>
 
                         </td>
@@ -97,54 +113,49 @@ class Table extends Component {
 
 
         }
-
-
-
-        renderTable = () => {
-
-            return (
-
-                <Table>
-
-                    <thead>
-                        {this.renderTableHeads()}
-                    </thead>
-
-                    <tbody>
-                        {this.renderTableRows()}
-
-                    </tbody>
-
-
-                </Table>
-
-
-            )
-
-
-        }
-
-        render() {
-
-
-
-
-
-
-
-
-            return (
-
-
-
-
-                <div>
-                    {this.renderTable}
-                </div>
-            )
-        }
     }
 
 
+    renderTable = () => {
 
-    export default Table;
+        return (
+
+            <Table>
+
+                <thead>
+                    {this.renderTableHeads()}
+                </thead>
+
+                <tbody>
+                    {this.renderTableRows()}
+
+                </tbody>
+
+
+            </Table>
+
+
+        )
+
+
+    }
+
+    render() {
+
+
+        return (
+
+
+
+
+            <div>
+                {this.renderTable()}
+            </div>
+        )
+    }
+
+
+}
+
+
+export default TableComp;
