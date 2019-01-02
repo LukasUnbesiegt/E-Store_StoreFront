@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_CATEGORIES, UPLOAD_IMAGES, DELETE_IMAGE, CLEAR_IMAGES } from './types';
+import { GET_ERRORS, GET_CATEGORIES, UPLOAD_IMAGES, DELETE_IMAGE, CLEAR_IMAGES, GET_PRODUCTS } from './types';
 import axios from 'axios'
 import { asyncActionStart, asyncActionFinish } from './asyncActions'
 import axiosService from '../services/axiosService'
@@ -9,6 +9,38 @@ import { toastr } from 'react-redux-toastr'
 import { reset } from 'redux-form'
 const URL = process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
 const axiosInstance = axiosService.getInstance();
+
+
+
+export const getProductsToTable = () => {
+
+
+
+    return (dispatch) => {
+        dispatch(asyncActionStart())
+        axiosInstance.get(`/products/all`)
+            .then((response) => {
+
+                dispatch({
+                    type: GET_PRODUCTS,
+                    payload: response.data.products
+                })
+
+                dispatch(asyncActionFinish())
+
+
+            })
+
+
+
+    }
+
+
+
+}
+
+
+
 
 
 
@@ -88,6 +120,9 @@ export const sendImage = (image) => {
 
 
 }
+
+
+
 export const deleteImage = (imageId) => {
 
 

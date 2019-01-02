@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, DELETE_CATEGORY, UPLOAD_IMAGES, DELETE_IMAGE, CLEAR_IMAGES } from '../actions/types'
+import { GET_CATEGORIES, DELETE_CATEGORY, UPLOAD_IMAGES, DELETE_IMAGE, CLEAR_IMAGES, GET_PRODUCTS } from '../actions/types'
 
 const initialState = {
     uploadedImages: [],
@@ -14,6 +14,8 @@ export default (state = initialState, action) => {
 
         case GET_CATEGORIES:
             return { ...state, categories: action.payload }
+        case GET_PRODUCTS:
+            return { ...state, productsTable: action.payload }
         case DELETE_CATEGORY:
             return { ...state }
         case UPLOAD_IMAGES:

@@ -16,7 +16,7 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 // PRODUCTS 
 
 export const UPLOAD_IMAGES = 'UPLOAD_IMAGES'
-
+export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const DELETE_IMAGE = 'DELETE_IMAGE'
 export const CLEAR_IMAGES = 'CLEAR_IMAGES'
 
