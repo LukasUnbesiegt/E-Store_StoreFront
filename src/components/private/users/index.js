@@ -6,6 +6,7 @@ import UserTable from './usersTable/UsersTable'
 import UsersTable from './usersTable/UsersTable';
 import UsersSettings from './userSettings/UsersSettings'
 
+import Authenticated from '../../misc/auth/Authenticated'
 
 class Users extends Component {
 
@@ -60,4 +61,4 @@ class Users extends Component {
 
 
 
-export default Users;
+export default Authenticated(Users);

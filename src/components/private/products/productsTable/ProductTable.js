@@ -4,7 +4,7 @@ import moment from 'moment'
 import { connect } from 'react-redux'
 import { deleteProduct, getProductToEdit } from '../../../../actions/productsActions'
 
-
+import Authenticated from '../../../misc/auth/Authenticated'
 
 
 class ProductTable extends Component {

@@ -8,7 +8,7 @@ import SiteInfo from './SiteInfo/SiteInfo'
 import Currency from './Currency/Currency'
 import Delivery from './Delivery/Delivery'
 
-
+import Authenticated from '../../misc/auth/Authenticated'
 
 
 class Settings extends Component {
@@ -104,4 +104,4 @@ class Settings extends Component {
 
 
 
-export default Settings;
+export default Authenticated(Settings);

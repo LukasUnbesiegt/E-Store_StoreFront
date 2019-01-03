@@ -42,6 +42,20 @@ ReactDOM.render(
 
                 </ConnectedRouter>
 
+                {/* <BrowserRouter>
+                        <div>
+                                <ReduxToastr
+                                        position="bottom-right"
+                                        transitionIn="fadeIn"
+                                        transitionOut="fadeOut"
+
+                                />
+
+                                <Routes />
+
+                        </div>
+                </BrowserRouter> */}
+
         </Provider>
 
 

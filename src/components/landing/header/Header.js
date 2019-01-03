@@ -16,7 +16,7 @@ import PromoCode from '../PromoCodes/PromoCode'
 import TermsAndConds from '../TermsAndConds/TermsAndConds'
 import ContactForm from '../ContactUs/ContactForm/ContactForm'
 import FooterBottom from '../footer/FooterBottom/FooterBottom'
-
+import Authenticated from '../../misc/auth/Authenticated'
 
 import { connect } from 'react-redux'
 
@@ -68,4 +68,4 @@ const mapDispatchToProps = {
 
 
 
-export default connect()(Header);
+export default connect()(Authenticated(Header, true));

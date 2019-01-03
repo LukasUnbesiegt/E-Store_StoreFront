@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-
+import Authenticated from '../../misc/auth/Authenticated'
 
 
 
@@ -21,24 +20,13 @@ class DashBoard extends Component {
 
         const renderDashboard = () => {
 
-            if (this.props.async.loading) {
 
-                return (
-                    <div>
-                        <h1>Loading</h1>
-                    </div>
-                )
-            }
+            return (
+                <div>
 
+                </div>
+            )
 
-
-            else {
-                return (
-                    <div>
-
-                    </div>
-                )
-            }
 
 
 
@@ -69,4 +57,4 @@ const mapStateToProps = (state) => ({
 // }
 
 
-export default connect(mapStateToProps)(DashBoard);
+export default connect(mapStateToProps)(Authenticated(DashBoard));

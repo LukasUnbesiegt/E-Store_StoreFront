@@ -17,7 +17,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
         componentDidMount() {
 
 
-            this.props.auth(this.props.history, reload, this.props.user, adminRoute);
+            this.props.auth(this.props.history, reload, adminRoute);
 
 
         }
@@ -58,6 +58,6 @@ export default function (ComposedClass, reload, adminRoute = null) {
 
 
 
-    return connect(mapStateToProps, mapDispatchToProps)(withRouter(AuthenticationCheck))
+    return connect(mapStateToProps, mapDispatchToProps)(AuthenticationCheck)
 }
 

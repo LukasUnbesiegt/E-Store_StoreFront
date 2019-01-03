@@ -4,7 +4,7 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import Footer from '../footer/Footer'
 import SmallNav from '../SmallNav/SmallNav'
 import Navigator from '../../navigation/Navigator'
-
+import Authenticated from '../../misc/auth/Authenticated'
 import Product from './Product/Product'
 
 
@@ -235,4 +235,4 @@ class Products extends Component {
 
 
 
-export default Products;
+export default Authenticated(Products, true);

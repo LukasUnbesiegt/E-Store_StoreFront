@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-
+import { NavLink} from 'react-router-dom'
 
 
 
@@ -24,13 +24,13 @@ class Navigator extends Component {
                 return (
 
                     <li className="nav-item dropdown hoverable">
-                    <a className="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <NavLink className="nav-link nav-link-icon" to="/" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i className="ni ni-circle-08" style={{fontSize : '20px'}}></i>
                         <span className="nav-link-inner--text d-lg-none">User</span>
-                    </a>
+                    </NavLink>
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                        <a className="dropdown-item" href="/myaccount">Account</a>
-                        <a className="dropdown-item" href="/orders">Your Orders</a>
+                        <NavLink className="dropdown-item" to="/myaccount">Account</NavLink>
+                        <NavLink className="dropdown-item" to="/orders">Your Orders</NavLink>
                         <div className="dropdown-divider"></div>
                         <button className="dropdown-item">LogOut</button>
                     </div>
@@ -52,17 +52,17 @@ class Navigator extends Component {
                 return (
                     <ul className="navbar-nav ml-lg-auto">
                       <li className="nav-item">
-                    <a className="nav-link" href="/">Home</a>
+                    <NavLink className="nav-link" to="/">Home</NavLink>
                   </li>
                       <li className="nav-item">
-                    <a className="nav-link" href="/products">Products</a>
+                    <NavLink className="nav-link" to="/products">Products</NavLink>
                   </li>
                   {/* <li className="nav-item">
                     <a className="nav-link" href="/orders">Your Orders</a>
                   </li> */}
                   <li className="nav-item">
-                    <a className="nav-link" href="/storeinfo">Shopper Info
-                    </a>
+                    <NavLink className="nav-link" to="/storeinfo">Shopper Info
+                    </NavLink>
                   </li>
                    
 

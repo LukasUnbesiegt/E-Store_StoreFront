@@ -75,34 +75,42 @@ export function auth(history, reload, currentUserData, adminRoute) {
 
 
 
-  return async (dispatch) => {
+  return (dispatch) => {
 
 
-    try {
+    dispatch(asyncActionStart())
+    axiosInstance.get('/users/auth')
+      .then((response) => {
 
-      if (isEmpty(currentUserData)) {
-        const userData = await axiosInstance.get('/users/auth');
         dispatch({
           type: AUTH_USER,
-          payload: userData.data
+          payload: response.data
         })
 
 
-        if (!userData.data.isAuth && !reload) {
+
+
+        if (!response.data.isAuth && !reload) {
           window.location.replace('/')
         }
-      }
+
+        dispatch(asyncActionFinish())
+
+
+      })
 
 
 
 
 
-      // editing
-      // kick user out 
 
-    } catch (error) {
-      console.log(error)
-    }
+
+
+
+    // editing
+    // kick user out 
+
+
 
 
 

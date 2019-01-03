@@ -28,6 +28,7 @@ class Routes extends Component {
 
 
   componentDidMount = () => {
+
     this.props.getCategories()
   }
 
@@ -45,12 +46,12 @@ class Routes extends Component {
         <ModalManager />
 
         <Switch>
-          <Route exact component={Header} path="/" />
-          <Route exact component={Products} path="/products" />
-          <Route exact component={ProductDetails} path="/pdetails" />
+          <Route exact render={(props) => (<Header />)} path="/" />
+          <Route exact render={(props) => (<Products />)} path="/products" />
+          <Route exact render={(props) => (<ProductDetails />)} path="/pdetails" />
           <Route exact component={Orders} path="/orders" />
           <Route exact component={Carts} path="/carts" />
-          <Route exact component={ContactUs} path="/storeinfo" />
+          <Route exact render={(props) => (<ContactUs />)} path="/storeinfo" />
           <Route exact component={MyAccount} path="/myaccount" />
           <Route exact component={LoginCustomer} path="/customer-login" />
           <Route exact component={LoginAdmin} path="/login-admin" />

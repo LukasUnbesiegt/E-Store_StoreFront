@@ -6,9 +6,9 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import { logoutUser } from '../../actions/userActions'
 import { getProductsToTable } from '../../actions/productsActions'
 import styles from './AdminRoutes.module.css';
-import Authenticated from '../misc/auth/Authenticated'
-import SideBar from './sidebar/index'
 
+import SideBar from './sidebar/index'
+import Authenticated from '../misc/auth/Authenticated'
 
 import DashBoard from './dashboard/DashBoard'
 import Products from './products/index'
@@ -19,6 +19,7 @@ import Promotions from './promotions/index'
 import Settings from './settings/index'
 import Customers from './customers/index'
 import InfoUser from './InfoUser/InfoUser'
+
 
 
 
@@ -118,14 +119,14 @@ class AdminRoutes extends Component {
 
               <div className="col-xl-10 col-lg-9 ml-auto">
                 <Switch>
-                  <Route exact path="/admin" component={Authenticated(DashBoard)} />
-                  <Route path="/admin/products" component={Authenticated(Products)} />
-                  <Route path="/admin/orders" component={Authenticated(Orders)} />
-                  <Route path="/admin/users" component={Authenticated(Users)} />
-                  <Route path="/admin/customers" component={Authenticated(Customers)} />
-                  <Route path="/admin/promotions" component={Authenticated(Promotions)} />
-                  <Route path="/admin/settings" component={Authenticated(Settings)} />
-                  <Route path="/admin/infouser" component={Authenticated(InfoUser)} />
+                  <Route exact path="/admin" render={(props) => (<DashBoard />)} />
+                  <Route path="/admin/products" render={(props) => (<Products />)} />
+                  <Route path="/admin/orders" render={(props) => (<Orders />)} />
+                  <Route path="/admin/users" render={(props) => (<Users />)} />
+                  <Route path="/admin/customers" render={(props) => (<Customers />)} />
+                  <Route path="/admin/promotions" render={(props) => (<Promotions />)} />
+                  <Route path="/admin/settings" render={(props) => (<Settings />)} />
+                  <Route path="/admin/infouser" render={(props) => (<InfoUser />)} />
 
                 </Switch>
 

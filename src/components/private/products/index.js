@@ -3,11 +3,13 @@ import React, { Component } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
 import HeaderBar from '../../styles/HeaderBar'
 import { connect } from 'react-redux'
-
+import Authenticated from '../../misc/auth/Authenticated'
 
 import Table from './productsTable/ProductTable'
 import AddProduct from './addproducts/AddProduct'
 import AddCategory from '../categories/index'
+
+
 
 
 class Products extends Component {
@@ -51,9 +53,9 @@ class Products extends Component {
                         <div className="col-12">
 
                             <Switch>
-                                <Route exact path="/admin/products/" component={Table} />
-                                <Route path="/admin/products/add/" component={AddProduct} />
-                                <Route path="/admin/products/settings/" component={AddCategory} />
+                                <Route exact path="/admin/products/" render={() => (<Table />)} />
+                                <Route path="/admin/products/add/" render={() => (<AddProduct />)} />
+                                <Route path="/admin/products/settings/" render={() => (<AddCategory />)} />
                             </Switch>
 
 
@@ -86,4 +88,4 @@ class Products extends Component {
 
 
 
-export default Products;
+export default Authenticated(Products);

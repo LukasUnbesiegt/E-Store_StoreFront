@@ -3,7 +3,7 @@ import SmallNav from '../SmallNav/SmallNav'
 
 import Navigator from '../../navigation/Navigator'
 import Footer from '../footer/Footer';
-
+import Authenticated from '../../misc/auth/Authenticated'
 
 
 class ContactUs extends Component {
@@ -33,4 +33,4 @@ class ContactUs extends Component {
 }
 
 
-export default ContactUs
+export default Authenticated(ContactUs)

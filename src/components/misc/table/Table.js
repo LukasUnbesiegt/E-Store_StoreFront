@@ -9,10 +9,10 @@ class TableComp extends Component {
     renderTableHeads = () => {
         const { tableheads } = this.props;
 
-        return tableheads.map((head) => {
+        return tableheads.map((head, i) => {
 
             return (
-                <th>{head}</th>
+                <th key={i}>{head}</th>
             )
 
         })
@@ -41,12 +41,16 @@ class TableComp extends Component {
 
 
                 return (
-                    <tr>
+                    <tr
+                        key={i}
+                    >
 
 
                         {
-                            tableheads.map((head) => {
-                                return (<td>
+                            tableheads.map((head, i) => {
+                                return (<td
+                                    key={i}
+                                >
                                     {row[head]}
                                 </td>)
                             })
@@ -123,7 +127,7 @@ class TableComp extends Component {
 
 
 
-            <div classNam="container">
+            <div className="container">
                 {this.renderTable()}
             </div>
         )

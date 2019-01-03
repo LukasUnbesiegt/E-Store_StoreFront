@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import HeaderBar from '../../styles/HeaderBar'
 import { Switch, Route } from 'react-router-dom'
 
-
+import Authenticated from '../../misc/auth/Authenticated'
 import Table from './PromotionsTable/PromotionsTable'
 
 
@@ -60,4 +60,4 @@ class Promotions extends Component {
 
 
 
-export default Promotions;
+export default Authenticated(Promotions);
