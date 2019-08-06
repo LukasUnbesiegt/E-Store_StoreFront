@@ -1,0 +1,57 @@
+.productDetailsWrapper {
+        
+  
+    padding: 10px;
+  
+    
+
+
+}
+
+.imagesWrapper {
+ 
+   
+
+}
+
+.priceDecorator {
+
+  
+    display: flex;
+    padding : 10px;
+
+
+}
+
+.Price {
+        font-size: 22px;
+      
+        padding : 4px;
+
+}
+
+.PromoPrice {
+    text-decoration: line-through;
+    font-size: 20px;
+    color :  grey;
+}
+
+.StockWrapper {
+     
+      padding : 10px;
+      background-color: #43e97b;
+      color : #fff;
+      border-radius: 20%;
+
+}
+
+
+.addToCartWrapper {
+   
+    display: flex;
+    margin : 3px;
+    padding : 6px;
+    justify-content: flex-start ,
+    
+    
+}

@@ -1,0 +1,51 @@
+.totalContainer {
+
+        display: flex;
+        justify-content: center;
+        background-color: #43e97b;
+        margin : auto;
+        width : 50%;
+        margin-bottom: 20px;
+        
+
+       
+}
+
+.totalContainer span {
+
+    color : white;
+    margin-right: 10px;
+    letter-spacing: 2px;
+    font-size: 20px;
+    padding : 10px;
+    
+}
+
+
+@media only screen and (max-width: 600px) {
+
+
+
+    .totalContainer {
+        display: flex;
+        justify-content: center;
+        background-color: #43e97b;
+        margin : auto;
+        width : 80%;
+        margin-bottom: 20px;
+    }
+
+
+    .totalContainer span {
+
+        color : white;
+        margin-right: 1px;
+        letter-spacing: 1px;
+        font-size: 10px;
+        padding : 10px;
+        
+    }
+
+
+
+  }

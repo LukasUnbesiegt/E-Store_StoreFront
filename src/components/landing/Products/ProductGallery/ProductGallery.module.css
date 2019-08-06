@@ -1,0 +1,23 @@
+.imageGalleryContainer {
+ 
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
+}
+
+
+
+.mainImg {
+    height: 500px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.imgThumbnails {
+    display: flex; 
+    justify-content: center;
+    object-fit: contain;
+    height: 200px;
+    width : 200px;
+}
