@@ -20,7 +20,7 @@ import { getProductsToTable } from "./productsActions";
 const URL = process.env.NODE_ENV === "development" ? endpoint : prodEndpoint;
 const axiosInstance = axiosService.getInstance();
 
-export function loginUser(dataToSubmit, history) {
+export function loginUser(dataToSubmit, callback) {
 	return async dispatch => {
 		try {
 			dispatch(asyncActionStart());
@@ -28,15 +28,14 @@ export function loginUser(dataToSubmit, history) {
 				`${URL}api/v1/users/login`,
 				dataToSubmit
 			);
-			await authService.setToken(response.data.token);
+			callback(response.data.token);
 			dispatch(asyncActionFinish());
-			dispatch(push("/admin/products"));
 		} catch (error) {
 			dispatch({
 				type: GET_ERRORS,
 				payload: error.response.data.errors
 			});
-			console.log(error.response.data.errors);
+
 			toastr.error("something wrong");
 			dispatch(reset("admin-login-register"));
 			dispatch(asyncActionFinish());
@@ -60,17 +59,13 @@ export function accountKitLogin(code) {
 	};
 }
 
-export function auth(history, reload, currentUserData, adminRoute) {
+export function auth() {
 	return dispatch => {
 		axiosInstance.get("/users/auth").then(response => {
 			dispatch({
 				type: AUTH_USER,
 				payload: response.data
 			});
-
-			if (!response.data.isAuth && !reload) {
-				window.location.replace("/");
-			}
 		});
 	};
 }

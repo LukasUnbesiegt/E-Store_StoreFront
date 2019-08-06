@@ -11,7 +11,7 @@ import { getProductsByCat, addToCart, addLike } from '../../../../actions/produc
 import ProductGallery from '../ProductGallery/ProductGallery'
 import uuid from 'uuid/v1'
 import styles from './ProductDetails.module.css'
-import Authenticated from '../../../misc/auth/Authenticated'
+import Authenticated from '../../../misc/HOC/Authenticated'
 
 
 class ProductDetails extends Component {
