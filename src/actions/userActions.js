@@ -23,22 +23,18 @@ const axiosInstance = axiosService.getInstance();
 export function loginUser(dataToSubmit, callback) {
 	return async dispatch => {
 		try {
-			dispatch(asyncActionStart());
 			const response = await axios.post(
 				`${URL}api/v1/users/login`,
 				dataToSubmit
 			);
 			callback(response.data.token);
-			dispatch(asyncActionFinish());
 		} catch (error) {
 			dispatch({
 				type: GET_ERRORS,
 				payload: error.response.data.errors
 			});
-
 			toastr.error("something wrong");
 			dispatch(reset("admin-login-register"));
-			dispatch(asyncActionFinish());
 		}
 	};
 }

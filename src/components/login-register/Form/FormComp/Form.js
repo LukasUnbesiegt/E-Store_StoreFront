@@ -77,7 +77,6 @@ class FormComp extends Component {
 					}}
 					disabled={submitting || pristine}
 				>
-					<Spinner color="warning" />
 					Login
 				</button>
 			</form>
