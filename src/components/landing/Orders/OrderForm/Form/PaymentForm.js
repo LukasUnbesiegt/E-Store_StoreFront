@@ -3,6 +3,7 @@ import { reduxForm, Field } from 'redux-form'
 import { ListGroup, ListGroupItem, Collapse, Button, CardBody, Card, InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
 import SelectInput from '../../../../misc/forms/inputs/SelectInput'
 import TextInput from '../../../../misc/forms/inputs/TextInput'
+import { globalStyle } from '../../../../../config';
 
 
 class PaymentForm extends React.Component {
@@ -319,7 +320,10 @@ return (
 
                 <button
                     type="submit"
-                    className="btn btn-block btn-success my-3"
+                    className="btn btn-block  my-3"
+                    style={{
+                        backgroundColor : `${globalStyle.backgroundColor}`
+                    }}
 
                 >
                     Submit your order

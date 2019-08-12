@@ -12,7 +12,7 @@ import ProductGallery from '../ProductGallery/ProductGallery'
 import uuid from 'uuid/v1'
 import styles from './ProductDetails.module.css'
 import Authenticated from '../../../misc/HOC/Authenticated'
-
+import {globalStyle} from '../../../../config'
 
 class ProductDetails extends Component {
 
@@ -88,7 +88,6 @@ class ProductDetails extends Component {
 
                 bgColor = item['color']
             }
-
 
 
             return (
@@ -218,7 +217,8 @@ class ProductDetails extends Component {
                 >
                     <div>
                         <Link
-                            className="btn btn-success btn-sm mr-3"
+                            className="btn btn-sm mr-3"
+                            style={{backgroundColor : `${globalStyle.backgroundColor}`}}
                             to="/products"
                         >back to products</Link>
 
@@ -287,11 +287,12 @@ class ProductDetails extends Component {
                             backgroundColor: 'grey',
                             color: '#fff',
                             padding: '3px',
-                            marginBottom: '4px'
+                            marginBottom: '4px' ,
+                            marginRight : '3px'
                         }}
 
                     >
-                        {`${collection.name} collection`}
+                        {`${collection.name}`}
 
                     </span>
                 )
@@ -375,7 +376,7 @@ class ProductDetails extends Component {
 
                 const renderStocks = (
                     <span
-                        className={`${styles.StockWrapper}`}
+                        className={`${styles.StockWrapper}`} style={{backgroundColor : `${globalStyle.backgroundColor}`}}
 
                     >
 
@@ -393,7 +394,55 @@ class ProductDetails extends Component {
 
 
                         {renderPriceLabel()}
+                        <div className={`${styles.addToCartWrapper}`}>
 
+<div className="mx-2">
+    <button
+        className="btn  btn-sm btn-outline-dark"
+        onClick={this.addQuantity}
+
+
+    >+
+            </button>
+</div>
+<div className="mx-2">
+    <button
+        className="btn btn btn-sm btn-outline-dark"
+        onClick={this.removeQuantity}
+    >
+        -
+        </button>
+</div>
+<div className="mx-2">
+    <button
+        className="btn  btn-sm btn-outline-dark"
+        onClick={this.addToCart}
+    >
+        Add to Carts
+          </button>
+</div>
+
+
+</div>
+<Divider style={{
+                            margin: '10px',
+
+                        }} />
+                        <div className="my-3">
+
+                            <span
+                                className=""
+                                style={{
+                                    letterSpacing: '2px',
+                                    fontWeight: 'bold'
+                                }}
+                            >
+                                Quantity : {this.state.currentProductAdded.quantity} {`Total Price : ${this.state.currentProductAdded.TotalPrice}`}
+
+
+
+                            </span>
+                        </div>
 
 
 
@@ -468,55 +517,8 @@ class ProductDetails extends Component {
                             </span>
                         </div>
 
-                        <Divider style={{
-                            margin: '10px',
-
-                        }} />
-                        <div className="my-3">
-
-                            <span
-                                className=""
-                                style={{
-                                    letterSpacing: '2px',
-                                    fontWeight: 'bold'
-                                }}
-                            >
-                                Quantity : {this.state.currentProductAdded.quantity} {`Total Price : ${this.state.currentProductAdded.TotalPrice}`}
-
-
-
-                            </span>
-                        </div>
-                        <div className={`${styles.addToCartWrapper}`}>
-
-                            <div className="mx-2">
-                                <button
-                                    className="btn  btn-sm btn-outline-dark"
-                                    onClick={this.addQuantity}
-
-
-                                >+
-                                        </button>
-                            </div>
-                            <div className="mx-2">
-                                <button
-                                    className="btn btn btn-sm btn-outline-dark"
-                                    onClick={this.removeQuantity}
-                                >
-                                    -
-                                    </button>
-                            </div>
-                            <div className="mx-2">
-                                <button
-                                    className="btn  btn-sm btn-outline-dark"
-                                    onClick={this.addToCart}
-                                >
-                                    Add to Carts
-                                      </button>
-                            </div>
-
-
-                        </div>
+                      
+                
                         <Divider style={{
                             margin: '10px',
 
@@ -549,7 +551,7 @@ class ProductDetails extends Component {
 
             const renderLabel = () => {
 
-                if (product.details && product.details.onsale) {
+                if (product.promo ) {
                     return <span
                         style={{
                             backgroundColor: 'red',

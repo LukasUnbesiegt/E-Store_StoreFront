@@ -11,7 +11,8 @@ import {
 	getBrands,
 	getCartQty,
 	getCollections,
-	getProductsByCat
+	getProductsByCat,
+	getProductsFeatured
 } from "./actions/productsActions";
 import { getOrdersById, sendEnquiry } from "./actions/customerActions";
 import { getDeliveries } from "./actions/settingsActions";
@@ -28,7 +29,10 @@ import ProductDetails from "./components/landing/Products/ProductDetails/Product
 import ModalManager from "./components/misc/modalManager/modalManager";
 import MyAccount from "./components/landing/CustomerAccount/Account";
 import Account from "./components/landing/CustomerAccount/Account";
-
+import ProductsByCollection from "./components/landing/Products/Collection/Collection";
+import AboutUs from "./components/landing/Why/Why";
+import PromoCollections from "./components/landing/Products/OnSale/OnSale";
+import OnSale from "./components/landing/Products/OnSale/OnSale";
 class Routes extends Component {
 	componentDidMount = () => {
 		this.props.getCategories();
@@ -39,6 +43,7 @@ class Routes extends Component {
 		this.props.getCartQty();
 		this.props.getSliders();
 		this.props.getFAQs();
+		this.props.getProductsFeatured();
 	};
 
 	render() {
@@ -57,6 +62,12 @@ class Routes extends Component {
 						path="/pdetails"
 					/>
 					<Route render={props => <Products />} path="/products" />
+					<Route
+						render={props => <ProductsByCollection />}
+						path="/collection/:id"
+					/>
+					<Route render={props => <OnSale />} path="/onsale" />
+					<Route render={props => <AboutUs />} path="/about" />
 					<Route render={props => <Orders />} path="/orders" />
 					<Route render={props => <Carts />} path="/carts" />
 					<Route render={props => <ContactUs />} path="/storeinfo" />
@@ -87,7 +98,8 @@ const mapDispatchToProps = {
 	getSiteSettings,
 	getProductsByCat,
 	sendEnquiry,
-	getFAQs
+	getFAQs,
+	getProductsFeatured
 };
 
 export default connect(

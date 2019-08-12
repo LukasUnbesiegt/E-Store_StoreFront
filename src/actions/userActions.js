@@ -69,4 +69,5 @@ export function auth() {
 export const logoutUser = () => dispatch => {
 	authService.deleteToken();
 	dispatch(push("/"));
+	window.location.reload();
 };

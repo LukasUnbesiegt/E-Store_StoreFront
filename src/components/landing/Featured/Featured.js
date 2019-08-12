@@ -1,62 +1,54 @@
-import React, { Component } from 'react'
-
-import ProductSlide from '../Products/ProductSlide/ProductSlide'
-
-
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { storeStatics } from "../../../config";
+import ProductSlide from "../Products/ProductSlide/ProductSlide";
 
 class Featured extends Component {
+	render() {
+		const products = [
+			{
+				name: "Product 1 ",
+				price: 200,
+				featured: true,
+				images: [
+					{
+						url: ""
+					}
+				]
+			},
+			{
+				name: "Product 1 ",
+				price: 200
+			},
+			{
+				name: "Product 1 ",
+				price: 200
+			},
+			{
+				name: "Product 1 ",
+				price: 200
+			},
+			{
+				name: "Product 1 ",
+				price: 200
+			}
+		];
 
-
-
-    render() {
-
-        const products = [
-
-            {
-                name: 'Product 1 ',
-                price: 200
-            },
-            {
-                name: 'Product 1 ',
-                price: 200
-            },
-            {
-                name: 'Product 1 ',
-                price: 200
-            },
-            {
-                name: 'Product 1 ',
-                price: 200
-            },
-            {
-                name: 'Product 1 ',
-                price: 200
-            },
-            {
-                name: 'Product 1 ',
-                price: 200
-            }
-
-
-        ]
-
-
-        return (
-            <section className="py-5">
-
-                {/* <ProductSlide
-                    sectionTitle="Featured Products"
-                    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"
-                    products={products}
-
-                /> */}
-
-            </section>
-        )
-    }
+		return (
+			<section className="py-5">
+				<ProductSlide
+					sectionTitle={storeStatics.featured.title}
+					subtitle={storeStatics.featured.subtitle}
+					products={this.props.featured || []}
+				/>
+			</section>
+		);
+	}
 }
+const mapStateToProps = state => ({
+	featured: state.products ? state.products.featured : []
+});
 
+const mapDispatchToProps = {};
 
-
-export default Featured;
+export default connect(mapStateToProps)(Featured);

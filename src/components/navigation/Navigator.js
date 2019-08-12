@@ -12,13 +12,13 @@ import {
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem
+    DropdownItem , Dropdown
 } from 'reactstrap';
 import { connect } from 'react-redux'
 import { openModal } from '../misc/modalManager/modalActions'
 import { logoutUser, accountKitLogin } from '../../actions/userActions'
 import AccountKit from '../../services/accountkit';
-import { FB_APP_ID } from '../../config'
+import { FB_APP_ID , globalStyle  , storeStatics} from '../../config'
 
 
 
@@ -28,7 +28,8 @@ class Navigator extends Component {
 
     state = {
         isOpen: false,
-        width: window.innerWidth
+        width: window.innerWidth ,
+        dropdownOpen: false
     };
 
 
@@ -47,7 +48,12 @@ class Navigator extends Component {
         window.removeEventListener('resize', this.handleWidthChange)
     }
 
-
+    toggleDropDown = () => {
+        this.setState(prevState => ({
+          dropdownOpen: !prevState.dropdownOpen
+        }));
+      }
+    
     toggle = () => {
 
 
@@ -65,7 +71,22 @@ class Navigator extends Component {
 
     }
 
+    renderLists = (arr , type) => {
 
+return arr.map((list) => {
+
+
+    return (
+        <DropdownItem tag="a" href={`/products?${type}=${list._id}`}  style={{fontSize : '1.1rem' , color : 'black'}}  >{list.name}</DropdownItem>
+    )
+        
+
+
+})
+      
+
+
+    }
 
     render() {
 
@@ -75,7 +96,7 @@ class Navigator extends Component {
                 AdminAccess = this.props.user.isEditor || this.props.user.isAdmin;
             }
 
-
+       
 
 
             if (this.props.user && this.props.user.isAuth) {
@@ -124,7 +145,7 @@ class Navigator extends Component {
 
 
                         >
-                            {p => <button className="btn btn-success"  {...p} > Shopper Login</button>}
+                            {p => <button className="btn btn-white"  {...p} > Shopper Login</button>}
                         </AccountKit>
 
                     </li>
@@ -136,23 +157,36 @@ class Navigator extends Component {
 
         const renderNavLinks = () => {
 
-
+            const {categories , collections} = this.props;
 
             return (
                 <ul className="navbar-nav ml-lg-auto">
+                  
+                   <li className="nav-item">
+                   <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown} style={{cursor : 'pointer'}} >
+  <DropdownToggle caret tag="a"  style={{fontSize : '1.1rem'}} className="nav-link">
+      Products
+  </DropdownToggle>
+  <DropdownMenu>
+    <DropdownItem  style={{fontSize : '1.1rem' , color : 'black'}} tag="a" href="/products">All Products</DropdownItem>
+                {
+                    this.renderLists(this.props.categories ? categories : [] , 'category')
+                }
+    
+  </DropdownMenu>
+</Dropdown>
+                   </li>
+                  
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/">Home</NavLink>
+                        <NavLink activeStyle={{borderBottom : '1px solid #fff'}} className="nav-link" to="/collection/0001" style={{fontSize: '1.1rem'}}>Collections <i class="fas fa-caret-down"></i></NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/products">Products</NavLink>
+                        <NavLink activeStyle={{borderBottom : '1px solid #fff'}} className="nav-link" to="/onsale" style={{fontSize: '1.1rem'}}>On Sale</NavLink>
                     </li>
-                    {/* <li className="nav-item">
-                    <a className="nav-link" href="/orders">Your Orders</a>
-                  </li> */}
-                    {/* <li className="nav-item">
-                        <NavLink className="nav-link" to="/storeinfo">About Store
-                    </NavLink>
-                    </li> */}
+                    <li className="nav-item">
+                        <NavLink activeStyle={{borderBottom : '1px solid #fff'}} className="nav-link" to="/about" style={{fontSize: '1.1rem'}}>About Us</NavLink>
+                    </li>
+                 
 
                     {renderUserDropdown()}
 
@@ -196,9 +230,9 @@ class Navigator extends Component {
             if (this.props.browser.orientation === 'landscape') {
 
                 return (
-                    <a className="navbar-brand " style={{ color: '#fff' }} >
+                    <a className="navbar-brand " style={{ color: '#fff' , fontSize : '1.4rem' , cursor : 'pointer' }} href="/" >
                         <i className="ni ni-shop m-2"></i>
-                        EStore
+                        {storeStatics.logoName}
                 </a>
                 )
 
@@ -231,7 +265,7 @@ class Navigator extends Component {
                     </NavLink>
                     <NavLink className="navbar-brand" style={{ color: '#fff' }} to="/">
                         <i className="ni ni-shop m-2"></i>
-                        EStore
+                        {storeStatics.logoName}
                   </NavLink>
 
                 </Fragment>)
@@ -248,7 +282,7 @@ class Navigator extends Component {
 
             return (
 
-                <div className="container">
+                <div className="container-fluid">
 
 
                     {renderCart()}
@@ -292,7 +326,7 @@ class Navigator extends Component {
 
             <Navbar
                 expand="md"
-                style={{ backgroundImage: 'linear-gradient(to right,  #38f9d7 0%, #43e97b 100%)' }}
+                style={{ backgroundImage: `linear-gradient(to right,  ${globalStyle.backgroundColor} 0%, ${globalStyle.backgroundColor} 100%)` }}
                 dark
 
             >
@@ -314,6 +348,8 @@ const mapStateToProps = (state) => {
 
     return {
         totalQuantity: state.products.cartItems ? state.products.cartItems.totalQuantity : null,
+        categories : state.products ? state.products.categories : [] ,
+        collections : state.products ? state.products.collections : [] ,
         browser: state.browser
     }
 

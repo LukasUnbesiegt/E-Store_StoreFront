@@ -10,6 +10,7 @@ import styles from "./Carts.module.css";
 import PromoCodeForm from "../PromoCodes/promocodeForm/PromoCode";
 import Authenticated from "../../misc/HOC/Authenticated";
 import { isEmpty } from "../../../utils/isEmpty";
+import { globalStyle } from "../../../config";
 
 class Carts extends Component {
 	componentDidMount = () => {
@@ -21,7 +22,11 @@ class Carts extends Component {
 			if (this.props.cart && this.props.cart.items.length > 0) {
 				return (
 					<div>
-						<Link className="btn btn-outline-success btn-block" to="/orders">
+						<Link
+							className="btn  btn-block"
+							to="/orders"
+							style={{ backgroundColor: `${globalStyle.backgroundColor}` }}
+						>
 							Ready to checkout
 							<i class="ni ni-bold-right ml-2" style={{ fontSize: "20px" }} />
 						</Link>
@@ -61,7 +66,10 @@ class Carts extends Component {
 						</p>
 					</div>
 
-					<div className={styles.totalContainer}>
+					<div
+						className={styles.totalContainer}
+						style={{ backgroundColor: `${globalStyle.backgroundColor}` }}
+					>
 						<span className="">Total Price : {cart && cart.totalPrice}</span>
 
 						<span className="">
