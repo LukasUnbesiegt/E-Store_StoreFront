@@ -11,8 +11,8 @@ class ProductSlide extends Component {
 		const settings = {
 			speed: 2000,
 			autoplaySpeed: 3000,
-			slidesToShow: this.props.products.length - 1,
-			slidesToScroll: this.props.products.length - 1,
+			slidesToShow: 4,
+			slidesToScroll: 4,
 
 			autoplay: true,
 			dots: true,
@@ -39,7 +39,7 @@ class ProductSlide extends Component {
 		const renderProducts = () => {
 			return this.props.products.map((product, index) => {
 				return (
-					<div className="mx-3">
+					<div className="mx-3 px-2">
 						<Product product={product} />;
 					</div>
 				);

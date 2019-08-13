@@ -12,7 +12,7 @@ class Product extends Component {
 	displayPrice = () => {
 		const { product } = this.props;
 
-		if (product.details && product.details.onsale) {
+		if (product.price.promo) {
 			return (
 				<div className="price">
 					{product.price.promo} kyats
@@ -26,6 +26,7 @@ class Product extends Component {
 				</div>
 			);
 		} else {
+			console.log("here we are");
 			return (
 				<div className="price">
 					{product.price.normal} kyats

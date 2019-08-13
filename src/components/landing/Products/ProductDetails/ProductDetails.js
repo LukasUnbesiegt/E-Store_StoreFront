@@ -323,7 +323,7 @@ class ProductDetails extends Component {
 
                 const renderPriceLabel = () => {
 
-                    if (product.details && product.details.onsale) {
+                    if (product.price.promo) {
 
 
                         return (
