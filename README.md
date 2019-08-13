@@ -1,3 +1,3 @@
+## ESTORE BH STOREFRONT
 
-## BH CLIENT BOILETPLATE 
-* Dec 2018 revision
+-
