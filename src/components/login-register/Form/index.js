@@ -17,11 +17,15 @@ class LoginRegisterForm extends Component {
 		this.receiver = React.createRef();
 	}
 	onSubmitHandler = data => {
-		this.props.loginUser(data, token => {
+		this.props.loginUser(data, async token => {
 			console.log("token", token);
-			this.receiver.current.contentWindow.postMessage(token, REDIRECT_URL);
+			await this.receiver.current.contentWindow.postMessage(
+				token,
+				REDIRECT_URL
+			);
 			// BUG - NOT REDIRECTING - TODO
-			window.location = REDIRECT_URL;
+			console.log("login happen");
+			window.location.assign(REDIRECT_URL);
 		});
 	};
 
