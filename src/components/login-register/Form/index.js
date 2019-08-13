@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import { loginUser } from "../../../actions/userActions";
 import { push } from "connected-react-router";
 import FormComp from "./FormComp/Form";
-import { prodEndpoint, endpoint } from "../../../config";
+import { prodEndpoint, endpoint, REDIRECT_URL_PROD } from "../../../config";
 
 let REDIRECT_URL =
 	process.env.NODE_ENV === "development"
 		? "http://localhost:3000"
-		: "https://admin.estorebkh.com";
+		: REDIRECT_URL_PROD;
 
 class LoginRegisterForm extends Component {
 	constructor(props) {
