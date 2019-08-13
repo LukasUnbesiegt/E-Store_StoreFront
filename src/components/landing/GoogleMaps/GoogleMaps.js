@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { storeStatics } from "../../../config";
+import { GOOGLE_MAPS_API_KEY } from "../../../config";
 class GoogleMaps extends Component {
 	onMarkerClick = () => {};
 	render() {
@@ -27,5 +28,5 @@ class GoogleMaps extends Component {
 }
 
 export default GoogleApiWrapper({
-	apiKey: "AIzaSyBf6yoDk8U3P3LxOEk3eReP_RXSAYASCkk"
+	apiKey: GOOGLE_MAPS_API_KEY
 })(GoogleMaps);
