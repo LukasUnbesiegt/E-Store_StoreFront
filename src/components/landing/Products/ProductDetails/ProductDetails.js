@@ -117,7 +117,7 @@ class ProductDetails extends Component {
                     />
                     <span    style={{
 
-fontSize : '10px'
+fontSize : '11px'
 }}>{item[cat]}</span>
                 </div>
 
