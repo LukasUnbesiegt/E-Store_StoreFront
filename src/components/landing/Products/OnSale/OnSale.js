@@ -18,7 +18,7 @@ class OnSale extends Component {
 					<h3>Promo Collections</h3>
 					<p>No Sale Products</p>
 				</div>
-				<Footer />
+				<Footer store={this.props.site && this.props.site.store} />
 				<FooterBottom />
 			</Fragment>
 		);

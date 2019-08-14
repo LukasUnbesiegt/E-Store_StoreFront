@@ -38,7 +38,7 @@ class Why extends Component {
 						<div class="row features">{this.renderWhys()}</div>
 					</div>
 				</div>
-				<Footer />
+				<Footer store={this.props.site && this.props.site.store} />
 			</Fragment>
 		);
 	}

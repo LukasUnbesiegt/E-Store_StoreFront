@@ -17,7 +17,7 @@ class Collections extends Component {
 					<h3>Collection</h3>
 					<p>No Products in this collection</p>
 				</div>
-				<Footer />
+				<Footer store={this.props.site && this.props.site.store} />
 				<FooterBottom />
 			</Fragment>
 		);
