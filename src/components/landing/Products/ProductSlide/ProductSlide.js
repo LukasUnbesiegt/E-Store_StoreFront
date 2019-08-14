@@ -40,7 +40,7 @@ class ProductSlide extends Component {
 			return this.props.products.map((product, index) => {
 				return (
 					<div className="mx-3 px-2">
-						<Product product={product} />;
+						<Product product={product} />
 					</div>
 				);
 			});

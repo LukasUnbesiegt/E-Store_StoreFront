@@ -86,7 +86,7 @@ class Carts extends Component {
 					/>
 				</div>
 
-				<Footer />
+				<Footer store={this.props.site && this.props.site.store} />
 			</Fragment>
 		);
 	}
@@ -104,4 +104,4 @@ const mapDispatchToProps = {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Authenticated(Carts, true));
+)(Authenticated(Carts));
