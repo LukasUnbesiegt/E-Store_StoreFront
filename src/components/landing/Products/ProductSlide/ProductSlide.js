@@ -15,7 +15,7 @@ class ProductSlide extends Component {
 			slidesToScroll: 4,
 
 			autoplay: true,
-			dots: true,
+
 			arrow: true,
 
 			responsive: [

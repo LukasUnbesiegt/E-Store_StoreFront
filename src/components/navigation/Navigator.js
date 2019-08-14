@@ -29,7 +29,8 @@ class Navigator extends Component {
     state = {
         isOpen: false,
         width: window.innerWidth ,
-        dropdownOpen: false
+        dropdownOpen: false ,
+        dropdownOpen2: false
     };
 
 
@@ -51,6 +52,11 @@ class Navigator extends Component {
     toggleDropDown = () => {
         this.setState(prevState => ({
           dropdownOpen: !prevState.dropdownOpen
+        }));
+      }
+      toggleDropDown2 = () => {
+        this.setState(prevState => ({
+          dropdownOpen2: !prevState.dropdownOpen2
         }));
       }
     
@@ -87,6 +93,22 @@ return arr.map((list) => {
 
 
     }
+    renderListsCollection = (arr , type) => {
+
+        return arr.map((list) => {
+        
+        
+            return (
+                <DropdownItem tag="a" href={`/collection/${list._id}`}  style={{fontSize : '1.1rem' , color : 'black'}}  >{list.name}</DropdownItem>
+            )
+                
+        
+        
+        })
+              
+        
+        
+            }
 
     render() {
 
@@ -176,10 +198,22 @@ return arr.map((list) => {
   </DropdownMenu>
 </Dropdown>
                    </li>
+                   <li className="nav-item">
+                   <Dropdown isOpen={this.state.dropdownOpen2} toggle={this.toggleDropDown2} style={{cursor : 'pointer'}} >
+  <DropdownToggle caret tag="a"  style={{fontSize : '1.1rem'}} className="nav-link">
+      Collections
+  </DropdownToggle>
+  <DropdownMenu>
+    <DropdownItem  style={{fontSize : '1.1rem' , color : 'black'}} tag="a" href="/products">All Collections</DropdownItem>
+                {
+                    this.renderListsCollection(this.props.collections ? collections : [] , 'collections')
+                }
+    
+  </DropdownMenu>
+</Dropdown>
+                   </li>
                   
-                    <li className="nav-item">
-                        <NavLink activeStyle={{borderBottom : '1px solid #fff'}} className="nav-link" to="/collection/0001" style={{fontSize: '1.1rem'}}>Collections <i class="fas fa-caret-down"></i></NavLink>
-                    </li>
+                   
                     <li className="nav-item">
                         <NavLink activeStyle={{borderBottom : '1px solid #fff'}} className="nav-link" to="/onsale" style={{fontSize: '1.1rem'}}>On Sale</NavLink>
                     </li>
