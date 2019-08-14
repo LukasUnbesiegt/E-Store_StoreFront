@@ -35,7 +35,7 @@ class Featured extends Component {
 		];
 
 		return (
-			<section className="py-5">
+			<section className="py-5" style={{ backgroundColor: "#f4f5f7" }}>
 				<ProductSlide
 					sectionTitle={storeStatics.featured.title}
 					subtitle={storeStatics.featured.subtitle}

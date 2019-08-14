@@ -10,14 +10,11 @@ class ProductSlide extends Component {
 		console.log("products", this.props.products);
 		const settings = {
 			speed: 2000,
-			autoplaySpeed: 3000,
+			autoplaySpeed: 2000,
 			slidesToShow: 4,
 			slidesToScroll: 4,
-
 			autoplay: true,
-
 			arrow: true,
-
 			responsive: [
 				{
 					breakpoint: 600,

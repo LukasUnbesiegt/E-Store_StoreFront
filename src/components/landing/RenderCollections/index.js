@@ -15,7 +15,7 @@ class index extends Component {
 						}}
 						className="img-fluid my-2  shadow"
 						onClick={() => {
-							this.props.push(`/products/?collections=${collection.id}`);
+							this.props.push(`/products/?collections=${collection._id}`);
 						}}
 					/>
 				</div>
