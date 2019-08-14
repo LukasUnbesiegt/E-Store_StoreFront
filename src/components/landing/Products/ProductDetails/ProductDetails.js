@@ -79,9 +79,10 @@ class ProductDetails extends Component {
 
     renderChips = (items, cat) => {
 
-
+        console.log('items'  , items)
 
         return items.map((item, i) => {
+
 
             let bgColor;
             if (cat === 'color') {
@@ -91,10 +92,12 @@ class ProductDetails extends Component {
 
 
             return (
-                <div className="">
+                <div className="d-flex flex-column my-1">
 
 
-
+                   
+                        
+                    
                     <img
                         className="img-thumbnail img-fluid"
                         key={i}
@@ -112,6 +115,10 @@ class ProductDetails extends Component {
                         clickable={true}
 
                     />
+                    <span    style={{
+
+fontSize : '10px'
+}}>{item[cat]}</span>
                 </div>
 
             );
