@@ -211,7 +211,7 @@ fontSize : '11px'
 
         const { product, productsByCat } = this.props;
         console.log(productsByCat)
-        function createMarkup() { return { __html: product.description || '<p>no descriptions</p>' }; };
+        function createMarkup() { return { __html: product.details.description || '<p>no descriptions</p>' }; };
         const buttonsDisplay = () => {
 
             return (
@@ -254,7 +254,7 @@ fontSize : '11px'
 
                             <div className="">
                                 <span className="mr-3">{variant}</span>
-                                <span className="text-muted">choosen : {this.state.currentProductAdded.variants[variant] ? this.state.currentProductAdded.variants[variant] : 'none'} </span>
+                                <span className="text-muted"> {this.state.currentProductAdded.variants[variant] ? this.state.currentProductAdded.variants[variant] : 'none'} </span>
                             </div>
 
 
@@ -479,7 +479,7 @@ fontSize : '11px'
                                     letterSpacing: '2px'
                                 }}
                             >
-                                SKU : {product.sku}
+                                SKU : {product.details.sku}
                             </span>
                         </div>
                         <div className="my-3">
