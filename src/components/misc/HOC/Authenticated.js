@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { auth } from "../../../actions/userActions";
 import { withRouter } from "react-router-dom";
-import Loading from "../Loading/LoadingComponent";
-
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { globalStyle } from "../../../config";
 export default function(ComposedClass) {
 	class AuthenticationCheck extends Component {
 		componentDidMount() {
@@ -21,7 +22,16 @@ export default function(ComposedClass) {
 					/>
 				);
 			} else {
-				return <Loading />;
+				return (
+					<div className="d-flex justify-content-center align-items-center h-100vh">
+						<Loader
+							type="Audio"
+							color={globalStyle.backgroundColor}
+							height="100"
+							width="100"
+						/>
+					</div>
+				);
 			}
 		}
 	}

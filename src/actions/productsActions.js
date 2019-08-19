@@ -307,8 +307,6 @@ export const getCartQty = (promoCode) => {
 
     const cartId = localStorage.getItem('cart_id')
 
-
-
     return (dispatch) => {
         if (cartId) {
             axiosInstance.post(`/cart/cart/get`, { cartId, promoId: promoCode })
@@ -321,7 +319,7 @@ export const getCartQty = (promoCode) => {
                         type: GET_CART_ITEMS,
                         payload: response.data.results
                     })
-                    dispatch(asyncActionFinish())
+                 
 
                     dispatch({
                         type: CLEAR_ERRORS
@@ -344,7 +342,7 @@ export const getCartQty = (promoCode) => {
                 type: GET_CART_ITEMS,
                 payload: null
             })
-            dispatch(asyncActionFinish())
+         
         }
 
     }

@@ -1,7 +1,7 @@
 .wrapper {
 	height: 100vh;
-	background-image: linear-gradient(120deg, #fae14e 0%, #fae14e 100%);
-	opacity: 0.2;
+	background-image: linear-gradient(120deg, #fff 0%, #fff 100%);
+	opacity: 0.5;
 	overflow-y: scroll;
 	overflow-y: scroll;
 	display: flex;

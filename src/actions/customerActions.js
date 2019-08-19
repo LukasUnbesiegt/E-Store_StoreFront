@@ -50,13 +50,12 @@ export const addOrder = order => {
 		axiosInstance
 			.post("/customers/orders/add", order)
 			.then(response => {
-				toastr.success("order submitted");
+				toastr.info("thanks you for your order");
 				localStorage.removeItem("cart_id");
 				localStorage.removeItem("promo_code");
 				dispatch(getCartQty());
-				dispatch(getOrders());
 				dispatch(getOrdersById());
-				dispatch(reset("addorder"));
+				dispatch(push("/account/orders/"));
 			})
 
 			.catch(err => {});
