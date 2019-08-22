@@ -25,7 +25,6 @@ class index extends Component {
 							cursor: "pointer",
 							objectFit: "fill",
 							width: "100%",
-
 							maxHeight:
 								this.props.browser.orientation === "portrait"
 									? "240px"
@@ -62,34 +61,6 @@ class index extends Component {
 	};
 
 	render() {
-		const settings = {
-			speed: 2000,
-			autoplaySpeed: 3000,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			autoplay: true,
-			dots: true,
-			arrow: true,
-
-			responsive: [
-				{
-					breakpoint: 600,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1,
-						initialSlide: 1
-					}
-				},
-				{
-					breakpoint: 480,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1
-					}
-				}
-			]
-		};
-
 		return (
 			<Fragment>
 				<Carousel autoPlay={2300} animationSpeed={2000} infinite>
