@@ -172,7 +172,7 @@ class Products extends Component {
                 /> */}
 
 				<div className="my-2 py-2 text-center">
-					<span className="my-1 py-1">Categories</span>
+					<span className="font-weight-bold">Categories</span>
 					<CategoriesSliders
 						categories={this.props.categories || []}
 						handleFilters={this.handleFilters}
@@ -180,7 +180,7 @@ class Products extends Component {
 					/>
 				</div>
 				<div className="my-2 py-2 text-center">
-					<span className="my-1 py-1">Brands</span>
+					<span className="font-weight-bold">Brands</span>
 					<CategoriesSliders
 						categories={this.props.brands || []}
 						handleFilters={this.handleFilters}
@@ -268,13 +268,13 @@ class Products extends Component {
 				/>
 				<Navigator user={this.props.user} />
 
-				<div className="container my-5">
+				<div className="container-fluid my-5">
 					<h4 className="display-4 py-4 my-3 text-center">Shop Products</h4>
-					<div className="row">{this.renderSearchComp()}</div>
+					<div className="row container">{this.renderSearchComp()}</div>
 
 					<div className="row">
-						<div className="col-lg-3">{this.renderFiltersComp()}</div>
-						<div className="col-lg-9">
+						<div className="col-lg-4">{this.renderFiltersComp()}</div>
+						<div className="col-lg-8">
 							<div className="m-3">{renderPagination()}</div>
 
 							<div className="row">{this.renderResultProducts()}</div>

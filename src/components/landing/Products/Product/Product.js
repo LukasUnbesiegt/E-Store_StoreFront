@@ -68,7 +68,7 @@ class Product extends Component {
 
 		return (
 			<span className="product-new-label">
-				{product.details && product.details.onsale ? "Sales" : null}
+				{product && product.promo ? "Sales" : null}
 			</span>
 		);
 	};

@@ -59,7 +59,7 @@ class index extends Component {
 	render() {
 		return (
 			<Fragment>
-				<Carousel autoPlay={2300} animationSpeed={2000} infinite>
+				<Carousel autoPlay={3000} animationSpeed={2000} infinite>
 					{this.renderImages()}
 				</Carousel>
 				<Dots
