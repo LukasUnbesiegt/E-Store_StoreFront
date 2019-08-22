@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { globalStyle } from "../../../config";
+import { stat } from "fs";
 export default function(ComposedClass) {
 	class AuthenticationCheck extends Component {
 		componentDidMount() {
@@ -19,6 +20,7 @@ export default function(ComposedClass) {
 						user={this.props.user.userData}
 						browser={this.props.browser}
 						site={this.props.site.site}
+						router={this.props.router}
 					/>
 				);
 			} else {
@@ -40,7 +42,8 @@ export default function(ComposedClass) {
 		user: state.user,
 		async: state.async,
 		browser: state.browser,
-		site: state.site
+		site: state.site,
+		router: state.router
 	});
 
 	const mapDispatchToProps = {

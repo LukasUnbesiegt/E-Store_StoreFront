@@ -99,7 +99,7 @@ return arr.map((list) => {
         
         
             return (
-                <DropdownItem tag="a" href={`/collection/${list._id}`}  style={{fontSize : '1.1rem' , color : 'black'}}  >{list.name}</DropdownItem>
+                <DropdownItem tag="a" href={`/collection/?type=collections&id=${list._id}`}  style={{fontSize : '1.1rem' , color : 'black'}}  >{list.name}</DropdownItem>
             )
                 
         

@@ -4,6 +4,7 @@ import Footer from "../footer/Footer";
 import SmallNav from "../SmallNav/SmallNav";
 import Navigator from "../../navigation/Navigator";
 import Authenticated from "../../misc/HOC/Authenticated";
+import FooterBottom from "../footer/FooterBottom/FooterBottom";
 import Product from "./Product/Product";
 import CheckBoxFilter from "../../misc/filters/CheckBoxFilter/CheckBoxFilter";
 import { connect } from "react-redux";
@@ -41,7 +42,6 @@ class Products extends Component {
 			for (const key in obj) {
 				const element = obj[key];
 				if (key === "collections") {
-					console.log("happen");
 					this.props.getProductsForShop(
 						1,
 						{ key: [element] },
@@ -283,6 +283,7 @@ class Products extends Component {
 				</div>
 
 				<Footer store={this.props.site && this.props.site.store} />
+				<FooterBottom store={this.props.site && this.props.site.store} />
 			</Fragment>
 		);
 	}

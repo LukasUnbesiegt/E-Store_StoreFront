@@ -34,23 +34,11 @@ class Header extends Component {
 
 		if (products.collections && products.collections.length > 0) {
 			return products.collections.map(collection => {
-				return (
-					<CollectionSec
-						collection={collection}
-						getProductsForShop={this.props.getProductsForShop}
-						push={this.props.push}
-					/>
-				);
+				return <CollectionSec collection={collection} push={this.props.push} />;
 			});
 		} else {
 			return collectionsSample.map(collection => {
-				return (
-					<CollectionSec
-						collection={collection}
-						getProductsForShop={this.sample}
-						push={this.props.push}
-					/>
-				);
+				return <CollectionSec collection={collection} push={this.props.push} />;
 			});
 		}
 	};

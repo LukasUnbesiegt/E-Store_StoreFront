@@ -2,9 +2,21 @@ import React, { Component, Fragment } from "react";
 import SmallNav from "../../SmallNav/SmallNav";
 import Navigation from "../../../navigation/Navigator";
 import Authenticated from "../../../misc/HOC/Authenticated";
+import { connect } from "react-redux";
 import Footer from "../../footer/Footer";
+import { getCollectProducts } from "../../../../actions/productsActions";
 import FooterBottom from "../../footer/FooterBottom/FooterBottom";
+const queryString = require("query-string");
+
 class Collections extends Component {
+	componentDidMount() {
+		let parsed = queryString.parse(this.props.router.location.search);
+		console.log("parse queries", parsed);
+		if (parsed) {
+			this.props.getCollectProducts(parsed.type, parsed.id);
+		}
+	}
+
 	render() {
 		return (
 			<Fragment>
@@ -25,4 +37,4 @@ class Collections extends Component {
 	}
 }
 
-export default Authenticated(Collections);
+export default Authenticated(Collections, true);

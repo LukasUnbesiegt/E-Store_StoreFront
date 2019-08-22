@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../footer/Footer";
+import FooterBottom from "../footer/FooterBottom/FooterBottom";
 import SmallNav from "../SmallNav/SmallNav";
 import Navigator from "../../navigation/Navigator";
 import CheckOut from "./CheckOut/CheckOut";
@@ -87,6 +88,7 @@ class Carts extends Component {
 				</div>
 
 				<Footer store={this.props.site && this.props.site.store} />
+				<FooterBottom store={this.props.site && this.props.site.store} />
 			</Fragment>
 		);
 	}

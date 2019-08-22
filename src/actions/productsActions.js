@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_CATEGORIES, GET_PRODUCTS_FEATURED , UPLOAD_IMAGES, DELETE_IMAGE, GET_COLLECTIONS, GET_VARIANTS, CLEAR_IMAGES, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY, GET_PRODUCT_EDIT, GET_BRANDS, GET_PRODUCTS_SHOP, PRODUCT_SINGLE, GET_CART_ITEMS, CLEAR_ERRORS } from './types';
+import { GET_ERRORS, GET_CATEGORIES, GET_PRODUCTS_FEATURED , GET_COLLECT_PRODUCTS , UPLOAD_IMAGES, DELETE_IMAGE, GET_COLLECTIONS, GET_VARIANTS, CLEAR_IMAGES, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY, GET_PRODUCT_EDIT, GET_BRANDS, GET_PRODUCTS_SHOP, PRODUCT_SINGLE, GET_CART_ITEMS, CLEAR_ERRORS } from './types';
 import axios from 'axios'
 import { asyncActionStart, asyncActionFinish } from './asyncActions'
 import axiosService from '../services/axiosService'
@@ -162,6 +162,37 @@ export const addCollection = (dataToSubmit) => {
 
 
 
+export const getCollectProducts = (type = "collections" , id) => {
+
+
+    return (dispatch) => {
+
+        axiosInstance.get(`/products/collections/get?type=${type}&id=${id}`)
+            .then((response) => {
+                dispatch({
+
+                    type: GET_COLLECT_PRODUCTS,
+                    payload: response.data
+
+                })
+
+
+        
+
+            })
+
+            .catch((err) => {
+
+                console.log(err);
+
+
+            })
+
+
+
+    }
+
+}
 
 
 export const getCollections = () => {

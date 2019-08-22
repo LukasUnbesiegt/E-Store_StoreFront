@@ -14,6 +14,7 @@ import {
 	GET_PRODUCTS_BY_CATEGORY,
 	GET_COLLECTIONS,
 	GET_VARIANTS,
+	GET_COLLECT_PRODUCTS,
 	GET_PRODUCTS_FEATURED
 } from "../actions/types";
 
@@ -25,6 +26,12 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 		case GET_VARIANTS:
 			return { ...state, variants: action.payload };
+		case GET_COLLECT_PRODUCTS:
+			return {
+				...state,
+				collectProducts: action.payload
+			};
+
 		case GET_COLLECTIONS:
 			return { ...state, collections: action.payload };
 		case GET_CATEGORIES:
