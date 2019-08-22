@@ -19,14 +19,16 @@ class Product extends Component {
 					<span>{product.price.normal}</span>
 					<div className="my-2">
 						<a href="#" className="ml-2">
-							<i className="ni ni-favourite-28 text-success" />
+							<i
+								className="ni ni-favourite-28"
+								style={{ color: `${globalStyle.backgroundColor}` }}
+							/>
 						</a>{" "}
 						{product.likes}
 					</div>
 				</div>
 			);
 		} else {
-			console.log("here we are");
 			return (
 				<div className="price">
 					{product.price.normal} kyats
@@ -106,6 +108,7 @@ class Product extends Component {
 								onClick={() => {
 									this.props.addLike(product._id);
 								}}
+								style={{ color: `${globalStyle.backgroundColor}` }}
 							>
 								<i className="ni ni-favourite-28 m-1" />
 							</a>

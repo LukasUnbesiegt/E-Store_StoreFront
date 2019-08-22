@@ -74,7 +74,7 @@
 	display: inline-block;
 }
 .product-grid3 .social li a {
-	color: #43e97b;
+	color: grey;
 	background: #fff;
 	font-size: 18px;
 	line-height: 50px;
@@ -87,12 +87,12 @@
 	transition: all 0.3s ease 0s;
 }
 .product-grid3 .social li a:hover {
-	background: #43e97b;
+	background: grey;
 	color: #fff;
 }
 .product-grid3 .product-discount-label,
 .product-grid3 .product-new-label {
-	background-color: #43e97b;
+	background-color: grey;
 	color: #fff;
 	font-size: 17px;
 	padding: 2px 10px;
