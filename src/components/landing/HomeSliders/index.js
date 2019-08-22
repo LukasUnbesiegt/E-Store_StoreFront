@@ -23,12 +23,8 @@ class index extends Component {
 							backgroundSize: "cover",
 							backgroundRepeat: "no-repeat",
 							cursor: "pointer",
-							objectFit: "fill",
-							width: "100%",
-							maxHeight:
-								this.props.browser.orientation === "portrait"
-									? "240px"
-									: "500px"
+							objectFit: "cover",
+							width: "100%"
 						}}
 						className="img-fluid"
 						onClick={() => {
