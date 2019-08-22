@@ -47,7 +47,7 @@ class ProductDetails extends Component {
         if (this.props.product) {
             const { category } = this.props.product
 
-            console.log(category)
+          
             if (category) {
 
                 this.props.getProductsByCat(category._id)
@@ -79,7 +79,7 @@ class ProductDetails extends Component {
 
     renderChips = (items, cat) => {
 
-        console.log('items'  , items)
+        
 
         return items.map((item, i) => {
 
@@ -117,7 +117,8 @@ class ProductDetails extends Component {
                     />
                     <span    style={{
 
-fontSize : '11px'
+fontSize : '11px' ,
+
 }}>{item[cat]}</span>
                 </div>
 
@@ -253,7 +254,7 @@ fontSize : '11px'
                         <div className="container-fluid" style={{ display: 'flex', padding: '10px', flexWrap: 'wrap' }}>
 
                             <div className="">
-                                <span className="mr-3">{variant}</span>
+                                <span className="mr-3 font-weight-bold">{variant}</span>
                                 <span className="text-muted"> {this.state.currentProductAdded.variants[variant] ? this.state.currentProductAdded.variants[variant] : 'none'} </span>
                             </div>
 
