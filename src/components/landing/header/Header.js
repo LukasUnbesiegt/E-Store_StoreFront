@@ -34,11 +34,19 @@ class Header extends Component {
 
 		if (products.collections && products.collections.length > 0) {
 			return products.collections.map(collection => {
-				return <CollectionSec collection={collection} push={this.props.push} />;
+				return (
+					<div className="col-md-6 col-sm-12">
+						<CollectionSec collection={collection} push={this.props.push} />;
+					</div>
+				);
 			});
 		} else {
 			return collectionsSample.map(collection => {
-				return <CollectionSec collection={collection} push={this.props.push} />;
+				return (
+					<div className="col-md-6 col-sm-12">
+						<CollectionSec collection={collection} push={this.props.push} />;
+					</div>
+				);
 			});
 		}
 	};
@@ -63,7 +71,7 @@ class Header extends Component {
 
 				<Featured />
 
-				<div className="text-center container-fluid my-5 py-3">
+				<div className="text-center container-fluid my-5 py-3 row">
 					{this.renderCollectionSections()}
 				</div>
 				<TermsAndConds />

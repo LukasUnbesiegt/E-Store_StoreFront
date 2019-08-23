@@ -6,7 +6,7 @@ class index extends Component {
 
 		return (
 			<section>
-				<div className="container-fluid">
+				<div className="">
 					<h5 className="text-center  display-4">{collection.name}</h5>
 					<img
 						src={collection.image}

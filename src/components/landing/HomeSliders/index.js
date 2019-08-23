@@ -14,7 +14,8 @@ class index extends Component {
 		const { sliders } = this.props;
 		if (sliders && sliders.length > 0) {
 			return sliders.map(({ image, collection }) => {
-				console.log("sliders", image);
+				console.log("collection", collection);
+
 				return (
 					<img
 						src={image}
@@ -28,13 +29,14 @@ class index extends Component {
 						}}
 						className="img-fluid"
 						onClick={() => {
-							this.props.getProductsForShop(1, { collections: [collection] });
+							this.props.push(`/collection/?type=collections&id=${collection}`);
 						}}
 					/>
 				);
 			});
 		} else {
 			return slidersSample.map(({ image, collection }) => {
+				console.log("collection", collection);
 				return (
 					<img
 						src={image}
@@ -48,7 +50,7 @@ class index extends Component {
 							width: "100%"
 						}}
 						onClick={() => {
-							this.props.getProductsForShop(1, { collections: [collection] });
+							this.props.push(`/collection/?type=collections&id=${collection}`);
 						}}
 					/>
 				);
