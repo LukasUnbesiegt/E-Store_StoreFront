@@ -12,7 +12,7 @@ import PromoCodeForm from "../PromoCodes/promocodeForm/PromoCode";
 import Authenticated from "../../misc/HOC/Authenticated";
 import { isEmpty } from "../../../utils/isEmpty";
 import { globalStyle } from "../../../config";
-
+import CheckOutImg from "./img/checkout.svg";
 class Carts extends Component {
 	componentDidMount = () => {
 		this.props.getCartQty();
@@ -35,8 +35,16 @@ class Carts extends Component {
 				);
 			} else {
 				return (
-					<div>
-						<h4 className="text-center">No Items Now</h4>
+					<div className="text-center">
+						<h4>No Items Now</h4>
+						<img
+							style={{
+								width: "200px",
+								height: "200px"
+							}}
+							className="img-fluid"
+							src={CheckOutImg}
+						/>
 					</div>
 				);
 			}

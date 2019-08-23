@@ -20,7 +20,7 @@ function FooterBottom(props) {
 								style={{ textDecoration: "none" }}
 								href="https://www.facebook.com/profile.php?id=1012194292"
 							>
-								blackhelios
+								blackhelio
 							</a>
 						</span>
 					</div>
