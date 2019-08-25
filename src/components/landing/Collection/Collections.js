@@ -5,7 +5,7 @@ import Authenticated from "../../misc/HOC/Authenticated";
 import { connect } from "react-redux";
 import Footer from "../footer/Footer";
 import { Link } from "react-router-dom";
-import { getCollectProducts } from "../../../actions/productsActions";
+import { getCollectProducts, addLike } from "../../../actions/productsActions";
 import FooterBottom from "../footer/FooterBottom/FooterBottom";
 import Product from "../../landing/Products/Product/Product";
 import { globalStyle } from "../../../config";
@@ -24,7 +24,7 @@ class Collections extends Component {
 			return this.props.productsByCollection.products.map(product => {
 				return (
 					<div className="col-md-3">
-						<Product product={product} />;
+						<Product product={product} addLike={this.props.addLike} />;
 					</div>
 				);
 			});
@@ -77,6 +77,9 @@ const mapStateToProps = state => ({
 	productsByCollection: state.products ? state.products.collectProducts : null
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { addLike };
 
-export default connect(mapStateToProps)(Authenticated(Collections, true));
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Authenticated(Collections, true));
