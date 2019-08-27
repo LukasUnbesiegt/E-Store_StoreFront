@@ -88,6 +88,7 @@ class Product extends Component {
 	singleProductGo = () => {
 		const { product } = this.props;
 		this.props.singleProductRedirect(product);
+		console.log("product", product);
 	};
 
 	renderProduct = () => {

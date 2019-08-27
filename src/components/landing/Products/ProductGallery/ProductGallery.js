@@ -4,7 +4,7 @@ import styles from "./ProductGallery.module.css";
 import "react-image-gallery/styles/css/image-gallery.css";
 import defaultImg from "./placeholder.png";
 import ImageGallery from "react-image-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
+
 const sampleImages = [
 	{
 		original: `https://via.placeholder.com/400`,
@@ -24,9 +24,6 @@ const sampleImages = [
 ];
 class ProductGallery extends Component {
 	state = { modalIsOpen: false };
-	toggleModal = () => {
-		this.setState(state => ({ modalIsOpen: !state.modalIsOpen }));
-	};
 
 	render() {
 		const { images } = this.props;
@@ -46,19 +43,7 @@ class ProductGallery extends Component {
 					lazyLoad={true}
 					showFullscreenButton={false}
 					showPlayButton={false}
-					onClick={() => {
-						this.toggleModal();
-					}}
 				/>
-				<ModalGateway>
-					{this.state.modalIsOpen ? (
-						<Modal onClose={this.toggleModal}>
-							<Carousel
-								views={modalImages.length > 0 ? modalImages : sampleImages}
-							/>
-						</Modal>
-					) : null}
-				</ModalGateway>
 			</Fragment>
 		);
 	}
