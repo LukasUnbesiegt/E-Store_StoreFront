@@ -7,35 +7,10 @@ import { connect } from "react-redux";
 
 class ProductSlide extends Component {
 	render() {
-		// const settings = {
-		// 	speed: 2000,
-		// 	autoplaySpeed: 2000,
-		// 	slidesToShow: 4,
-		// 	slidesToScroll: 4,
-		// 	autoplay: true,
-		// 	arrow: true,
-		// 	responsive: [
-		// 		{
-		// 			breakpoint: 600,
-		// 			settings: {
-		// 				slidesToShow: 1,
-		// 				slidesToScroll: 1,
-		// 				initialSlide: 1
-		// 			}
-		// 		},
-		// 		{
-		// 			breakpoint: 480,
-		// 			settings: {
-		// 				slidesToShow: 1,
-		// 				slidesToScroll: 1
-		// 			}
-		// 		}
-		// 	]
-		// };
 		const renderProducts = () => {
 			return this.props.products.map((product, index) => {
 				return (
-					<div className="mx-3 px-2">
+					<div className="mx-3 px-2" key={index}>
 						<Product product={product} />
 					</div>
 				);
@@ -56,13 +31,13 @@ class ProductSlide extends Component {
 						animationSpeed={1500}
 						arrowLeft={
 							<i
-								class="fas fa-arrow-left"
+								className="fas fa-arrow-left"
 								style={{ fontSize: "1.6rem", cursor: "pointer" }}
 							/>
 						}
 						arrowRight={
 							<i
-								class="fas fa-arrow-right"
+								className="fas fa-arrow-right"
 								style={{ fontSize: "1.6rem", cursor: "pointer" }}
 							/>
 						}

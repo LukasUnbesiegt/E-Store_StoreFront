@@ -5,8 +5,6 @@ import { globalStyle } from "../../../config";
 
 class Footer extends Component {
 	render() {
-		console.log("store", this.props.store);
-
 		return (
 			<div
 				className={`${styles.footerDark}`}

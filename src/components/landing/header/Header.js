@@ -33,17 +33,17 @@ class Header extends Component {
 		const { products } = this.props;
 
 		if (products.collections && products.collections.length > 0) {
-			return products.collections.map(collection => {
+			return products.collections.map((collection, index) => {
 				return (
-					<div className="col-md-6 col-sm-12">
+					<div className="col-md-6 col-sm-12" key={index}>
 						<CollectionSec collection={collection} push={this.props.push} />;
 					</div>
 				);
 			});
 		} else {
-			return collectionsSample.map(collection => {
+			return collectionsSample.map((collection, index) => {
 				return (
-					<div className="col-md-6 col-sm-12">
+					<div className="col-md-6 col-sm-12" key={index}>
 						<CollectionSec collection={collection} push={this.props.push} />;
 					</div>
 				);

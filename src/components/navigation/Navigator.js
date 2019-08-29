@@ -34,7 +34,6 @@ class Navigator extends Component {
     };
 
 
-
     handleWidthChange = () => {
         this.setState({
             width: window.innerWidth
@@ -79,11 +78,11 @@ class Navigator extends Component {
 
     renderLists = (arr , type) => {
 
-return arr.map((list) => {
+return arr.map((list , index) => {
 
 
     return (
-        <DropdownItem tag="a" href={`/products?${type}=${list._id}`}  style={{fontSize : '1.1rem' , color : 'black'}}  >{list.name}</DropdownItem>
+        <DropdownItem key={index} tag="a" href={`/products?${type}=${list._id}`}  style={{fontSize : '1.1rem' , color : 'black'}}  >{list.name}</DropdownItem>
     )
         
 
@@ -95,11 +94,11 @@ return arr.map((list) => {
     }
     renderListsCollection = (arr , type) => {
 
-        return arr.map((list) => {
+        return arr.map((list , index) => {
         
         
             return (
-                <DropdownItem tag="a" href={`/collection/?type=collections&id=${list._id}`}  style={{fontSize : '1.1rem' , color : 'black'}}  >{list.name}</DropdownItem>
+                <DropdownItem key={index} tag="a" href={`/collection/?type=collections&id=${list._id}`}  style={{fontSize : '1.1rem' , color : 'black'}}  >{list.name}</DropdownItem>
             )
                 
         

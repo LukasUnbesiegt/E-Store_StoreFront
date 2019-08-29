@@ -7,9 +7,7 @@ class index extends Component {
 		const { categories } = this.props;
 
 		if (categories) {
-			console.log(categories);
 			return categories.map(({ image, _id, name }) => {
-				console.log(image);
 				return (
 					<Fragment>
 						<div className="d-flex flex-column">
@@ -45,25 +43,6 @@ class index extends Component {
 			dots: true,
 			arrow: true,
 			lazyLoad: true
-
-			// responsive: [
-
-			//     {
-			//         breakpoint: 600,
-			//         settings: {
-			//             slidesToShow: 4,
-			//             slidesToScroll: 4,
-			//             initialSlide: 4
-			//         }
-			//     },
-			//     {
-			//         breakpoint: 480,
-			//         settings: {
-			//             slidesToShow: 4,
-			//             slidesToScroll: 4
-			//         }
-			//     }
-			// ]
 		};
 
 		return (

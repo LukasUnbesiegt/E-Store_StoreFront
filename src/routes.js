@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import {
 	getSiteSettings,
@@ -48,8 +49,17 @@ class Routes extends Component {
 	};
 
 	render() {
+		let storeName;
+
+		if (this.props.site && this.props.site.store) {
+			storeName = this.props.site.store.name;
+		}
+
 		return (
 			<div>
+				<Helmet>
+					<title>{storeName || "Sample Store"}</title>
+				</Helmet>
 				<ModalManager />
 
 				<Switch>
@@ -88,7 +98,8 @@ class Routes extends Component {
 
 const mapStateToProps = state => {
 	return {
-		userData: state.user ? state.user.userData : null
+		userData: state.user ? state.user.userData : null,
+		site: state.site ? state.site.site : null
 	};
 };
 

@@ -13,11 +13,10 @@ class index extends Component {
 	renderImages = () => {
 		const { sliders } = this.props;
 		if (sliders && sliders.length > 0) {
-			return sliders.map(({ image, collection }) => {
-				console.log("collection", collection);
-
+			return sliders.map(({ image, collection }, index) => {
 				return (
 					<img
+						key={index}
 						src={image}
 						style={{
 							backgroundPosition: "center",
@@ -35,10 +34,10 @@ class index extends Component {
 				);
 			});
 		} else {
-			return slidersSample.map(({ image, collection }) => {
-				console.log("collection", collection);
+			return slidersSample.map(({ image, collection }, index) => {
 				return (
 					<img
+						key={index}
 						src={image}
 						className=""
 						style={{

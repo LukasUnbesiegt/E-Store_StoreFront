@@ -29,8 +29,8 @@ export default function(ComposedClass) {
 						<Loader
 							type="Audio"
 							color={globalStyle.backgroundColor}
-							height="100"
-							width="100"
+							width={100}
+							height={100}
 						/>
 					</div>
 				);
