@@ -57,7 +57,9 @@ export function accountKitLogin(code) {
 
 export function auth() {
 	return dispatch => {
+		dispatch(asyncActionStart());
 		axiosInstance.get("/users/auth").then(response => {
+			dispatch(asyncActionFinish());
 			dispatch({
 				type: AUTH_USER,
 				payload: response.data

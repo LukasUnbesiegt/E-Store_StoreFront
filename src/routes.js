@@ -39,7 +39,15 @@ import OnSale from "./components/landing/Products/OnSale/OnSale";
 import { globalStyle } from "./config";
 import Loader from "react-loader-spinner";
 class Routes extends Component {
+	state = {
+		loading: true
+	};
 	componentDidMount = () => {
+		setTimeout(() => {
+			this.setState({
+				loading: false
+			});
+		}, 1400);
 		this.props.getCategories();
 		this.props.getBrands();
 		this.props.getDeliveries();
@@ -59,7 +67,7 @@ class Routes extends Component {
 			storeName = this.props.site.site.store.name;
 		}
 
-		if (!this.props.async.loading) {
+		if (!this.state.loading) {
 			return (
 				<div>
 					<Helmet>
@@ -124,7 +132,6 @@ class Routes extends Component {
 const mapStateToProps = state => {
 	return {
 		userData: state.user ? state.user.userData : null,
-
 		products: state.products,
 		user: state.user,
 		async: state.async,
