@@ -36,6 +36,8 @@ import ProductsByCollection from "./components/landing/Collection/Collections";
 import AboutUs from "./components/landing/Why/Why";
 import PromoCollections from "./components/landing/Products/OnSale/OnSale";
 import OnSale from "./components/landing/Products/OnSale/OnSale";
+import { globalStyle } from "./config";
+import Loader from "react-loader-spinner";
 class Routes extends Component {
 	componentDidMount = () => {
 		this.props.getCategories();
@@ -53,63 +55,76 @@ class Routes extends Component {
 	render() {
 		let storeName;
 
-		if (this.props.site && this.props.site.store) {
-			storeName = this.props.site.store.name;
+		if (this.props.site.site && this.props.site.site.store) {
+			storeName = this.props.site.site.store.name;
 		}
 
-		return (
-			<div>
-				<Helmet>
-					<title>{storeName || "Sample Store"}</title>
-				</Helmet>
-				<ModalManager />
+		if (!this.props.async.loading) {
+			return (
+				<div>
+					<Helmet>
+						<title>{storeName || "Sample Store"}</title>
+					</Helmet>
+					<ModalManager />
 
-				<Switch>
-					<Route
-						exact
-						render={props => (
-							<Header
-								sendEnquiry={this.props.sendEnquiry}
-								user={this.props.user.userData}
-								browser={this.props.browser}
-								site={this.props.site.site}
-								router={this.props.router}
-							/>
-						)}
-						path="/"
+					<Switch>
+						<Route
+							exact
+							render={props => (
+								<Header
+									sendEnquiry={this.props.sendEnquiry}
+									user={this.props.user.userData}
+									browser={this.props.browser}
+									site={this.props.site.site}
+									router={this.props.router}
+								/>
+							)}
+							path="/"
+						/>
+						<Route
+							render={props => <ProductDetails user={this.props.userData} />}
+							path="/pdetails"
+						/>
+						<Route render={props => <Products />} path="/products" />
+						<Route
+							render={props => (
+								<ProductsByCollection
+									getCollectProducts={this.props.getCollectProducts}
+								/>
+							)}
+							path="/collection"
+						/>
+						<Route render={props => <OnSale />} path="/onsale" />
+						<Route render={props => <AboutUs />} path="/about" />
+						<Route render={props => <Orders />} path="/orders" />
+						<Route render={props => <Carts />} path="/carts" />
+						<Route render={props => <ContactUs />} path="/storeinfo" />
+						<Route render={props => <Account />} path="/account" />
+						<Route render={props => <LoginCustomer />} path="/customer-login" />
+						<Route render={props => <LoginAdmin />} path="/admin" />
+						<Route component={NotFound} />
+					</Switch>
+				</div>
+			);
+		} else {
+			return (
+				<div className="d-flex justify-content-center align-items-center h-100vh">
+					<Loader
+						type="Audio"
+						color={globalStyle.backgroundColor}
+						width={100}
+						height={100}
 					/>
-					<Route
-						render={props => <ProductDetails user={this.props.userData} />}
-						path="/pdetails"
-					/>
-					<Route render={props => <Products />} path="/products" />
-					<Route
-						render={props => (
-							<ProductsByCollection
-								getCollectProducts={this.props.getCollectProducts}
-							/>
-						)}
-						path="/collection"
-					/>
-					<Route render={props => <OnSale />} path="/onsale" />
-					<Route render={props => <AboutUs />} path="/about" />
-					<Route render={props => <Orders />} path="/orders" />
-					<Route render={props => <Carts />} path="/carts" />
-					<Route render={props => <ContactUs />} path="/storeinfo" />
-					<Route render={props => <Account />} path="/account" />
-					<Route render={props => <LoginCustomer />} path="/customer-login" />
-					<Route render={props => <LoginAdmin />} path="/admin" />
-					<Route component={NotFound} />
-				</Switch>
-			</div>
-		);
+				</div>
+			);
+		}
 	}
 }
 
 const mapStateToProps = state => {
 	return {
 		userData: state.user ? state.user.userData : null,
-		site: state.site ? state.site.site : null,
+
 		products: state.products,
 		user: state.user,
 		async: state.async,

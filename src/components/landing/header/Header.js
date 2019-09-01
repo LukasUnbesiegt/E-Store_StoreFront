@@ -23,9 +23,11 @@ import { getProductsForShop } from "../../../actions/productsActions";
 import CollectionSec from "../RenderCollections";
 import CategoriesSec from "../RenderCategory";
 import { isEmpty } from "../../../utils/isEmpty";
+import { globalStyle } from "../../../config";
 import { collectionsSample } from "../../seeds/contents";
 import FeaturedProducts from "../Products/FeaturedProducts/FeaturedProducts";
 import GoogleMaps from "../GoogleMaps/GoogleMaps";
+
 class Header extends Component {
 	renderCollectionSections = () => {
 		const { products } = this.props;
