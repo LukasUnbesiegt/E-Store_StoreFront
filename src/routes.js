@@ -14,7 +14,8 @@ import {
 	getCollections,
 	getProductsByCat,
 	getProductsFeatured,
-	getCollectProducts
+	getCollectProducts,
+	getProductsForShop
 } from "./actions/productsActions";
 import { getOrdersById, sendEnquiry } from "./actions/customerActions";
 import { getDeliveries } from "./actions/settingsActions";
@@ -45,6 +46,7 @@ class Routes extends Component {
 		this.props.getCartQty();
 		this.props.getSliders();
 		this.props.getFAQs();
+		this.props.auth();
 		this.props.getProductsFeatured();
 	};
 
@@ -65,7 +67,15 @@ class Routes extends Component {
 				<Switch>
 					<Route
 						exact
-						render={props => <Header sendEnquiry={this.props.sendEnquiry} />}
+						render={props => (
+							<Header
+								sendEnquiry={this.props.sendEnquiry}
+								user={this.props.user.userData}
+								browser={this.props.browser}
+								site={this.props.site.site}
+								router={this.props.router}
+							/>
+						)}
 						path="/"
 					/>
 					<Route
@@ -99,7 +109,13 @@ class Routes extends Component {
 const mapStateToProps = state => {
 	return {
 		userData: state.user ? state.user.userData : null,
-		site: state.site ? state.site.site : null
+		site: state.site ? state.site.site : null,
+		products: state.products,
+		user: state.user,
+		async: state.async,
+		browser: state.browser,
+		site: state.site,
+		router: state.router
 	};
 };
 
@@ -115,6 +131,7 @@ const mapDispatchToProps = {
 	getProductsByCat,
 	sendEnquiry,
 	getFAQs,
+	auth,
 	getProductsFeatured,
 	getCollectProducts
 };

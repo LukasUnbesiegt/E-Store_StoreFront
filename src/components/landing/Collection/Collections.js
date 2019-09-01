@@ -21,9 +21,9 @@ class Collections extends Component {
 			this.props.productsByCollection &&
 			this.props.productsByCollection.products
 		) {
-			return this.props.productsByCollection.products.map(product => {
+			return this.props.productsByCollection.products.map((product, index) => {
 				return (
-					<div className="col-md-3">
+					<div className="col-md-3" key={index}>
 						<Product product={product} addLike={this.props.addLike} />;
 					</div>
 				);
@@ -32,7 +32,6 @@ class Collections extends Component {
 	};
 
 	render() {
-		console.log("products", this.props.productsByCollection);
 		return (
 			<Fragment>
 				<SmallNav

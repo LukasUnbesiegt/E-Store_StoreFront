@@ -22,13 +22,11 @@ import Authenticated from "../../misc/HOC/Authenticated";
 import { getProductsForShop } from "../../../actions/productsActions";
 import CollectionSec from "../RenderCollections";
 import CategoriesSec from "../RenderCategory";
+import { isEmpty } from "../../../utils/isEmpty";
 import { collectionsSample } from "../../seeds/contents";
 import FeaturedProducts from "../Products/FeaturedProducts/FeaturedProducts";
 import GoogleMaps from "../GoogleMaps/GoogleMaps";
 class Header extends Component {
-	sample = () => {
-		console.log("sample");
-	};
 	renderCollectionSections = () => {
 		const { products } = this.props;
 
@@ -52,19 +50,19 @@ class Header extends Component {
 	};
 
 	render() {
+		console.log("store", this.props.site);
 		const { products } = this.props;
-		let categories;
-
+		let categories, store;
+		if (!isEmpty(this.props.site)) {
+			store = this.props.site.store;
+		}
 		if (products.categories) {
 			categories = products.categories;
 		}
 
 		return (
 			<Fragment>
-				<SmallNav
-					browser={this.props.browser}
-					store={this.props.site && this.props.site.store}
-				/>
+				<SmallNav browser={this.props.browser} store={store} />
 				<Navigator user={this.props.user} />
 
 				<Sliders getProductsForShop={this.props.getProductsForShop} />
@@ -104,4 +102,4 @@ const mapDispatchToProps = {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Authenticated(Header));
+)(Header);

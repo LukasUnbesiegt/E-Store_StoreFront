@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import withUnmounted from "@ishawnwang/withunmounted";
 import { auth } from "../../../actions/userActions";
 import { withRouter } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { globalStyle } from "../../../config";
-import { stat } from "fs";
+
 export default function(ComposedClass) {
 	class AuthenticationCheck extends Component {
 		componentDidMount() {
@@ -53,5 +54,5 @@ export default function(ComposedClass) {
 	return connect(
 		mapStateToProps,
 		mapDispatchToProps
-	)(AuthenticationCheck);
+	)(withUnmounted(AuthenticationCheck));
 }
