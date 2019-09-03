@@ -22,6 +22,7 @@ class FormComp extends Component {
 			submitCB,
 			handleSubmit,
 			valid,
+			loading,
 			pristine,
 			submitting,
 			errors,
@@ -77,7 +78,13 @@ class FormComp extends Component {
 					}}
 					disabled={submitting || pristine}
 				>
-					Login
+					{loading && (
+						<i
+							class="fas fa-spinner fa-spin"
+							style={{ marginRight: "5px", fontSize: "20px" }}
+						></i>
+					)}
+					{loading ? `Loggin In Please Wait` : `Login`}
 				</button>
 			</form>
 		);

@@ -15,8 +15,14 @@ class LoginRegisterForm extends Component {
 	constructor(props) {
 		super(props);
 		this.receiver = React.createRef();
+		this.state = {
+			loading: false
+		};
 	}
 	onSubmitHandler = data => {
+		this.setState({
+			loading: true
+		});
 		this.props.loginUser(data, async token => {
 			console.log("token", token);
 			await this.receiver.current.contentWindow.postMessage(
@@ -24,7 +30,9 @@ class LoginRegisterForm extends Component {
 				REDIRECT_URL
 			);
 			// BUG - NOT REDIRECTING - TODO
-			console.log("login happen");
+			this.setState({
+				loading: false
+			});
 			window.location.assign(REDIRECT_URL);
 		});
 	};
@@ -38,6 +46,7 @@ class LoginRegisterForm extends Component {
 				>
 					<FormComp
 						submitCB={this.onSubmitHandler}
+						loading={this.state.loading}
 						errorsServer={
 							this.props.errors.errors ? this.props.errors.errors : {}
 						}

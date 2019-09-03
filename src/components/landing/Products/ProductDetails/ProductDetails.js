@@ -138,7 +138,7 @@ fontSize : '11px' ,
     addQuantity = () => {
 
         let price;
-        if (this.props.product.details.onsale) {
+        if (this.props.product.promo) {
             price = this.props.product.price.promo;
         } else {
             price = this.props.product.price.normal;
@@ -161,7 +161,7 @@ fontSize : '11px' ,
     removeQuantity = () => {
 
         let price;
-        if (this.props.product.details.onsale) {
+        if (this.props.product.promo) {
             price = this.props.product.price.promo;
         } else {
             price = this.props.product.price.normal;
@@ -402,6 +402,14 @@ fontSize : '11px' ,
 
 
                         {renderPriceLabel()}
+                        <div className="my-3">
+
+{renderVariants()}
+</div>
+<Divider style={{
+margin: '10px',
+
+}} />
                         <div className={`${styles.addToCartWrapper}`}>
 
 <div className="mx-2">
@@ -451,7 +459,10 @@ fontSize : '11px' ,
 
                             </span>
                         </div>
+                        <Divider style={{
+margin: '10px',
 
+}} />
 
 
                         <div className="my-3">
@@ -462,15 +473,8 @@ fontSize : '11px' ,
 
                         </div>
 
-                        <div className="my-3">
-
-                            {renderVariants()}
-                        </div>
-                        <Divider style={{
-                            margin: '10px',
-
-                        }} />
-
+                     
+                  
 
                         <div className="my-3">
 
@@ -700,14 +704,9 @@ fontSize : '11px' ,
 
                 />
 
-
-
-
                 <div className="">
                     {buttonsDisplay()}
                 </div>
-
-
 
                 <div className="container-fluid py-3">
                     <div className="row">
@@ -717,8 +716,6 @@ fontSize : '11px' ,
                     </div>
 
                 </div>
-
-
 
                 {/*  Products Recommendations  */}
 
@@ -733,10 +730,6 @@ fontSize : '11px' ,
 
                 </div>
 
-
-
-
-
                 <Footer />
 
             </Fragment >
@@ -747,7 +740,6 @@ fontSize : '11px' ,
 
 
 const mapStateToProps = (state) => ({
-
     product: state.products ? state.products.singleProduct : null,
     productsByCat: state.products ? state.products.productsByCat : null,
     browser: state.browser,
@@ -755,7 +747,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-
     addToCart,
     addLike, getProductsByCat
 }
