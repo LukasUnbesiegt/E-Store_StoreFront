@@ -219,9 +219,7 @@ return arr.map((list , index) => {
                     <li className="nav-item">
                         <NavLink activeStyle={{borderBottom : '1px solid #fff'}} className="nav-link" to="/about" style={{fontSize: '1.1rem'}}>About Us</NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink activeStyle={{borderBottom : '1px solid #fff'}} className="nav-link" to="/admin" style={{fontSize: '1.1rem'}}>Owner Login</NavLink>
-                    </li>
+                  
                  
 
                     {renderUserDropdown()}
