@@ -212,7 +212,7 @@ fontSize : '11px' ,
 
         const { product, productsByCat } = this.props;
         console.log(productsByCat)
-        function createMarkup() { return { __html: product.details.description || '<p>no descriptions</p>' }; };
+        function createMarkup() { return { __html: product.details ?  product.details.description : '<p>no descriptions</p>' }; };
         const buttonsDisplay = () => {
 
             return (
@@ -484,7 +484,7 @@ margin: '10px',
                                     letterSpacing: '2px'
                                 }}
                             >
-                                SKU : {product.details.sku}
+                                SKU : {product.details ? product.details.sku :  'no sku'}
                             </span>
                         </div>
                         <div className="my-3">
