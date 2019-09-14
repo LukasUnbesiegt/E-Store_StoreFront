@@ -1,7 +1,7 @@
 import { reduxForm, Field } from "redux-form";
 import TextInput from "../../../misc/forms/inputs/TextInput";
 import { UncontrolledTooltip } from "reactstrap";
-
+import { globalStyle } from "../../../../config";
 import React from "react";
 
 function FormPromo({ handleSubmit, submitCallback, errorsServer }) {
@@ -34,7 +34,10 @@ function FormPromo({ handleSubmit, submitCallback, errorsServer }) {
 					<UncontrolledTooltip
 						placement="left"
 						target="UncontrolledTooltipExample"
-						style={{ color: "#fff", backgroundColor: "#fae44d" }}
+						style={{
+							color: "#fff",
+							backgroundColor: globalStyle.backgroundColor
+						}}
 					>
 						please apply only when you finish shopping or you can't get full
 						discount
@@ -53,7 +56,10 @@ function FormPromo({ handleSubmit, submitCallback, errorsServer }) {
 
 				<button
 					className="btn btn-sm ml-3 mb-3"
-					style={{ backgroundColor: "#fae44d", color: "#fff" }}
+					style={{
+						backgroundColor: globalStyle.backgroundColor,
+						color: "#fff"
+					}}
 				>
 					apply
 				</button>

@@ -110,7 +110,10 @@ class Products extends Component {
 				<div className="col-md-2 col-sm-12  py-2">
 					<button
 						className="btn "
-						style={{ backgroundColor: `${globalStyle.backgroundColor}` }}
+						style={{
+							backgroundColor: `${globalStyle.backgroundColor}`,
+							color: "#fff"
+						}}
 						onClick={() => {
 							this.props.getProductsForShop(page, filters, name);
 						}}

@@ -226,7 +226,7 @@ fontSize : '11px' ,
                     <div>
                         <Link
                             className="btn btn-sm mr-3"
-                            style={{backgroundColor : `${globalStyle.backgroundColor}`}}
+                            style={{backgroundColor : `${globalStyle.backgroundColor}` , color : '#fff'}}
                             to="/products"
                         >back to products</Link>
 
@@ -433,6 +433,7 @@ margin: '10px',
     <button
         className="btn  btn-sm btn-outline-dark"
         onClick={this.addToCart}
+        disabled={this.state.currentProductAdded.quantity === 0}
     >
         Add to Carts
           </button>
