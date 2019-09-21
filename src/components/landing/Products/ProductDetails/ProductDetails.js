@@ -14,13 +14,14 @@ import styles from './ProductDetails.module.css'
 import Authenticated from '../../../misc/HOC/Authenticated'
 import {globalStyle} from '../../../../config'
 
+
 class ProductDetails extends Component {
 
 
 
     state = {
 
-
+        selected : null,
         currentProductAdded: {
             _id: uuid(),
             TotalPrice: 0,
@@ -32,6 +33,17 @@ class ProductDetails extends Component {
 
     }
 
+setSelected = (name) => {
+        this.setState({
+            selected : name
+        })
+}
+    // componentWillUnmount() {
+    //     this.setState({
+    //         selected : null
+    //     })
+    // }
+    
     componentWillReceiveProps = (prevProps) => {
 
 
@@ -47,17 +59,13 @@ class ProductDetails extends Component {
         if (this.props.product) {
             const { category } = this.props.product
 
-          
+    
             if (category) {
-
                 this.props.getProductsByCat(category._id)
-
             }
 
         }
-
         window.scrollTo(0, 0)
-
     }
 
 
@@ -79,25 +87,18 @@ class ProductDetails extends Component {
 
     renderChips = (items, cat) => {
 
-        
-
+    
         return items.map((item, i) => {
-
-
+         console.log('item' , item);
             let bgColor;
             if (cat === 'color') {
-
                 bgColor = item['color']
             }
 
-
             return (
-                <div className="d-flex flex-column my-1">
+                <div className="d-flex flex-column my-1" >
 
-
-                   
-                        
-                    
+        
                     <img
                         className="img-thumbnail img-fluid"
                         key={i}
@@ -108,28 +109,25 @@ class ProductDetails extends Component {
                             width: '40px',
                             height: '40px',
                             margin: '5px',
-                            padding: '5px'
+                            padding: '5px' ,
+                            border : this.state.selected === `${item[cat]}-${cat}` ? `1px solid ${globalStyle.backgroundColor}` : 'none'
                         }}
 
-                        onClick={() => { this.selectedVariant(item[cat], cat) }}
+                        onClick={() => { 
+                            this.selectedVariant(item[cat], cat) 
+                            this.setState({
+                                selected : `${item[cat]}-${cat}`
+                            })
+                            } }
                         clickable={true}
 
                     />
-                    <span    style={{
-
-fontSize : '11px' ,
-
-}}>{item[cat]}</span>
+                    <span   style={{ fontSize : '11px' }}>{item[cat]}</span>
                 </div>
 
             );
 
-
-
         })
-
-
-
 
 
     }
@@ -193,6 +191,7 @@ fontSize : '11px' ,
         this.props.addToCart(this.state.currentProductAdded)
 
         this.setState({
+            selected : null ,
             currentProductAdded: {
                 _id: uuid(),
                 TotalPrice: 0,
@@ -251,15 +250,20 @@ fontSize : '11px' ,
                 return Object.keys(variants).map((variant) => {
 
                     return (
-                        <div className="container-fluid" style={{ display: 'flex', padding: '10px', flexWrap: 'wrap' }}>
+                        <div className="container-fluid my-1 shadow-sm " style={{border : '0.3px solid grey' , padding : '10px'}} >
 
-                            <div className="">
-                                <span className="mr-3 font-weight-bold">{variant}</span>
-                                <span className="text-muted"> {this.state.currentProductAdded.variants[variant] ? this.state.currentProductAdded.variants[variant] : 'none'} </span>
+                            <div className="d-flex flex-column justify-content-center">
+                                <span className="mr-3 font-weight-bold ">{variant}</span>
+                                <span className="text-muted p-1"> {this.state.currentProductAdded.variants[variant] ? this.state.currentProductAdded.variants[variant] : null} </span>
+                                <div className="d-flex flex-row">
+                                
+                                {this.renderChips(variants[variant], variant)}
+                                </div>
+
                             </div>
 
 
-                            {this.renderChips(variants[variant], variant)}
+                           
                         </div>
                     )
 
@@ -404,47 +408,42 @@ fontSize : '11px' ,
                         {renderPriceLabel()}
                         <div className="my-3">
 
-{renderVariants()}
-</div>
-<Divider style={{
-margin: '10px',
-
-}} />
+                                {renderVariants()}
+                         </div>
+                          <Divider style={{
+                                    margin: '10px'}} />
                         <div className={`${styles.addToCartWrapper}`}>
 
-<div className="mx-2">
-    <button
-        className="btn  btn-sm btn-outline-dark"
-        onClick={this.addQuantity}
+                                <div className="mx-2">
+                                    <button
+                                        className="btn  btn-sm btn-outline-dark"
+                                        onClick={this.addQuantity}
 
 
-    >+
-            </button>
-</div>
-<div className="mx-2">
-    <button
-        className="btn btn btn-sm btn-outline-dark"
-        onClick={this.removeQuantity}
-    >
-        -
-        </button>
-</div>
-<div className="mx-2">
-    <button
-        className="btn  btn-sm btn-outline-dark"
-        onClick={this.addToCart}
-        disabled={this.state.currentProductAdded.quantity === 0}
-    >
-        Add to Carts
-          </button>
-</div>
+                                    >+
+                                            </button>
+                                </div>
+                                <div className="mx-2">
+                                    <button
+                                        className="btn btn btn-sm btn-outline-dark"
+                                        onClick={this.removeQuantity}
+                                    >
+                                        -
+                                        </button>
+                                </div>
+                                <div className="mx-2">
+                                    <button
+                                        className="btn  btn-sm btn-outline-dark"
+                                        onClick={this.addToCart}
+                                        disabled={this.state.currentProductAdded.quantity === 0}
+                                    >
+                                        Add to Carts
+                                        </button>
+                                </div>
 
 
-</div>
-<Divider style={{
-                            margin: '10px',
-
-                        }} />
+                        </div>
+            <Divider style={{margin: '10px' }} />
                         <div className="my-3">
 
                             <span
@@ -456,22 +455,15 @@ margin: '10px',
                             >
                                 Quantity : {this.state.currentProductAdded.quantity} {`Total Price : ${this.state.currentProductAdded.TotalPrice}`}
 
-
-
                             </span>
                         </div>
-                        <Divider style={{
-margin: '10px',
-
-}} />
+                        <Divider style={{margin: '10px'}} />
 
 
                         <div className="my-3">
-
                             {
                                 renderStocks
                             }
-
                         </div>
 
                      
