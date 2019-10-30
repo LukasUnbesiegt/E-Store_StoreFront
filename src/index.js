@@ -10,7 +10,7 @@ import Routes from "./routes";
 // CSS INJECTIONS
 import "./index.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 ReactDOM.render(
 	<Provider store={configureStore().store}>
 		<ConnectedRouter history={configureStore().history}>

@@ -12,7 +12,8 @@ import {
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem , Dropdown
+    DropdownItem , 
+    Dropdown
 } from 'reactstrap';
 import { connect } from 'react-redux'
 import { openModal } from '../misc/modalManager/modalActions'
@@ -110,6 +111,10 @@ return arr.map((list , index) => {
             }
 
     render() {
+        let height =
+        this.props.browser && this.props.browser.orientation === "portrait"
+            ? "100%"
+            : "60px";
 
         const renderUserDropdown = () => {
             let AdminAccess;
@@ -136,7 +141,6 @@ return arr.map((list , index) => {
                                 AdminAccess && (<NavLink className="dropdown-item" to="/admin/products">Admin Dashboard</NavLink>)
                             }
 
-
                             <div className="dropdown-divider"></div>
                             <button
                                 className="dropdown-item"
@@ -152,9 +156,7 @@ return arr.map((list , index) => {
 
             } else {
                 return (
-
                     <li className="nav-item" onClick={this.toggle} >
-
                         <AccountKit
                             appId={FB_APP_ID}
                             version="v1.1"
@@ -162,13 +164,9 @@ return arr.map((list , index) => {
                             csrf={'yngWIE273929'}
                             countryCode={'+95'}
                             display={"modal"}
-
-
-
                         >
-                            {p => <button className="btn btn-white"  {...p} > Shopper Login</button>}
+                          {p => <button className="btn btn-white btn-sm"  {...p} > Shopper Login</button>}
                         </AccountKit>
-
                     </li>
                 )
             }
@@ -177,39 +175,37 @@ return arr.map((list , index) => {
         }
 
         const renderNavLinks = () => {
-
             const {categories , collections} = this.props;
 
             return (
                 <ul className="navbar-nav ml-lg-auto">
-                  
                    <li className="nav-item">
                    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown} style={{cursor : 'pointer'}} >
-  <DropdownToggle caret tag="a"  style={{fontSize : '1.1rem'}} className="nav-link">
-      Products
-  </DropdownToggle>
-  <DropdownMenu>
-    <DropdownItem  style={{fontSize : '1.1rem' , color : 'black'}} tag="a" href="/products">All Products</DropdownItem>
-                {
-                    this.renderLists(this.props.categories ? categories : [] , 'category')
-                }
-    
-  </DropdownMenu>
-</Dropdown>
+                            <DropdownToggle caret tag="a"  style={{fontSize : '1.1rem'}} className="nav-link">
+                                Products
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem  style={{fontSize : '1.1rem' , color : 'black'}} tag="a" href="/products">All Products</DropdownItem>
+                                            {
+                                                this.renderLists(this.props.categories ? categories : [] , 'category')
+                                            }
+                                
+                            </DropdownMenu>
+                    </Dropdown>
                    </li>
                    <li className="nav-item">
                    <Dropdown isOpen={this.state.dropdownOpen2} toggle={this.toggleDropDown2} style={{cursor : 'pointer'}} >
-  <DropdownToggle caret tag="a"  style={{fontSize : '1.1rem'}} className="nav-link">
-      Collections
-  </DropdownToggle>
-  <DropdownMenu>
-    <DropdownItem  style={{fontSize : '1.1rem' , color : 'black'}} tag="a" href="/products">All Collections</DropdownItem>
-                {
-                    this.renderListsCollection(this.props.collections ? collections : [] , 'collections')
-                }
-    
-  </DropdownMenu>
-</Dropdown>
+                                    <DropdownToggle caret tag="a"  style={{fontSize : '1.1rem'}} className="nav-link">
+                                        Collections
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem  style={{fontSize : '1.1rem' , color : 'black'}} tag="a" href="/products">All Collections</DropdownItem>
+                                                    {
+                                                        this.renderListsCollection(this.props.collections ? collections : [] , 'collections')
+                                                    }
+                                        
+                                     </DropdownMenu>
+                    </Dropdown>
                    </li>
                   
                    
@@ -220,8 +216,7 @@ return arr.map((list , index) => {
                         <NavLink activeStyle={{borderBottom : '1px solid #fff'}} className="nav-link" to="/about" style={{fontSize: '1.1rem'}}>About Us</NavLink>
                     </li>
                   
-                 
-
+                
                     {renderUserDropdown()}
 
                     <li className="nav-item">
@@ -245,7 +240,6 @@ return arr.map((list , index) => {
                                     {
 
                                         this.props.totalQuantity
-
                                     }
                                 </Badge>
                             </i>
@@ -262,7 +256,6 @@ return arr.map((list , index) => {
         const renderCart = () => {
 
             if (this.props.browser.orientation === 'landscape') {
-
                 return (
                     <a className="navbar-brand " style={{ color: '#fff' , fontSize : '1.4rem' , cursor : 'pointer' }} href="/" >
                         <i className="ni ni-shop m-2"></i>
@@ -290,9 +283,7 @@ return arr.map((list , index) => {
                                 }}
                             >
                                 {
-
                                     this.props.totalQuantity
-
                                 }
                             </Badge>
                         </i>
@@ -309,19 +300,10 @@ return arr.map((list , index) => {
 
 
         const renderNavigations = () => {
-
-
-
-
-
             return (
-
                 <div className="container-fluid">
-
-
                     {renderCart()}
                     <NavbarToggler onClick={this.toggle} />
-
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <div className="navbar-collapse-header">
                             <div className="row">
@@ -342,11 +324,7 @@ return arr.map((list , index) => {
                         {renderNavLinks()}
 
                     </Collapse>
-
-
                 </div>
-
-
 
             )
 
@@ -357,11 +335,12 @@ return arr.map((list , index) => {
 
         return (
 
-
             <Navbar
                 expand="md"
-                style={{ backgroundImage: `linear-gradient(to right,  ${globalStyle.backgroundColor} 0%, ${globalStyle.backgroundColor} 100%)` }}
-                dark
+                style={{ 
+                    backgroundImage: `linear-gradient(to right,  ${globalStyle.backgroundColor} 0%, ${globalStyle.backgroundColor} 100%)` ,
+                    maxHeight : height }}
+                   dark
 
             >
                 {renderNavigations()}
@@ -378,20 +357,12 @@ return arr.map((list , index) => {
 
 const mapStateToProps = (state) => {
 
-
-
     return {
         totalQuantity: state.products.cartItems ? state.products.cartItems.totalQuantity : null,
         categories : state.products ? state.products.categories : [] ,
         collections : state.products ? state.products.collections : [] ,
         browser: state.browser
     }
-
-
-
-
-
-
 }
 
 const mapDispatchToProps = {

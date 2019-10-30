@@ -9,7 +9,7 @@ class SmallNav extends Component {
 				: "pr-1";
 		return (
 			<Fragment>
-				<ul className="nav ml-auto m-2 p-2">
+				<ul className="nav ml-auto">
 					<NavItem>
 						<NavLink>
 							{" "}
@@ -41,13 +41,19 @@ class SmallNav extends Component {
 				? "100%"
 				: "60px";
 
+		let maxHeight =
+			this.props.browser && this.props.browser.orientation === "portrait"
+				? "60PX"
+				: "30px";
+
 		let navStyle = {
 			backgroundColor: "#fff",
-			height: height
+			height: height,
+			maxHeight: maxHeight
 		};
 
 		return (
-			<nav className="nav" style={navStyle}>
+			<nav className="nav m-1" style={navStyle}>
 				{this.renderLinks()}
 			</nav>
 		);

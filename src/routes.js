@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
@@ -39,15 +39,8 @@ import OnSale from "./components/landing/Products/OnSale/OnSale";
 import { globalStyle } from "./config";
 import Loader from "react-loader-spinner";
 class Routes extends Component {
-	state = {
-		loading: true
-	};
+	state = {};
 	componentDidMount = () => {
-		setTimeout(() => {
-			this.setState({
-				loading: false
-			});
-		}, 1400);
 		this.props.getCategories();
 		this.props.getBrands();
 		this.props.getDeliveries();
@@ -60,15 +53,26 @@ class Routes extends Component {
 		this.props.getProductsFeatured();
 	};
 
+	renderLoader = () => {
+		return (
+			<div className="d-flex justify-content-center align-items-center h-100vh">
+				<Loader
+					type="Audio"
+					color={globalStyle.backgroundColor}
+					width={100}
+					height={100}
+				/>
+			</div>
+		);
+	};
 	render() {
 		let storeName;
-
 		if (this.props.site.site && this.props.site.site.store) {
 			storeName = this.props.site.site.store.name;
 		}
 
-		if (!this.state.loading) {
-			return (
+		return (
+			<Suspense fallback={this.renderLoader}>
 				<div>
 					<Helmet>
 						<title>{storeName || "Sample Store"}</title>
@@ -113,19 +117,8 @@ class Routes extends Component {
 						<Route component={NotFound} />
 					</Switch>
 				</div>
-			);
-		} else {
-			return (
-				<div className="d-flex justify-content-center align-items-center h-100vh">
-					<Loader
-						type="Audio"
-						color={globalStyle.backgroundColor}
-						width={100}
-						height={100}
-					/>
-				</div>
-			);
-		}
+			</Suspense>
+		);
 	}
 }
 
