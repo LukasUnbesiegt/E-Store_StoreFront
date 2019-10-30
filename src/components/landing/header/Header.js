@@ -79,25 +79,23 @@ class Header extends Component {
 
 		return (
 			<Fragment>
-				<Suspense fallback={this.renderLoader()}>
-					<SmallNav browser={this.props.browser} store={store} />
-					<Navigator user={this.props.user} browser={this.props.browser} />
-					<Sliders getProductsForShop={this.props.getProductsForShop} />
-					<Featured />
-					<div className="text-center container-fluid my-5 py-3 row">
-						{this.renderCollectionSections()}
-					</div>
-					<TermsAndConds />
-					<ContactForm
-						browser={this.props.browser}
-						store={this.props.site && this.props.site.store}
-						sendEnquiry={this.props.sendEnquiry}
-					/>
-					<GoogleMaps />
-					<AcceptablePayments />
-					<Footer store={this.props.site && this.props.site.store} />
-					<FooterBottom store={this.props.site && this.props.site.store} />
-				</Suspense>
+				<SmallNav browser={this.props.browser} store={store} />
+				<Navigator user={this.props.user} browser={this.props.browser} />
+				<Sliders getProductsForShop={this.props.getProductsForShop} />
+				<Featured />
+				<div className="text-center container-fluid my-5 py-3 row">
+					{this.renderCollectionSections()}
+				</div>
+				<TermsAndConds />
+				<ContactForm
+					browser={this.props.browser}
+					store={this.props.site && this.props.site.store}
+					sendEnquiry={this.props.sendEnquiry}
+				/>
+				<GoogleMaps />
+				<AcceptablePayments />
+				<Footer store={this.props.site && this.props.site.store} />
+				<FooterBottom store={this.props.site && this.props.site.store} />
 			</Fragment>
 		);
 	}

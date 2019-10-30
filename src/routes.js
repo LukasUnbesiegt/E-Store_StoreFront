@@ -20,10 +20,9 @@ import {
 import { getOrdersById, sendEnquiry } from "./actions/customerActions";
 import { getDeliveries } from "./actions/settingsActions";
 import { auth } from "./actions/userActions";
+import Loader from "react-loader-spinner";
 import Header from "./components/landing/header/Header";
-import Products from "./components/landing/Products/Products";
 import Orders from "./components/landing/Orders/Orders";
-import Carts from "./components/landing/Carts/Carts";
 import LoginCustomer from "./components/landing/CustomerAccount/LoginRegister/LoginRegister";
 import LoginAdmin from "./components/login-register/index";
 import NotFound from "./components/landing/NotFound";
@@ -32,15 +31,31 @@ import ProductDetails from "./components/landing/Products/ProductDetails/Product
 import ModalManager from "./components/misc/modalManager/modalManager";
 import MyAccount from "./components/landing/CustomerAccount/Account";
 import Account from "./components/landing/CustomerAccount/Account";
-import ProductsByCollection from "./components/landing/Collection/Collections";
-import AboutUs from "./components/landing/Why/Why";
-import PromoCollections from "./components/landing/Products/OnSale/OnSale";
 import OnSale from "./components/landing/Products/OnSale/OnSale";
 import { globalStyle } from "./config";
-import Loader from "react-loader-spinner";
+
+const Products = React.lazy(() =>
+	import("./components/landing/Products/Products")
+);
+const PromoCollections = React.lazy(() =>
+	import("./components/landing/Products/OnSale/OnSale")
+);
+const AboutUs = React.lazy(() => import("./components/landing/Why/Why"));
+const ProductsByCollection = React.lazy(() =>
+	import("./components/landing/Collection/Collections")
+);
+const Carts = React.lazy(() => import("./components/landing/Carts/Carts"));
+
 class Routes extends Component {
-	state = {};
+	state = {
+		loading: true
+	};
 	componentDidMount = () => {
+		setInterval(() => {
+			this.setState({
+				loading: false
+			});
+		}, 1000);
 		this.props.getCategories();
 		this.props.getBrands();
 		this.props.getDeliveries();
@@ -70,55 +85,61 @@ class Routes extends Component {
 		if (this.props.site.site && this.props.site.site.store) {
 			storeName = this.props.site.site.store.name;
 		}
+		if (this.state.loading) {
+			return this.renderLoader();
+		} else {
+			return (
+				<Suspense fallback={this.renderLoader()}>
+					<div>
+						<Helmet>
+							<title>{storeName || "Sample Store"}</title>
+						</Helmet>
+						<ModalManager />
 
-		return (
-			<Suspense fallback={this.renderLoader}>
-				<div>
-					<Helmet>
-						<title>{storeName || "Sample Store"}</title>
-					</Helmet>
-					<ModalManager />
-
-					<Switch>
-						<Route
-							exact
-							render={props => (
-								<Header
-									sendEnquiry={this.props.sendEnquiry}
-									user={this.props.user.userData}
-									browser={this.props.browser}
-									site={this.props.site.site}
-									router={this.props.router}
-								/>
-							)}
-							path="/"
-						/>
-						<Route
-							render={props => <ProductDetails user={this.props.userData} />}
-							path="/pdetails"
-						/>
-						<Route render={props => <Products />} path="/products" />
-						<Route
-							render={props => (
-								<ProductsByCollection
-									getCollectProducts={this.props.getCollectProducts}
-								/>
-							)}
-							path="/collection"
-						/>
-						<Route render={props => <OnSale />} path="/onsale" />
-						<Route render={props => <AboutUs />} path="/about" />
-						<Route render={props => <Orders />} path="/orders" />
-						<Route render={props => <Carts />} path="/carts" />
-						<Route render={props => <ContactUs />} path="/storeinfo" />
-						<Route render={props => <Account />} path="/account" />
-						<Route render={props => <LoginCustomer />} path="/customer-login" />
-						<Route render={props => <LoginAdmin />} path="/admin" />
-						<Route component={NotFound} />
-					</Switch>
-				</div>
-			</Suspense>
-		);
+						<Switch>
+							<Route
+								exact
+								render={props => (
+									<Header
+										sendEnquiry={this.props.sendEnquiry}
+										user={this.props.user.userData}
+										browser={this.props.browser}
+										site={this.props.site.site}
+										router={this.props.router}
+									/>
+								)}
+								path="/"
+							/>
+							<Route
+								render={props => <ProductDetails user={this.props.userData} />}
+								path="/pdetails"
+							/>
+							<Route render={props => <Products />} path="/products" />
+							<Route
+								render={props => (
+									<ProductsByCollection
+										getCollectProducts={this.props.getCollectProducts}
+									/>
+								)}
+								path="/collection"
+							/>
+							<Route render={props => <OnSale />} path="/onsale" />
+							<Route render={props => <AboutUs />} path="/about" />
+							<Route render={props => <Orders />} path="/orders" />
+							<Route render={props => <Carts />} path="/carts" />
+							<Route render={props => <ContactUs />} path="/storeinfo" />
+							<Route render={props => <Account />} path="/account" />
+							<Route
+								render={props => <LoginCustomer />}
+								path="/customer-login"
+							/>
+							<Route render={props => <LoginAdmin />} path="/admin" />
+							<Route component={NotFound} />
+						</Switch>
+					</div>
+				</Suspense>
+			);
+		}
 	}
 }
 
